@@ -200,14 +200,14 @@
             </div>
           </button>
 
-          <button onclick="quickFilterFormat('Story')" class="text-left rounded-xl p-3.5 border border-pink-200 bg-pink-50/50 hover:bg-pink-100/60 transition cursor-pointer">
+          <button onclick="quickFilterFormat('Blog Post')" class="text-left rounded-xl p-3.5 border border-pink-200 bg-pink-50/50 hover:bg-pink-100/60 transition cursor-pointer">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold uppercase tracking-wider text-pink-900">📱 Stories</span>
-              <span id="fmt-story-pct" class="text-xs font-bold text-pink-700">0%</span>
+              <span class="text-xs font-extrabold uppercase tracking-wider text-pink-900">📝 Blog Posts</span>
+              <span id="fmt-blog-pct" class="text-xs font-bold text-pink-700">0%</span>
             </div>
-            <p id="fmt-story-count" class="text-xl font-extrabold text-pink-950 mt-1">0 / 4</p>
+            <p id="fmt-blog-count" class="text-xl font-extrabold text-pink-950 mt-1">0 / 4</p>
             <div class="w-full bg-pink-200/70 rounded-full h-1.5 mt-2">
-              <div id="fmt-story-bar" class="bg-pink-600 h-1.5 rounded-full transition-all" style="width: 0%"></div>
+              <div id="fmt-blog-bar" class="bg-pink-600 h-1.5 rounded-full transition-all" style="width: 0%"></div>
             </div>
           </button>
         </div>
@@ -256,7 +256,7 @@
             <option value="Reel">🎬 Reel (9)</option>
             <option value="Carousel">🎠 Carousel (8)</option>
             <option value="Text Post">📝 Text Post (9)</option>
-            <option value="Story">📱 Story (4)</option>
+            <option value="Blog Post">📝 Blog Post (4)</option>
           </select>
         </div>
 
@@ -303,10 +303,11 @@
     // 👇 HARDCODE YOUR FIREBASE REALTIME DATABASE URL BETWEEN THE QUOTES 👇
     // Example: const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com";
     // =========================================================================
-    const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com/";
+    const FIREBASE_DB_URL = "";
 
     // =========================================================================
     // COMPLETE 30-DAY MONDAY-TO-FRIDAY DATASET (WEEKS 1 TO 6)
+    // REVISED: Detailed production guides, spoon-fed scripts, and blog post format
     // =========================================================================
     const INITIAL_POSTS = [
       // WEEK 1 (Days 1–5: Mon–Fri)
@@ -316,26 +317,14 @@
         hook: "\"Full coverage\" is the most dangerous two-word lie in the insurance industry.",
         cta: "Comment \"CHECKUP\"", complianceRequired: true,
         hashtags: "#BartlettTN #TennesseeInsurance #FinancialProtection #InsuranceTips #AllstateAgent",
-        caption: `"Full coverage" is the most dangerous two-word lie in the insurance industry.
-
-People walk into my office in Bartlett every week thinking those two words mean they are protected from everything.
-
-Here is the truth: there is no actual policy called "full coverage" on the books.
-
-Usually, it just means you have the state minimum liability plus comprehensive and collision.
-
-If you get into a serious accident on I-40 and total a $70,000 truck, state minimums will run out fast—and the rest comes out of your paycheck and savings.
-
-I spent over 20 years in financial services before opening this agency, and watching a family lose their hard-earned wealth over a policy gap is brutal.
-
-Want to know what your policy actually covers before you need it?
-
-Comment "CHECKUP" below and I will personally review your current declarations page for free—no pressure, just straight answers.`,
+        caption: `"Full coverage" is the most dangerous two-word lie in the insurance industry.\n\nPeople walk into my office in Bartlett every week thinking those two words mean they are protected from everything.\n\nHere is the truth: there is no actual policy called "full coverage" on the books.\n\nUsually, it just means you have the state minimum liability plus comprehensive and collision.\n\nIf you get into a serious accident on I-40 and total a $70,000 truck, state minimums will run out fast—and the rest comes out of your paycheck and savings.\n\nI spent over 20 years in financial services before opening this agency, and watching a family lose their hard-earned wealth over a policy gap is brutal.\n\nWant to know what your policy actually covers before you need it?\n\nComment "CHECKUP" below and I will personally review your current declarations page for free—no pressure, just straight answers.`,
         guide: {
           mediaType: "Vertical Talking-Head Video (9:16 • 35–45 seconds)",
           visualBreakdown: "Film Michael seated at his desk or standing in the Bartlett office with natural window lighting. Add bold captions at the top for the first 3 seconds ('The 2-Word Insurance Lie') and show a brief B-roll clip of an insurance declarations page.",
           deliveryTone: "Direct, calm, conversational Frank Kern 'pattern-interrupt' tone—like advising a close friend over coffee, zero hype.",
-          vaChecklist: "1) Submit script for Allstate compliance review. 2) Add burned-in captions in CapCut/Canva. 3) Schedule on FB Reels & IG Reels for Monday 7:30 AM CT during your 9 AM–1 PM ET shift."
+          vaChecklist: "1) Submit script for Allstate compliance review. 2) Add burned-in captions in CapCut/Canva. 3) Schedule on FB Reels & IG Reels for Monday 7:30 AM CT during your 9 AM–1 PM ET shift.",
+          // Spoon-fed script for Reel
+          script: `[0:00-0:03] MICHAEL (direct to camera, calm but serious): "Full coverage" is the most dangerous two-word lie in the insurance industry.\n[0:04-0:10] MICHAEL: People walk into my office in Bartlett every week thinking those two words mean they're protected from everything. Here's the truth: there is no actual policy called "full coverage" on the books.\n[0:11-0:20] MICHAEL (lean in slightly): Usually, it just means you have the state minimum liability plus comprehensive and collision. If you get into a serious accident on I-40 and total a $70,000 truck, state minimums will run out fast—and the rest comes out of your paycheck and savings.\n[0:21-0:30] MICHAEL (warm, empathetic): I spent over 20 years in financial services before opening this agency, and watching a family lose their hard-earned wealth over a policy gap is brutal.\n[0:31-0:40] MICHAEL (direct, sincere): Want to know what your policy actually covers before you need it? Comment "CHECKUP" below and I will personally review your current declarations page for free—no pressure, just straight answers.\n[0:41-0:45] TEXT ON SCREEN: Comment "CHECKUP" for a free policy review. [Agency logo + phone number]`
         }
       },
       {
@@ -344,24 +333,20 @@ Comment "CHECKUP" below and I will personally review your current declarations p
         hook: "Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#BartlettTennessee #MemphisBusiness #LocalInsurance #CustomerFirst #TrustedAdvice",
-        caption: `Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?
-
-Buying insurance online takes five minutes and feels great because you saved $18 a month.
-
-Until something actually goes wrong.
-
-Suddenly, you are on hold for 45 minutes explaining your life to a call center three states away.
-
-Our agency has served the Bartlett community for over 40 years for one simple reason: real relationships matter when life goes sideways.
-
-You deserve an advocate who knows your name, knows your family, and picks up the phone.
-
-Visit our website at the link in bio to see how we work—or just call our local office at 901-498-5001.`,
+        caption: `Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?\n\nBuying insurance online takes five minutes and feels great because you saved $18 a month.\n\nUntil something actually goes wrong.\n\nSuddenly, you are on hold for 45 minutes explaining your life to a call center three states away.\n\nOur agency has served the Bartlett community for over 40 years for one simple reason: real relationships matter when life goes sideways.\n\nYou deserve an advocate who knows your name, knows your family, and picks up the phone.\n\nVisit our website at the link in bio to see how we work—or just call our local office at 901-498-5001.`,
         guide: {
           mediaType: "5-Slide Educational Carousel (1080x1350px portrait)",
           visualBreakdown: "Slide 1: Bold headline hook on Navy background. Slide 2: 'The 5-Minute Online Quote Trap'. Slide 3: 'What Happens When You File a Claim'. Slide 4: '40+ Years Serving Bartlett, TN'. Slide 5: Photo of Michael Johnson + CTA to call (901) 498-5001.",
           deliveryTone: "Empathetic, reassuring, community-rooted storytelling.",
-          vaChecklist: "1) Build 5 slides in Canva using Agency Navy (#0F294A) and white text. 2) Export as PNGs. 3) Schedule multi-photo post on FB and IG for Tuesday 12:15 PM CT."
+          vaChecklist: "1) Build 5 slides in Canva using Agency Navy (#0F294A) and white text. 2) Export as PNGs. 3) Schedule multi-photo post on FB and IG for Tuesday 12:15 PM CT.",
+          // Spoon-fed carousel slide plan
+          carouselPlan: [
+            { slide: 1, background: "Solid Agency Navy (#0F294A)", image: "No image—bold text only.", text: "Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?", designNote: "White, bold 48pt Inter font, centered. Add a small rain/storm subtle graphic in the corner (optional)." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a laptop with a '5 min' timer.", text: "The 5-Minute Online Quote Trap: It feels great to save $18/month... until you actually need to use it.", designNote: "Navy text, 36pt. Simple flat illustration of a laptop and a clock." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a person on hold with a phone.", text: "When you file a claim, you're on hold for 45 minutes explaining your life to a call center three states away.", designNote: "Dark slate text, 32pt. Add a subtle 'hold' icon." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of the agency storefront or a smiling Michael Johnson.", text: "Our agency has served Bartlett for over 40 years. Real relationships matter when life goes sideways.", designNote: "White text, 36pt. Place photo on the right side, text on the left." },
+            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson (headshot).", text: "You deserve an advocate who knows your name. Call us: (901) 498-5001", designNote: "Navy text, 32pt. Add a 'Call Now' button graphic. Include agency logo." }
+          ]
         }
       },
       {
@@ -370,46 +355,46 @@ Visit our website at the link in bio to see how we work—or just call our local
         hook: "Let’s talk about the elephant in the room: cheap insurance.",
         cta: "Book a call (901-498-5001)", complianceRequired: true,
         hashtags: "#WealthProtection #SmartMoney #TennesseeFamilies #BartlettTN #InsuranceMyths",
-        caption: `Let’s talk about the elephant in the room: cheap insurance.
-
-If your only goal is to pay the absolute lowest dollar amount every month, I am probably not the right agent for you.
-
-And I say that with total respect.
-
-After two decades in financial services, I’ve learned that you don’t buy insurance for the good days—you buy it to protect everything you’ve spent years building.
-
-A "cheap" policy usually gets cheap by quietly stripping away rental car reimbursement, lowering your liability limits, or sticking you with a massive deductible you can't afford when a storm hits.
-
-Good insurance isn't about chasing the lowest number; it's about making sure your family is actually whole after a bad day.
-
-Ready to have an honest conversation about where your coverage stands?
-
-Click the link in my bio or call 901-498-5001 to book a quick 15-minute call with me.`,
+        caption: `Let’s talk about the elephant in the room: cheap insurance.\n\nIf your only goal is to pay the absolute lowest dollar amount every month, I am probably not the right agent for you.\n\nAnd I say that with total respect.\n\nAfter two decades in financial services, I’ve learned that you don’t buy insurance for the good days—you buy it to protect everything you’ve spent years building.\n\nA "cheap" policy usually gets cheap by quietly stripping away rental car reimbursement, lowering your liability limits, or sticking you with a massive deductible you can't afford when a storm hits.\n\nGood insurance isn't about chasing the lowest number; it's about making sure your family is actually whole after a bad day.\n\nReady to have an honest conversation about where your coverage stands?\n\nClick the link in my bio or call 901-498-5001 to book a quick 15-minute call with me.`,
         guide: {
           mediaType: "Clean Quote Card Graphic + Long-Form Text Post (1080x1080px)",
           visualBreakdown: "Use a clean editorial quote graphic on crisp white/navy background reading: 'You don’t buy insurance for the good days—you buy it to protect everything you’ve built.' Pair with the full caption.",
           deliveryTone: "Frank Kern 'disqualification' angle—honest, non-needy authority that attracts serious families.",
-          vaChecklist: "1) Route copy for compliance approval. 2) Create clean quote card in Canva. 3) Schedule on FB & IG for Wednesday 5:30 PM CT (commute/evening scroll window)."
+          vaChecklist: "1) Route copy for compliance approval. 2) Create clean quote card in Canva. 3) Schedule on FB & IG for Wednesday 5:30 PM CT (commute/evening scroll window).",
+          // One-graphic image spec
+          graphicSpec: {
+            background: "Split design: top half Agency Navy (#0F294A), bottom half White (#FFFFFF).",
+            image: "No photo. Use a bold, elegant quote mark (large, subtle gold #D97706) in the top-left corner.",
+            text: "You don’t buy insurance for the good days—you buy it to protect everything you’ve built.",
+            textStyle: "White text on navy background, 42pt bold Inter font, centered. Below the quote, in smaller 20pt text on white: 'The Johnson Agency • Bartlett, TN'.",
+            designNote: "Minimalist, high-contrast, no clutter. Add a thin gold line separator between the navy and white sections."
+          }
         }
       },
       {
         day: 4, week: 1, dayOfWeek: "Thursday", scheduleLabel: "Week 1 • Thursday • 8:00 AM CT",
-        format: "Story", topic: "Q1 — Quick Myth-Buster Poll",
-        hook: "Quick question for Tennessee drivers: Does \"full coverage\" pay for a rental car if your car is in the shop?",
+        format: "Blog Post", topic: "Q1 — Quick Myth-Buster Poll (Blog Post)",
+        hook: "Does \"full coverage\" pay for a rental car if your car is in the shop?",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#AutoInsurance #TennesseeDrivers #BartlettTN",
-        caption: `Quick question for Tennessee drivers: Does "full coverage" pay for a rental car if your car is in the shop?
-
-Most people tap "Yes" without blinking.
-
-Truth is, rental reimbursement is a separate add-on—and without it, you are paying $60 a day out of pocket while waiting on parts.
-
-Tap the link below to book a quick coverage check so you aren't caught off guard.`,
+        caption: `Blog Post: The Rental Car Myth\n\nQuick question for Tennessee drivers: Does "full coverage" pay for a rental car if your car is in the shop?\n\nMost people tap "Yes" without blinking. Truth is, rental reimbursement is a separate add-on—and without it, you are paying $60 a day out of pocket while waiting on parts.\n\nRead the full breakdown on our blog and then book a quick coverage check so you aren't caught off guard.`,
         guide: {
-          mediaType: "3-Frame Interactive Story Sequence (1080x1920px)",
-          visualBreakdown: "Frame 1: Photo of a rental car counter + Interactive Poll sticker ('Yes, always' vs 'Only if added'). Frame 2: Text reveal explaining rental reimbursement add-on. Frame 3: Michael's headshot + clickable Link sticker to agency website.",
-          deliveryTone: "Quick, interactive trivia style that sparks DMs and link taps.",
-          vaChecklist: "1) Confirm compliance approval. 2) Prepare 3 vertical Story graphics in Canva. 3) Publish via Meta Business Suite with Poll sticker on Frame 1 and Link sticker on Frame 3."
+          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
+          visualBreakdown: "Featured image: A photo of a rental car counter or a person looking stressed at a car rental desk. Overlay text: 'Does Full Coverage Pay for a Rental Car?' Blog structure: Introduction, The Myth, The Truth About Rental Reimbursement, Cost Example, How to Check Your Policy, CTA to book a call.",
+          deliveryTone: "Informative, helpful, and slightly cautionary—like a friendly advisor debunking a common myth.",
+          vaChecklist: "1) Confirm compliance approval. 2) Write blog post in WordPress or similar, embed the featured image. 3) Publish and share the link on FB & IG with a teaser caption.",
+          blogPlan: {
+            title: "Does \"Full Coverage\" Pay for a Rental Car? The Answer Might Surprise You.",
+            featuredImage: "Photo of a rental car counter with a person looking confused. Overlay bold white text: 'Full Coverage & Rental Cars: The Truth'.",
+            sections: [
+              "Introduction: Hook with the common misconception.",
+              "The Myth: Most people think 'full coverage' means everything is covered.",
+              "The Truth: Rental reimbursement is a separate add-on. Explain what it is and typical daily limits ($30-$50/day).",
+              "Real-World Example: A customer without rental reimbursement pays $60/day for 10 days = $600 out of pocket.",
+              "How to Check Your Policy: Look at your declarations page for 'Rental Reimbursement' or 'Transportation Expenses'.",
+              "CTA: Book a 15-minute coverage review with The Johnson Agency. Link to calendar."
+            ]
+          }
         }
       },
       {
@@ -418,26 +403,13 @@ Tap the link below to book a quick coverage check so you aren't caught off guard
         hook: "Why would someone leave a 20-year career in financial services to sell insurance in Bartlett?",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#BartlettTN #FinancialPlanning #ShelbyCounty #SmallBusinessOwner #CommunityFirst",
-        caption: `Why would someone leave a 20-year career in financial services to sell insurance in Bartlett?
-
-Fair question.
-
-For 20 years, I helped people build their financial plans, grow their savings, and plan for the future.
-
-What frustrated me was seeing how easily a single uninsured accident, a bad storm, or an unexpected tragedy could wipe out decades of smart financial moves.
-
-Insurance isn't just paperwork—it is the foundation that keeps your financial house standing.
-
-I took over an agency with 40+ years of roots right here in Bartlett because I wanted to sit down with local families and actually be their advocate.
-
-If you want someone in your corner who looks at the big picture, let’s talk.
-
-Visit our website in the bio to get started.`,
+        caption: `Why would someone leave a 20-year career in financial services to sell insurance in Bartlett?\n\nFair question.\n\nFor 20 years, I helped people build their financial plans, grow their savings, and plan for the future.\n\nWhat frustrated me was seeing how easily a single uninsured accident, a bad storm, or an unexpected tragedy could wipe out decades of smart financial moves.\n\nInsurance isn't just paperwork—it is the foundation that keeps your financial house standing.\n\nI took over an agency with 40+ years of roots right here in Bartlett because I wanted to sit down with local families and actually be their advocate.\n\nIf you want someone in your corner who looks at the big picture, let’s talk.\n\nVisit our website in the bio to get started.`,
         guide: {
           mediaType: "Personal Origin Story Video (9:16 • 45–60 seconds)",
           visualBreakdown: "Film Michael walking through the Bartlett office or seated comfortably. Overlay subtle B-roll of Bartlett landmarks, family photos, and the agency storefront.",
           deliveryTone: "Warm, authentic, mission-driven founder story.",
-          vaChecklist: "1) Edit vertical video with clean subtitles. 2) Include agency URL in first comment on Facebook. 3) Schedule for Friday 11:45 AM CT."
+          vaChecklist: "1) Edit vertical video with clean subtitles. 2) Include agency URL in first comment on Facebook. 3) Schedule for Friday 11:45 AM CT.",
+          script: `[0:00-0:05] MICHAEL (walking through office, warm smile): Why would someone leave a 20-year career in financial services to sell insurance in Bartlett? Fair question.\n[0:06-0:15] MICHAEL (seated, speaking directly): For 20 years, I helped people build their financial plans, grow their savings, and plan for the future. What frustrated me was seeing how easily a single uninsured accident, a bad storm, or an unexpected tragedy could wipe out decades of smart financial moves.\n[0:16-0:25] MICHAEL: Insurance isn't just paperwork—it is the foundation that keeps your financial house standing.\n[0:26-0:40] MICHAEL (leaning in, sincere): I took over an agency with 40+ years of roots right here in Bartlett because I wanted to sit down with local families and actually be their advocate. If you want someone in your corner who looks at the big picture, let’s talk.\n[0:41-0:50] MICHAEL (smiling): Visit our website in the bio to get started.\n[0:51-0:60] TEXT ON SCREEN: The Johnson Agency • Bartlett, TN • (901) 498-5001`
         }
       },
 
@@ -448,22 +420,18 @@ Visit our website in the bio to get started.`,
         hook: "Saving $20 a month on your home insurance feels great—until you see your deductible.",
         cta: "Comment \"DEDUCTIBLE\"", complianceRequired: true,
         hashtags: "#HomeownersInsurance #TennesseeHomes #PersonalFinance #BartlettTN #MoneyTips",
-        caption: `Saving $20 a month on your home insurance feels great—until you see your deductible.
-
-A lot of online quote engines automatically bump your deductible to $2,500 or $5,000 just to make the monthly price look pretty.
-
-Ask yourself honestly: if a tree fell on your roof tomorrow morning, do you have $5,000 sitting in checking ready to hand over before repairs even start?
-
-If the answer is no, that "cheap" policy is actually a financial trap.
-
-We help families balance monthly costs with real-world emergency readiness.
-
-Comment "DEDUCTIBLE" if you aren't sure what yours is right now, and I’ll walk you through how to check it.`,
+        caption: `Saving $20 a month on your home insurance feels great—until you see your deductible.\n\nA lot of online quote engines automatically bump your deductible to $2,500 or $5,000 just to make the monthly price look pretty.\n\nAsk yourself honestly: if a tree fell on your roof tomorrow morning, do you have $5,000 sitting in checking ready to hand over before repairs even start?\n\nIf the answer is no, that "cheap" policy is actually a financial trap.\n\nWe help families balance monthly costs with real-world emergency readiness.\n\nComment "DEDUCTIBLE" if you aren't sure what yours is right now, and I’ll walk you through how to check it.`,
         guide: {
           mediaType: "4-Slide Comparison Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Hook headline. Slide 2: 'The $5,000 Deductible Illusion'. Slide 3: 'Emergency Fund vs. Monthly Savings'. Slide 4: Comment 'DEDUCTIBLE' CTA graphic.",
           deliveryTone: "Practical, eye-opening financial reality check.",
-          vaChecklist: "1) Get compliance approval. 2) Design 4-slide graphic in Canva. 3) Schedule for Monday 12:00 PM CT."
+          vaChecklist: "1) Get compliance approval. 2) Design 4-slide graphic in Canva. 3) Schedule for Monday 12:00 PM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Solid Amber (#D97706)", image: "No image—bold text only.", text: "Saving $20/month on home insurance feels great—until you see your deductible.", designNote: "White text, 40pt bold. Add a subtle warning triangle icon." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a house with a large '$5,000' price tag.", text: "The $5,000 Deductible Illusion: Online quote engines bump your deductible to make the monthly price look pretty.", designNote: "Navy text, 32pt. Use a simple house icon with a price tag." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a piggy bank vs. a calendar.", text: "Ask yourself: If a tree fell on your roof tomorrow, do you have $5,000 in checking ready to hand over?", designNote: "Dark slate text, 30pt. Split the slide: left side piggy bank, right side calendar." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of Michael Johnson with a phone.", text: "Comment \"DEDUCTIBLE\" and I’ll walk you through how to check yours. No pressure.", designNote: "White text, 36pt. Add a speech bubble icon with 'DEDUCTIBLE' inside." }
+          ]
         }
       },
       {
@@ -472,20 +440,19 @@ Comment "DEDUCTIBLE" if you aren't sure what yours is right now, and I’ll walk
         hook: "Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#BartlettTN #TennesseeLife #FamilyFirst #TrustedAdvice #ShelbyCounty",
-        caption: `Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.
-
-It’s not about policies, premiums, or paperwork.
-
-It’s about the people sitting around your dinner table tonight.
-
-Whether you are a young couple buying your first starter home or empty nesters enjoying a quieter house, peace of mind lets you stay present.
-
-Keep building steady, Bartlett.`,
+        caption: `Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.\n\nIt’s not about policies, premiums, or paperwork.\n\nIt’s about the people sitting around your dinner table tonight.\n\nWhether you are a young couple buying your first starter home or empty nesters enjoying a quieter house, peace of mind lets you stay present.\n\nKeep building steady, Bartlett.`,
         guide: {
           mediaType: "Authentic Lifestyle Photo + Text Post",
           visualBreakdown: "Use a warm, natural photo of Bartlett, local parks, or Michael smiling in the office—avoid cheesy stock photos.",
           deliveryTone: "Grounded, warm, human connection.",
-          vaChecklist: "1) Select authentic photo from agency library. 2) Schedule for Tuesday 4:00 PM CT."
+          vaChecklist: "1) Select authentic photo from agency library. 2) Schedule for Tuesday 4:00 PM CT.",
+          graphicSpec: {
+            background: "Full-bleed photo (no solid background).",
+            image: "A warm, natural photo of a Bartlett park at sunset, or a family walking in a local neighborhood. Avoid stock photos. If no local photo, use a photo of Michael smiling in the office.",
+            text: "Overlay a semi-transparent navy box at the bottom with white text: 'Slow down and look at what you are working to protect. — Michael Johnson'",
+            textStyle: "White text, 28pt, clean sans-serif. Small agency logo in the bottom-right corner.",
+            designNote: "Keep it authentic and unpolished. No heavy filters. The goal is warmth and community."
+          }
         }
       },
       {
@@ -494,24 +461,13 @@ Keep building steady, Bartlett.`,
         hook: "\"I haven't had a single ticket or claim in five years—why did my insurance go up?\"",
         cta: "Comment \"RATES\"", complianceRequired: true,
         hashtags: "#InsuranceRates #TennesseeDrivers #BartlettTN #CarInsurance #MidSouth",
-        caption: `"I haven't had a single ticket or claim in five years—why did my insurance go up?"
-
-If you’ve asked yourself this recently, you aren't alone, and you aren't crazy.
-
-Here is what is actually happening behind the scenes across Tennessee:
-
-First, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras.
-
-Second, severe storms and construction materials in the Mid-South cost way more than they did three years ago.
-
-You can't control inflation, but you can control whether you are getting every discount you qualify for and whether your coverage is structured smartly.
-
-Comment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.`,
+        caption: `"I haven't had a single ticket or claim in five years—why did my insurance go up?"\n\nIf you’ve asked yourself this recently, you aren't alone, and you aren't crazy.\n\nHere is what is actually happening behind the scenes across Tennessee:\n\nFirst, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras.\n\nSecond, severe storms and construction materials in the Mid-South cost way more than they did three years ago.\n\nYou can't control inflation, but you can control whether you are getting every discount you qualify for and whether your coverage is structured smartly.\n\nComment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.`,
         guide: {
           mediaType: "Short Explainer Reel (9:16 • 40–50 seconds)",
           visualBreakdown: "Michael speaks directly to camera with two clean on-screen callouts: '1) Modern Car Tech & Repair Costs' and '2) Mid-South Storm & Lumber Costs'.",
           deliveryTone: "Transparent, validating, zero excuses—explaining macro trends clearly.",
-          vaChecklist: "1) Submit script for compliance check. 2) Add two crisp callout banners in video editor. 3) Schedule for Wednesday 12:00 PM CT."
+          vaChecklist: "1) Submit script for compliance check. 2) Add two crisp callout banners in video editor. 3) Schedule for Wednesday 12:00 PM CT.",
+          script: `[0:00-0:05] MICHAEL (direct to camera, empathetic): "I haven't had a single ticket or claim in five years—why did my insurance go up?" If you’ve asked yourself this recently, you aren't alone, and you aren't crazy.\n[0:06-0:15] MICHAEL: Here is what is actually happening behind the scenes across Tennessee. First, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras. [TEXT ON SCREEN: Modern Car Tech & Repair Costs]\n[0:16-0:25] MICHAEL: Second, severe storms and construction materials in the Mid-South cost way more than they did three years ago. [TEXT ON SCREEN: Mid-South Storm & Lumber Costs]\n[0:26-0:35] MICHAEL: You can't control inflation, but you can control whether you are getting every discount you qualify for and whether your coverage is structured smartly.\n[0:36-0:45] MICHAEL: Comment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.\n[0:46-0:50] TEXT ON SCREEN: Comment "RATES" for a free policy review. [Agency logo]`
         }
       },
       {
@@ -520,24 +476,19 @@ Comment "RATES" below and let’s take a look at your current setup to make sure
         hook: "Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#TennesseeWeather #StormDamage #HomeownersTips #BartlettTN #Roofing",
-        caption: `Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?
-
-Spring and fall storms here don't play around.
-
-When hail or high winds tear up your roof, there is a massive difference between Replacement Cost Value and Actual Cash Value.
-
-If you have Actual Cash Value on a 12-year-old roof, the insurance company deducts 12 years of wear and tear—leaving you to pay thousands out of pocket for a new roof.
-
-Replacement Cost pays to actually replace it with new materials (minus your deductible).
-
-Don't wait until shingles are in your yard to find out which one you have.
-
-Click the link in bio to book a 10-minute roof and policy check with our team.`,
+        caption: `Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?\n\nSpring and fall storms here don't play around.\n\nWhen hail or high winds tear up your roof, there is a massive difference between Replacement Cost Value and Actual Cash Value.\n\nIf you have Actual Cash Value on a 12-year-old roof, the insurance company deducts 12 years of wear and tear—leaving you to pay thousands out of pocket for a new roof.\n\nReplacement Cost pays to actually replace it with new materials (minus your deductible).\n\nDon't wait until shingles are in your yard to find out which one you have.\n\nClick the link in bio to book a 10-minute roof and policy check with our team.`,
         guide: {
           mediaType: "5-Slide Educational Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: West Tennessee storm hook. Slide 2: 'Replacement Cost (RCV) Explained'. Slide 3: 'Actual Cash Value (ACV) Depreciation Trap'. Slide 4: 'Example on a 12-Year-Old Roof'. Slide 5: Book a 10-Minute Policy Check CTA.",
           deliveryTone: "Helpful, proactive protector helping homeowners avoid nasty surprises.",
-          vaChecklist: "1) Obtain compliance approval. 2) Create 5-slide carousel in Canva. 3) Schedule for Thursday 5:15 PM CT."
+          vaChecklist: "1) Obtain compliance approval. 2) Create 5-slide carousel in Canva. 3) Schedule for Thursday 5:15 PM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Dark stormy sky photo (overlay 50% navy).", image: "Photo of dark storm clouds over a Tennessee neighborhood.", text: "Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?", designNote: "White text, 36pt. Add a subtle lightning bolt icon." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a roof with a checkmark and 'RCV' label.", text: "Replacement Cost (RCV): Pays to replace your roof with new materials, minus your deductible.", designNote: "Navy text, 32pt. Green checkmark next to 'RCV'." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a roof with a downward arrow and 'ACV' label.", text: "Actual Cash Value (ACV): Deducts 12 years of wear and tear from a 12-year-old roof. You pay thousands out of pocket.", designNote: "Dark slate text, 30pt. Red downward arrow next to 'ACV'." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of a house with a visibly aged roof.", text: "Example: A 12-year-old roof with ACV might leave you paying $5,000+ out of pocket. With RCV, you're covered.", designNote: "White text, 28pt. Split the slide: left side 'ACV = $5K+', right side 'RCV = Covered'." },
+            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson with a clipboard.", text: "Don't wait until shingles are in your yard. Book a 10-minute roof & policy check.", designNote: "Navy text, 32pt. Add a 'Book Now' button graphic. Include office number (901) 498-5001." }
+          ]
         }
       },
       {
@@ -546,44 +497,47 @@ Click the link in bio to book a 10-minute roof and policy check with our team.`,
         hook: "Hard truth for Tennessee homeowners: your standard homeowners policy does NOT cover flood damage.",
         cta: "Visit website", complianceRequired: true,
         hashtags: "#FloodInsurance #TennesseeHomeowners #BartlettTN #HomeProtection #RealEstateTN",
-        caption: `Hard truth for Tennessee homeowners: your standard homeowners policy does NOT cover flood damage.
-
-Not an inch of it.
-
-You don't have to live right next to the Wolf River to get hit by flash flooding when heavy rain overwhelms local drainage.
-
-Just one inch of water inside your home can cause over $25,000 in damage to flooring, drywall, and electrical systems.
-
-Flood coverage has to be written separately, and there is usually a 30-day waiting period before it kicks in.
-
-If you want to check your home’s flood zone risk in two minutes, visit our website or give our Bartlett office a call at 901-498-5001.`,
+        caption: `Hard truth for Tennessee homeowners: your standard homeowners policy does NOT cover flood damage.\n\nNot an inch of it.\n\nYou don't have to live right next to the Wolf River to get hit by flash flooding when heavy rain overwhelms local drainage.\n\nJust one inch of water inside your home can cause over $25,000 in damage to flooring, drywall, and electrical systems.\n\nFlood coverage has to be written separately, and there is usually a 30-day waiting period before it kicks in.\n\nIf you want to check your home’s flood zone risk in two minutes, visit our website or give our Bartlett office a call at 901-498-5001.`,
         guide: {
           mediaType: "Alert Graphic + Text Post (1080x1080px)",
           visualBreakdown: "Use a high-contrast informational card: 'Standard Homeowners ≠ Flood Coverage' with subtext mentioning the typical 30-day waiting period.",
           deliveryTone: "Urgent yet calm heads-up before heavy rain events.",
-          vaChecklist: "1) Route for compliance sign-off. 2) Create graphic in Canva. 3) Schedule for Friday 7:45 AM CT."
+          vaChecklist: "1) Route for compliance sign-off. 2) Create graphic in Canva. 3) Schedule for Friday 7:45 AM CT.",
+          graphicSpec: {
+            background: "Solid dark blue (#0F294A) with a flood water graphic at the bottom.",
+            image: "Simple graphic of water rising against a house foundation, or a water wave icon.",
+            text: "Standard Homeowners ≠ Flood Coverage. Flood coverage is separate. 30-day waiting period. Call us: (901) 498-5001.",
+            textStyle: "White text, bold 36pt for the main message. Smaller 20pt text for the 30-day waiting period and phone number.",
+            designNote: "High contrast, urgent but not panicky. Use a red exclamation mark icon in the top-right corner."
+          }
         }
       },
 
       // WEEK 3 (Days 11–15: Mon–Fri)
       {
         day: 11, week: 3, dayOfWeek: "Monday", scheduleLabel: "Week 3 • Monday • 12:30 PM CT",
-        format: "Story", topic: "Q2 — Quick Way to Audit Your Policy",
+        format: "Blog Post", topic: "Q2 — Quick Way to Audit Your Policy (Blog Post)",
         hook: "Three things I look at first when someone asks me why their insurance is so high:",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#InsuranceAudit #SaveMoney #BartlettTN",
-        caption: `Three things I look at first when someone asks me why their insurance is so high:
-
-1. Are you bundling home/renters and auto?
-2. Are you paying for coverage on an older car that isn't worth it anymore?
-3. Are your liability limits too low while your deductibles are too small?
-
-Want a second pair of eyes on yours? Tap below to message our office directly.`,
+        caption: `Blog Post: 3 Quick Ways to Audit Your Policy\n\nThree things I look at first when someone asks me why their insurance is so high: 1) Are you bundling home/renters and auto? 2) Are you paying for coverage on an older car that isn't worth it anymore? 3) Are your liability limits too low while your deductibles are too small?\n\nRead the full breakdown on our blog and then book a quick call to see if you're overpaying.`,
         guide: {
-          mediaType: "3-Frame Checklist Story (1080x1920px)",
-          visualBreakdown: "Frame 1: '3 Things I Check First When Rates Rise'. Frame 2: Bundling + older vehicle coverage check. Frame 3: Liability vs. deductible balance + Link sticker to book a call.",
+          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
+          visualBreakdown: "Featured image: A clean checklist graphic with '3 Quick Ways to Audit Your Policy' and three checkboxes. Blog structure: Introduction, Three audit steps, Why it matters, CTA to book a call.",
           deliveryTone: "Actionable, checklist-style mini audit.",
-          vaChecklist: "1) Confirm compliance approval. 2) Design 3 Story slides. 3) Publish Monday 12:30 PM CT with Link sticker."
+          vaChecklist: "1) Confirm compliance approval. 2) Write blog post, embed featured image. 3) Publish and share on FB & IG with a teaser.",
+          blogPlan: {
+            title: "3 Quick Ways to Audit Your Insurance Policy (And Why You Might Be Overpaying)",
+            featuredImage: "Clean white background with a clipboard and three checkboxes. Title text: '3 Quick Policy Audits'.",
+            sections: [
+              "Introduction: Hook with the common question 'Why is my insurance so high?'",
+              "Audit #1: Are you bundling home/renters and auto? Explain the multi-policy discount.",
+              "Audit #2: Are you paying for coverage on an older car that isn't worth it? Explain when to drop comprehensive/collision.",
+              "Audit #3: Are your liability limits too low while deductibles are too small? Explain the balance.",
+              "Why It Matters: The cost of being overinsured or underinsured.",
+              "CTA: Book a 15-minute policy review. Link to calendar."
+            ]
+          }
         }
       },
       {
@@ -592,24 +546,13 @@ Want a second pair of eyes on yours? Tap below to message our office directly.`,
         hook: "Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.",
         cta: "Comment \"DONE\"", complianceRequired: false,
         hashtags: "#HomeInventory #LifeHack #TennesseeLiving #BartlettTN #Preparedness",
-        caption: `Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.
-
-Walk through every room in your house, open every closet and drawer, and record a slow video on your phone.
-
-Talk out loud about big purchases—electronics, tools, jewelry, furniture.
-
-Then email that video to yourself so it’s saved in the cloud.
-
-If a fire or tornado ever hits, trying to remember every single item you owned while stressed out is nearly impossible.
-
-That 3-minute video can save you weeks of headaches and thousands of dollars on a claim.
-
-Share this with a friend or spouse so they do it tonight too.`,
+        caption: `Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.\n\nWalk through every room in your house, open every closet and drawer, and record a slow video on your phone.\n\nTalk out loud about big purchases—electronics, tools, jewelry, furniture.\n\nThen email that video to yourself so it’s saved in the cloud.\n\nIf a fire or tornado ever hits, trying to remember every single item you owned while stressed out is nearly impossible.\n\nThat 3-minute video can save you weeks of headaches and thousands of dollars on a claim.\n\nShare this with a friend or spouse so they do it tonight too.`,
         guide: {
           mediaType: "How-To Demo Reel (9:16 • 35–45 seconds)",
           visualBreakdown: "Show Michael holding his phone walking through a room narrating items aloud, followed by a quick screen/phone shot emailing the file to himself.",
           deliveryTone: "Classic Frank Kern 'Results in Advance'—pure practical help with zero pitch.",
-          vaChecklist: "1) Edit quick walkthrough video with captions. 2) Schedule for Tuesday 4:45 PM CT. 3) Reply to everyone who comments 'DONE'."
+          vaChecklist: "1) Edit quick walkthrough video with captions. 2) Schedule for Tuesday 4:45 PM CT. 3) Reply to everyone who comments 'DONE'.",
+          script: `[0:00-0:05] MICHAEL (holding phone, walking through a room): Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.\n[0:06-0:15] MICHAEL (demonstrating on phone): Walk through every room in your house, open every closet and drawer, and record a slow video on your phone. Talk out loud about big purchases—electronics, tools, jewelry, furniture.\n[0:16-0:25] MICHAEL (showing phone screen): Then email that video to yourself so it’s saved in the cloud. That's it.\n[0:26-0:35] MICHAEL (direct to camera): If a fire or tornado ever hits, trying to remember every single item you owned while stressed out is nearly impossible. That 3-minute video can save you weeks of headaches and thousands of dollars on a claim.\n[0:36-0:45] MICHAEL: Share this with a friend or spouse so they do it tonight too. Comment "DONE" if you're going to do this today.\n[0:46-0:50] TEXT ON SCREEN: 3-Minute Home Inventory Trick. Share this with a friend.`
         }
       },
       {
@@ -618,22 +561,18 @@ Share this with a friend or spouse so they do it tonight too.`,
         hook: "Did you know your credit score affects your car insurance rate in Tennessee?",
         cta: "Comment \"REVIEW\"", complianceRequired: true,
         hashtags: "#CreditScore #CarInsuranceTips #Tennessee #FinancialLiteracy #BartlettTN",
-        caption: `Did you know your credit score affects your car insurance rate in Tennessee?
-
-Most people have no idea that insurers use a credit-based insurance score to help determine pricing.
-
-Why? Because statistically, people who manage their credit steadily tend to file fewer claims.
-
-The good news is that if your credit score has improved over the last year or two, you might be sitting on lower rates without even knowing it.
-
-Companies rarely lower your rate automatically just because your credit went up—you have to ask for a review.
-
-Comment "REVIEW" below and we’ll check if your current profile qualifies you for better options.`,
+        caption: `Did you know your credit score affects your car insurance rate in Tennessee?\n\nMost people have no idea that insurers use a credit-based insurance score to help determine pricing.\n\nWhy? Because statistically, people who manage their credit steadily tend to file fewer claims.\n\nThe good news is that if your credit score has improved over the last year or two, you might be sitting on lower rates without even knowing it.\n\nCompanies rarely lower your rate automatically just because your credit went up—you have to ask for a review.\n\nComment "REVIEW" below and we’ll check if your current profile qualifies you for better options.`,
         guide: {
           mediaType: "4-Slide Educational Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Curiosity hook on credit & TN auto rates. Slide 2: How credit-based insurance scoring works in plain English. Slide 3: Why improved credit doesn't always trigger an automatic drop. Slide 4: Comment 'REVIEW' CTA.",
           deliveryTone: "Informative, empowering financial literacy tone.",
-          vaChecklist: "1) Submit for compliance approval. 2) Create 4-slide carousel in Canva. 3) Schedule for Wednesday 10:00 AM CT."
+          vaChecklist: "1) Submit for compliance approval. 2) Create 4-slide carousel in Canva. 3) Schedule for Wednesday 10:00 AM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Solid Agency Navy (#0F294A)", image: "Icon of a credit score gauge.", text: "Did you know your credit score affects your car insurance rate in Tennessee?", designNote: "White text, 40pt. Add a credit score gauge graphic (e.g., a speedometer)." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a scale with a credit card and a car.", text: "Insurers use a credit-based insurance score. Statistically, people who manage credit steadily file fewer claims.", designNote: "Navy text, 32pt. Simple flat illustration." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a downward arrow (rates) and an upward arrow (credit score).", text: "The Good News: If your credit has improved, you might qualify for lower rates. But companies rarely lower it automatically.", designNote: "Dark slate text, 30pt. Use contrasting green (up) and red (down) arrows." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of Michael Johnson with a phone.", text: "Comment \"REVIEW\" and we’ll check if your current profile qualifies for better options.", designNote: "White text, 36pt. Add a speech bubble icon with 'REVIEW' inside." }
+          ]
         }
       },
       {
@@ -642,20 +581,19 @@ Comment "REVIEW" below and we’ll check if your current profile qualifies you f
         hook: "We don't chase numbers at The Johnson Agency—we look for people who actually care about being protected.",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#TheJohnsonAgency #BartlettTN #TrustedAdvice #PersonalizedService #Allstate",
-        caption: `We don't chase numbers at The Johnson Agency—we look for people who actually care about being protected.
-
-Anyone can spit out a fast quote on a screen.
-
-What we want is to sit down, have a real conversation, and make sure your family isn't exposed to risks you didn't even know existed.
-
-When you know what you have and why you have it, you sleep better.
-
-Visit our website anytime to learn more about our Bartlett team.`,
+        caption: `We don't chase numbers at The Johnson Agency—we look for people who actually care about being protected.\n\nAnyone can spit out a fast quote on a screen.\n\nWhat we want is to sit down, have a real conversation, and make sure your family isn't exposed to risks you didn't even know existed.\n\nWhen you know what you have and why you have it, you sleep better.\n\nVisit our website anytime to learn more about our Bartlett team.`,
         guide: {
           mediaType: "Brand Manifesto Graphic + Text Post",
           visualBreakdown: "Pair with a clean brand card featuring The Johnson Agency name and tagline: 'Personalized Service. Trusted Advice.'",
           deliveryTone: "Confident, values-driven positioning.",
-          vaChecklist: "1) Prepare brand graphic. 2) Schedule for Thursday 5:00 PM CT."
+          vaChecklist: "1) Prepare brand graphic. 2) Schedule for Thursday 5:00 PM CT.",
+          graphicSpec: {
+            background: "Split design: left half white, right half Agency Navy (#0F294A).",
+            image: "No photo. Use a subtle geometric pattern (thin lines) in the background of the navy side.",
+            text: "Main text on white side: 'We don't chase numbers. We protect people.' Main text on navy side: 'Personalized Service. Trusted Advice.'",
+            textStyle: "Navy text on white (42pt bold), white text on navy (24pt italic). Agency logo centered at the bottom.",
+            designNote: "Minimalist, brand-focused. No clutter. The tagline is the hero."
+          }
         }
       },
       {
@@ -664,22 +602,13 @@ Visit our website anytime to learn more about our Bartlett team.`,
         hook: "If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.",
         cta: "Comment \"FAMILY\"", complianceRequired: true,
         hashtags: "#LifeInsurance #YoungFamilies #FinancialSecurity #BartlettTN #ParentingTips",
-        caption: `If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.
-
-They rely 100% on the life insurance policy through their job.
-
-Here is the problem with workplace life insurance: the moment you change jobs, get laid off, or retire, that policy usually disappears.
-
-Plus, most work policies only cover 1x or 2x your salary—which barely covers a couple of years of bills, let alone raising kids or paying off a house.
-
-Getting a personal term life policy while you are young and healthy locks in low rates that you own, no matter where you work.
-
-Comment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.`,
+        caption: `If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.\n\nThey rely 100% on the life insurance policy through their job.\n\nHere is the problem with workplace life insurance: the moment you change jobs, get laid off, or retire, that policy usually disappears.\n\nPlus, most work policies only cover 1x or 2x your salary—which barely covers a couple of years of bills, let alone raising kids or paying off a house.\n\nGetting a personal term life policy while you are young and healthy locks in low rates that you own, no matter where you work.\n\nComment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.`,
         guide: {
           mediaType: "Talking-Head Video Reel (9:16 • 45 seconds)",
           visualBreakdown: "Michael speaking calmly to camera with clear text overlays: 'Workplace Policy = Tied to Your Job' vs 'Personal Policy = Yours to Keep'.",
           deliveryTone: "Caring, big-brother/financial-advisor guidance for young families.",
-          vaChecklist: "1) Route life insurance copy for compliance review. 2) Add captions & schedule for Friday 7:30 AM CT."
+          vaChecklist: "1) Route life insurance copy for compliance review. 2) Add captions & schedule for Friday 7:30 AM CT.",
+          script: `[0:00-0:05] MICHAEL (direct to camera, serious but caring): If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.\n[0:06-0:15] MICHAEL: They rely 100% on the life insurance policy through their job. [TEXT ON SCREEN: Workplace Policy = Tied to Your Job]\n[0:16-0:25] MICHAEL: Here is the problem with workplace life insurance: the moment you change jobs, get laid off, or retire, that policy usually disappears. Plus, most work policies only cover 1x or 2x your salary—which barely covers a couple of years of bills, let alone raising kids or paying off a house.\n[0:26-0:35] MICHAEL: Getting a personal term life policy while you are young and healthy locks in low rates that you own, no matter where you work. [TEXT ON SCREEN: Personal Policy = Yours to Keep]\n[0:36-0:45] MICHAEL: Comment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.\n[0:46-0:50] TEXT ON SCREEN: Comment "FAMILY" for a free needs analysis. [Agency logo]`
         }
       },
 
@@ -690,24 +619,19 @@ Comment "FAMILY" below and I’ll help you figure out the exact number your fami
         hook: "Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#TeenDriver #ParentingTeens #BartlettTN #TennesseeParents #AutoInsurance",
-        caption: `Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.
-
-Yes, adding a teen driver in Tennessee is going to raise your premium.
-
-There’s no magic wand to make it free, but there are smart ways to take the sting out of it:
-
-1. Good Student Discounts: A "B" average or better can knock a noticeable chunk off their rate.
-2. Driver Training Programs: Certified teen safe-driving courses pay for themselves quickly.
-3. Smart Vehicle Choice: Putting them as the primary driver on the safest, most modest car in your driveway makes a big difference.
-
-Got a teen getting their permit soon?
-
-Book a quick 15-minute call through the link in bio before you add them so we can structure it the smartest way possible.`,
+        caption: `Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.\n\nYes, adding a teen driver in Tennessee is going to raise your premium.\n\nThere’s no magic wand to make it free, but there are smart ways to take the sting out of it:\n\n1. Good Student Discounts: A "B" average or better can knock a noticeable chunk off their rate.\n2. Driver Training Programs: Certified teen safe-driving courses pay for themselves quickly.\n3. Smart Vehicle Choice: Putting them as the primary driver on the safest, most modest car in your driveway makes a big difference.\n\nGot a teen getting their permit soon?\n\nBook a quick 15-minute call through the link in bio before you add them so we can structure it the smartest way possible.`,
         guide: {
           mediaType: "5-Slide Parent Playbook Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Teen driver hook. Slide 2: Tip 1 — Good Student Discount. Slide 3: Tip 2 — Driver Training. Slide 4: Tip 3 — Vehicle Assignment Strategy. Slide 5: Book a 15-Minute Call Before Adding Your Teen.",
           deliveryTone: "Relatable parent-to-parent strategy.",
-          vaChecklist: "1) Get compliance sign-off on discount mentions. 2) Design 5 slides in Canva. 3) Schedule for Monday 12:15 PM CT."
+          vaChecklist: "1) Get compliance sign-off on discount mentions. 2) Design 5 slides in Canva. 3) Schedule for Monday 12:15 PM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Solid Agency Navy (#0F294A)", image: "Icon of car keys with a price tag.", text: "Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.", designNote: "White text, 36pt. Add a car key icon." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a report card with a 'B' grade.", text: "Tip 1: Good Student Discounts. A 'B' average or better can knock a noticeable chunk off their rate.", designNote: "Navy text, 32pt. Green checkmark icon." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a driver's ed car.", text: "Tip 2: Driver Training Programs. Certified teen safe-driving courses pay for themselves quickly.", designNote: "Dark slate text, 32pt. Blue checkmark icon." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Icon of a modest sedan vs. a sports car.", text: "Tip 3: Smart Vehicle Choice. Put them as primary driver on the safest, most modest car in your driveway.", designNote: "White text, 30pt. Use a simple car comparison graphic." },
+            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson with a phone.", text: "Got a teen getting their permit soon? Book a 15-minute call before you add them.", designNote: "Navy text, 32pt. Add a 'Book Now' button graphic. Include phone number." }
+          ]
         }
       },
       {
@@ -716,42 +640,45 @@ Book a quick 15-minute call through the link in bio before you add them so we ca
         hook: "You don't have to be a millionaire to need a $1 million Umbrella policy.",
         cta: "Visit website", complianceRequired: true,
         hashtags: "#UmbrellaInsurance #AssetProtection #YoungProfessionals #BartlettTN #WealthBuilding",
-        caption: `You don't have to be a millionaire to need a $1 million Umbrella policy.
-
-In fact, if you own a home, have a solid career, or are building up your 401(k) and savings, you already have a target on your back.
-
-Imagine causing a multi-car pileup on Highway 64 or someone getting seriously injured on your property.
-
-Medical bills and legal fees can blow past your standard auto or home liability limits in a heartbeat.
-
-An Umbrella policy steps in above those limits to protect your savings, your home equity, and even your future wages—usually for less than the cost of one takeout dinner a month.
-
-Visit our website to see how easy it is to add an extra layer of armor to your financial plan.`,
+        caption: `You don't have to be a millionaire to need a $1 million Umbrella policy.\n\nIn fact, if you own a home, have a solid career, or are building up your 401(k) and savings, you already have a target on your back.\n\nImagine causing a multi-car pileup on Highway 64 or someone getting seriously injured on your property.\n\nMedical bills and legal fees can blow past your standard auto or home liability limits in a heartbeat.\n\nAn Umbrella policy steps in above those limits to protect your savings, your home equity, and even your future wages—usually for less than the cost of one takeout dinner a month.\n\nVisit our website to see how easy it is to add an extra layer of armor to your financial plan.`,
         guide: {
           mediaType: "Clean Concept Graphic + Text Post (1080x1080px)",
           visualBreakdown: "Simple diagram or card showing 'Standard Auto/Home Liability' + '$1M+ Umbrella Layer' protecting future earnings and savings.",
           deliveryTone: "Smart wealth-protection framing for professionals and growing households.",
-          vaChecklist: "1) Submit for compliance review. 2) Create clean visual card. 3) Schedule for Tuesday 5:30 PM CT."
+          vaChecklist: "1) Submit for compliance review. 2) Create clean visual card. 3) Schedule for Tuesday 5:30 PM CT.",
+          graphicSpec: {
+            background: "Solid white (#FFFFFF).",
+            image: "A simple 3-layer diagram: bottom layer 'Auto/Home Liability', middle layer '$1M Umbrella', top layer 'Your Savings & Future'. Use flat icons (car, house, umbrella, piggy bank).",
+            text: "Headline: 'You don't have to be a millionaire to need a $1M Umbrella policy.' Subtext: 'Protect your savings, home equity, and future wages for less than a takeout dinner.'",
+            textStyle: "Navy text, 36pt bold for headline. Slate text, 24pt for subtext. Agency logo at the bottom.",
+            designNote: "Clean, infographic style. Use agency navy and slate blue colors in the diagram."
+          }
         }
       },
       {
         day: 18, week: 4, dayOfWeek: "Wednesday", scheduleLabel: "Week 4 • Wednesday • 8:00 AM CT",
-        format: "Story", topic: "Q3 — Term vs. Whole Life Quick Breakdown",
+        format: "Blog Post", topic: "Q3 — Term vs. Whole Life Quick Breakdown (Blog Post)",
         hook: "Term vs. Whole Life insurance—which one is actually better?",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#LifeInsurance101 #FinancialPlanning #BartlettTN",
-        caption: `Term vs. Whole Life insurance—which one is actually better?
-
-Here is the honest answer: it depends on what job you want the money to do.
-
-Term is great for covering big temporary responsibilities like a 30-year mortgage and raising kids, while Permanent/Whole life builds lifelong coverage.
-
-Want help figuring out which fits your budget? Tap below to schedule a quick chat.`,
+        caption: `Blog Post: Term vs. Whole Life — Which Is Right for You?\n\nTerm vs. Whole Life insurance—which one is actually better? Here is the honest answer: it depends on what job you want the money to do. Term is great for covering big temporary responsibilities like a 30-year mortgage and raising kids, while Permanent/Whole life builds lifelong coverage.\n\nRead the full breakdown on our blog and then schedule a quick chat to figure out which fits your budget.`,
         guide: {
-          mediaType: "3-Frame Comparison Story (1080x1920px)",
-          visualBreakdown: "Frame 1: 'Term vs. Whole Life: Which Is Better?'. Frame 2: Side-by-side simple summary (temporary obligations vs. lifelong coverage). Frame 3: Schedule a quick chat Link sticker.",
+          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
+          visualBreakdown: "Featured image: A split graphic with 'Term' on one side and 'Whole Life' on the other, each with simple icons (e.g., a house for term, an infinity symbol for whole life). Blog structure: Introduction, What is Term Life?, What is Whole Life?, Key Differences, Which One Is Right for You?, CTA.",
           deliveryTone: "Jargon-free, clear, zero-pressure.",
-          vaChecklist: "1) Confirm compliance approval. 2) Create 3 vertical Story frames. 3) Publish Wednesday 8:00 AM CT."
+          vaChecklist: "1) Confirm compliance approval. 2) Write blog post, embed featured image. 3) Publish and share on FB & IG.",
+          blogPlan: {
+            title: "Term vs. Whole Life Insurance: A Simple Breakdown for Tennessee Families",
+            featuredImage: "Split image: left side 'Term' with a house icon; right side 'Whole Life' with an infinity icon. Text overlay: 'Which is right for you?'",
+            sections: [
+              "Introduction: Hook with the common confusion between term and whole life.",
+              "What is Term Life Insurance? Definition, typical coverage periods (10, 20, 30 years), and use cases (mortgage, raising kids).",
+              "What is Whole Life Insurance? Definition, lifelong coverage, cash value component.",
+              "Key Differences: Cost, duration, cash value, complexity.",
+              "Which One Is Right for You? Scenarios: young family with a mortgage, single person, empty nester, business owner.",
+              "CTA: Book a 15-minute life insurance review. Link to calendar."
+            ]
+          }
         }
       },
       {
@@ -760,24 +687,13 @@ Want help figuring out which fits your budget? Tap below to schedule a quick cha
         hook: "Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.",
         cta: "Comment \"LIMITS\"", complianceRequired: true,
         hashtags: "#TennesseeLaw #AutoInsurance #BartlettTN #ProtectYourAssets #MoneySmart",
-        caption: `Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.
-
-Those are Tennessee’s minimum state liability limits—and they are dangerously outdated for the real world.
-
-That "15" means your insurance will only pay up to $15,000 for property damage you cause.
-
-Have you seen the price of a new SUV or pickup truck in Memphis lately?
-
-If you total a $55,000 truck, your insurance pays $15,000, and you are personally on the hook for the remaining $40,000.
-
-Bumping your liability limits up to 100/300/100 often costs just a few extra dollars a month and saves you from financial ruin.
-
-Comment "LIMITS" below if you want me to check where yours stand.`,
+        caption: `Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.\n\nThose are Tennessee’s minimum state liability limits—and they are dangerously outdated for the real world.\n\nThat "15" means your insurance will only pay up to $15,000 for property damage you cause.\n\nHave you seen the price of a new SUV or pickup truck in Memphis lately?\n\nIf you total a $55,000 truck, your insurance pays $15,000, and you are personally on the hook for the remaining $40,000.\n\nBumping your liability limits up to 100/300/100 often costs just a few extra dollars a month and saves you from financial ruin.\n\nComment "LIMITS" below if you want me to check where yours stand.`,
         guide: {
           mediaType: "High-Attention Hook Reel (9:16 • 40 seconds)",
           visualBreakdown: "Hold up a sample auto ID card (with fake/blurred details) pointing to the liability limits line, then cut to Michael explaining the $15k property limit gap on modern trucks.",
           deliveryTone: "Sharp, eye-opening, protective.",
-          vaChecklist: "1) Route for compliance approval. 2) Edit video with captions & schedule for Thursday 11:45 AM CT."
+          vaChecklist: "1) Route for compliance approval. 2) Edit video with captions & schedule for Thursday 11:45 AM CT.",
+          script: `[0:00-0:05] MICHAEL (holding up a sample auto ID card): Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.\n[0:06-0:15] MICHAEL: Those are Tennessee’s minimum state liability limits—and they are dangerously outdated for the real world. That "15" means your insurance will only pay up to $15,000 for property damage you cause.\n[0:16-0:25] MICHAEL (lean in): Have you seen the price of a new SUV or pickup truck in Memphis lately? If you total a $55,000 truck, your insurance pays $15,000, and you are personally on the hook for the remaining $40,000.\n[0:26-0:35] MICHAEL: Bumping your liability limits up to 100/300/100 often costs just a few extra dollars a month and saves you from financial ruin.\n[0:36-0:40] MICHAEL: Comment "LIMITS" below if you want me to check where yours stand.\n[0:41-0:45] TEXT ON SCREEN: 25/50/15 = Risky. Comment "LIMITS" for a free review.`
         }
       },
       {
@@ -786,22 +702,18 @@ Comment "LIMITS" below if you want me to check where yours stand.`,
         hook: "Kids finally moved out of the house? Don't forget to tell your insurance agent.",
         cta: "Book a call", complianceRequired: true,
         hashtags: "#EmptyNesters #BartlettTN #LifeChanges #InsuranceReview #TennesseeFamilies",
-        caption: `Kids finally moved out of the house? Don't forget to tell your insurance agent.
-
-When your kids graduate, get their own jobs, and move into their own places, your household risk changes completely.
-
-You shouldn't still be paying to insure a college driver who now lives in Nashville or Knoxville with their own car.
-
-Plus, empty nesters often qualify for new low-mileage discounts and home updates that can free up money in your budget.
-
-Let’s update your policies to match your new chapter.
-
-Click the link in bio to book a quick 15-minute review with our Bartlett office.`,
+        caption: `Kids finally moved out of the house? Don't forget to tell your insurance agent.\n\nWhen your kids graduate, get their own jobs, and move into their own places, your household risk changes completely.\n\nYou shouldn't still be paying to insure a college driver who now lives in Nashville or Knoxville with their own car.\n\nPlus, empty nesters often qualify for new low-mileage discounts and home updates that can free up money in your budget.\n\nLet’s update your policies to match your new chapter.\n\nClick the link in bio to book a quick 15-minute review with our Bartlett office.`,
         guide: {
           mediaType: "4-Slide Life-Stage Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Empty nest transition hook. Slide 2: Removing out-of-area drivers. Slide 3: Checking mileage & home updates. Slide 4: Book a 15-Minute Review CTA.",
           deliveryTone: "Upbeat, celebratory, practical next-chapter advice.",
-          vaChecklist: "1) Get compliance approval. 2) Create 4 slides in Canva. 3) Schedule for Friday 9:30 AM CT."
+          vaChecklist: "1) Get compliance approval. 2) Create 4 slides in Canva. 3) Schedule for Friday 9:30 AM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Solid warm gold (#D97706)", image: "Icon of a nest with eggs, or a house with a 'sold' sign.", text: "Kids finally moved out of the house? Don't forget to tell your insurance agent.", designNote: "White text, 40pt. Add a subtle nest icon." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a car with a 'moving' box.", text: "When your kids move out, you shouldn't still be paying to insure a college driver who now lives in Nashville or Knoxville.", designNote: "Navy text, 32pt. Use a moving box and car icon." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a mileage gauge and a house with a checkmark.", text: "Empty nesters often qualify for new low-mileage discounts and home updates that can free up money in your budget.", designNote: "Dark slate text, 30pt. Use a gas gauge icon." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of Michael Johnson smiling.", text: "Let’s update your policies to match your new chapter. Book a quick 15-minute review.", designNote: "White text, 36pt. Add a 'Book Now' button graphic." }
+          ]
         }
       },
 
@@ -812,16 +724,19 @@ Click the link in bio to book a quick 15-minute review with our Bartlett office.
         hook: "One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#BartlettTN #SupportLocal #CommunityFirst #TheJohnsonAgency #Grateful",
-        caption: `One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.
-
-You treat people right, give them honest advice, and show up when it counts—that’s how you build a business that lasts over 40 years.
-
-Thank you to everyone who trusts The Johnson Agency with their family’s protection.`,
+        caption: `One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.\n\nYou treat people right, give them honest advice, and show up when it counts—that’s how you build a business that lasts over 40 years.\n\nThank you to everyone who trusts The Johnson Agency with their family’s protection.`,
         guide: {
           mediaType: "Local Community Photo + Text Post",
           visualBreakdown: "Feature a friendly photo of Michael or the agency team in Bartlett.",
           deliveryTone: "Sincere, grateful local business owner.",
-          vaChecklist: "1) Pick photo & schedule for Monday 4:30 PM CT."
+          vaChecklist: "1) Pick photo & schedule for Monday 4:30 PM CT.",
+          graphicSpec: {
+            background: "Full-bleed photo.",
+            image: "A candid photo of Michael or the agency team at a local Bartlett event, or in front of the office. Warm, natural lighting.",
+            text: "Overlay a semi-transparent navy box at the bottom with white text: 'Thank you, Bartlett. It's an honor to serve this community. — Michael Johnson'",
+            textStyle: "White text, 28pt, clean sans-serif. Agency logo in the bottom-right corner.",
+            designNote: "Authentic, unposed, community-focused. No heavy graphics."
+          }
         }
       },
       {
@@ -830,22 +745,13 @@ Thank you to everyone who trusts The Johnson Agency with their family’s protec
         hook: "\"My landlord has insurance, so I don't need renters insurance.\" Stop believing this myth before it costs you $30,000.",
         cta: "Comment \"RENTERS\"", complianceRequired: true,
         hashtags: "#RentersInsurance #YoungProfessionals #MemphisRentals #BartlettTN #Adulting101",
-        caption: `"My landlord has insurance, so I don't need renters insurance." Stop believing this myth before it costs you $30,000.
-
-Your landlord’s insurance covers the physical building—the walls, the roof, and the plumbing.
-
-It covers zero dollars of your furniture, clothes, laptops, TVs, or kitchen gear if there is a fire, burst pipe, or break-in.
-
-Even worse: if you accidentally leave a candle burning or overflow a sink and damage the apartment below you, you can be held personally liable.
-
-The crazy part? Renters insurance usually costs around $15 to $20 a month—less than two coffees.
-
-Comment "RENTERS" below and I’ll help you get protected in less than 10 minutes.`,
+        caption: `"My landlord has insurance, so I don't need renters insurance." Stop believing this myth before it costs you $30,000.\n\nYour landlord’s insurance covers the physical building—the walls, the roof, and the plumbing.\n\nIt covers zero dollars of your furniture, clothes, laptops, TVs, or kitchen gear if there is a fire, burst pipe, or break-in.\n\nEven worse: if you accidentally leave a candle burning or overflow a sink and damage the apartment below you, you can be held personally liable.\n\nThe crazy part? Renters insurance usually costs around $15 to $20 a month—less than two coffees.\n\nComment "RENTERS" below and I’ll help you get protected in less than 10 minutes.`,
         guide: {
           mediaType: "Fast-Paced Myth-Buster Reel (9:16 • 35–45 seconds)",
           visualBreakdown: "Hook in first 2 seconds with 'Landlord Policy ≠ Your Stuff' graphic. Show quick visual callouts for personal belongings and personal liability.",
           deliveryTone: "Energetic, helpful 'adulting' wake-up call for young professionals and renters.",
-          vaChecklist: "1) Route pricing & coverage details for compliance review. 2) Add captions & schedule for Tuesday 12:00 PM CT."
+          vaChecklist: "1) Route pricing & coverage details for compliance review. 2) Add captions & schedule for Tuesday 12:00 PM CT.",
+          script: `[0:00-0:05] MICHAEL (energetic, direct to camera): "My landlord has insurance, so I don't need renters insurance." Stop believing this myth before it costs you $30,000.\n[0:06-0:15] MICHAEL: Your landlord’s insurance covers the physical building—the walls, the roof, and the plumbing. It covers zero dollars of your furniture, clothes, laptops, TVs, or kitchen gear if there is a fire, burst pipe, or break-in. [TEXT ON SCREEN: Landlord Policy ≠ Your Stuff]\n[0:16-0:25] MICHAEL: Even worse: if you accidentally leave a candle burning or overflow a sink and damage the apartment below you, you can be held personally liable.\n[0:26-0:35] MICHAEL: The crazy part? Renters insurance usually costs around $15 to $20 a month—less than two coffees.\n[0:36-0:45] MICHAEL: Comment "RENTERS" below and I’ll help you get protected in less than 10 minutes.\n[0:46-0:50] TEXT ON SCREEN: Renters Insurance = $15/mo. Comment "RENTERS". [Agency logo]`
         }
       },
       {
@@ -854,22 +760,18 @@ Comment "RENTERS" below and I’ll help you get protected in less than 10 minute
         hook: "Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.",
         cta: "Visit website", complianceRequired: true,
         hashtags: "#TennesseeOutdoors #BoatingTN #RVLife #ATVLife #BartlettTN",
-        caption: `Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.
-
-A lot of folks assume their auto policy covers whatever they are towing, or that their homeowners policy covers toys parked in the garage.
-
-Usually, your auto policy only covers liability while the trailer is attached—not physical damage to the boat, RV, or ATV itself.
-
-And homeowners policies have strict dollar limits on recreational vehicles.
-
-Whether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps a weekend accident from turning into a financial headache.
-
-Visit our website in the bio to make sure your weekend gear is covered properly.`,
+        caption: `Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.\n\nA lot of folks assume their auto policy covers whatever they are towing, or that their homeowners policy covers toys parked in the garage.\n\nUsually, your auto policy only covers liability while the trailer is attached—not physical damage to the boat, RV, or ATV itself.\n\nAnd homeowners policies have strict dollar limits on recreational vehicles.\n\nWhether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps a weekend accident from turning into a financial headache.\n\nVisit our website in the bio to make sure your weekend gear is covered properly.`,
         guide: {
           mediaType: "4-Slide Outdoor Gear Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Lake/trail hook. Slide 2: Auto trailer liability vs. physical damage to toys. Slide 3: Homeowners sub-limits on recreational vehicles. Slide 4: Check your gear coverage CTA.",
           deliveryTone: "Fun, outdoorsy Tennessee tone with practical protection tips.",
-          vaChecklist: "1) Obtain compliance sign-off. 2) Create 4 slides in Canva. 3) Schedule for Wednesday 5:15 PM CT."
+          vaChecklist: "1) Obtain compliance sign-off. 2) Create 4 slides in Canva. 3) Schedule for Wednesday 5:15 PM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Photo of a lake at sunset (Pickwick Lake) with 50% navy overlay.", image: "Photo of a boat on a lake at sunset.", text: "Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.", designNote: "White text, 36pt. Add a small boat icon." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a truck towing a boat, with a split 'Liability' vs. 'Physical Damage'.", text: "Your auto policy usually only covers liability while the trailer is attached—not physical damage to the boat, RV, or ATV itself.", designNote: "Navy text, 32pt. Use a split graphic: left side green check (liability), right side red X (physical damage)." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a homeowners policy document with a red 'sub-limit' stamp.", text: "Homeowners policies have strict dollar limits on recreational vehicles. Don't assume your toys are covered.", designNote: "Dark slate text, 30pt. Add a warning icon." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of a boat, RV, and ATV side-by-side.", text: "Whether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps a weekend accident from turning into a financial headache.", designNote: "White text, 28pt. Add a 'Visit our website' button graphic." }
+          ]
         }
       },
       {
@@ -878,40 +780,45 @@ Visit our website in the bio to make sure your weekend gear is covered properly.
         hook: "Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.",
         cta: "Book a call (901-498-5001)", complianceRequired: true,
         hashtags: "#RealEstateInvesting #TennesseeLandlord #RentalProperty #BartlettTN #PropertyManagement",
-        caption: `Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.
-
-If a tenant starts a kitchen fire and the insurance company discovers you no longer live there, your claim can be denied flat out.
-
-You need a dedicated Landlord policy that covers the structure, landlord liability, and even loss of rental income while the property is being repaired.
-
-Owning rental property is a great way to build wealth—just make sure the foundation is insured the right way.
-
-Call our Bartlett office at 901-498-5001 or click the link in bio to review your rental coverage.`,
+        caption: `Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.\n\nIf a tenant starts a kitchen fire and the insurance company discovers you no longer live there, your claim can be denied flat out.\n\nYou need a dedicated Landlord policy that covers the structure, landlord liability, and even loss of rental income while the property is being repaired.\n\nOwning rental property is a great way to build wealth—just make sure the foundation is insured the right way.\n\nCall our Bartlett office at 901-498-5001 or click the link in bio to review your rental coverage.`,
         guide: {
           mediaType: "Investor Alert Graphic + Text Post (1080x1080px)",
           visualBreakdown: "Bold headline graphic: 'Moved Out & Rented It Out? Check Your Policy Type.' Include office number (901) 498-5001.",
           deliveryTone: "Serious, authoritative real estate protection note.",
-          vaChecklist: "1) Route for compliance approval. 2) Create graphic & schedule for Thursday 7:45 AM CT."
+          vaChecklist: "1) Route for compliance approval. 2) Create graphic & schedule for Thursday 7:45 AM CT.",
+          graphicSpec: {
+            background: "Solid dark slate (#091A30).",
+            image: "Icon of a house with a 'For Rent' sign and a warning triangle.",
+            text: "Headline: 'Moved Out & Rented It Out?' Subtext: 'Your standard homeowners policy will NOT cover a rental property. You need a landlord policy.' Bottom: 'Call (901) 498-5001 to review your coverage.'",
+            textStyle: "White text, 42pt bold for headline. 24pt for subtext. Gold (#D97706) for the phone number.",
+            designNote: "Authoritative, urgent, with a clear call to action."
+          }
         }
       },
       {
         day: 25, week: 5, dayOfWeek: "Friday", scheduleLabel: "Week 5 • Friday • 12:30 PM CT",
-        format: "Story", topic: "Q9 — Engagement Poll on Weekend Toys",
+        format: "Blog Post", topic: "Q9 — Weekend Toys (Blog Post)",
         hook: "Be honest: if you could buy one weekend toy right now, which one are you picking?",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#WeekendVibes #Tennessee #BartlettTN",
-        caption: `Be honest: if you could buy one weekend toy right now, which one are you picking?
-
-A) Bass boat or pontoon
-B) Class A RV for road trips
-C) Side-by-side ATV for the trails
-
-Whatever you drive, tow, or float—we insure it right here in Bartlett. Tap below to get a quick quote.`,
+        caption: `Blog Post: Insuring Your Weekend Toys — Boats, RVs, and ATVs\n\nBe honest: if you could buy one weekend toy right now, which one are you picking? A bass boat, a Class A RV, or a side-by-side ATV? Whatever you drive, tow, or float—we insure it right here in Bartlett. Read our latest blog post on how to properly cover your weekend toys.`,
         guide: {
-          mediaType: "3-Frame Fun Friday Story (1080x1920px)",
-          visualBreakdown: "Frame 1: Fun Friday poll ('Boat', 'RV', or 'ATV/Side-by-Side'). Frame 2: Show results/teaser. Frame 3: Link sticker to agency website.",
-          deliveryTone: "Lighthearted Friday engagement booster.",
-          vaChecklist: "1) Create 3 Story frames in Canva. 2) Publish Friday 12:30 PM CT with Poll & Link stickers."
+          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
+          visualBreakdown: "Featured image: A collage of a boat, RV, and ATV with the text 'Insuring Your Weekend Toys'. Blog structure: Introduction (poll question), Coverage for boats, Coverage for RVs, Coverage for ATVs, Common misconceptions, CTA to get a quote.",
+          deliveryTone: "Lighthearted, fun, informative.",
+          vaChecklist: "1) Write blog post, embed featured image. 2) Publish and share on FB & IG with a poll sticker on stories.",
+          blogPlan: {
+            title: "Insuring Your Weekend Toys: Boats, RVs, and ATVs in Tennessee",
+            featuredImage: "Collage of a boat, RV, and ATV with the text 'Insuring Your Weekend Toys' in bold navy text.",
+            sections: [
+              "Introduction: Poll question — which weekend toy would you buy?",
+              "Boat Insurance: What it covers, typical costs, and why your auto policy doesn't cover it.",
+              "RV Insurance: Class A, B, C — coverage differences, full-timer vs. recreational.",
+              "ATV/Side-by-Side Insurance: Coverage for trails, liability, and theft.",
+              "Common Misconceptions: 'My homeowners covers it' — why it often doesn't.",
+              "CTA: Get a quote for your weekend toy. Link to website."
+            ]
+          }
         }
       },
 
@@ -922,24 +829,13 @@ Whatever you drive, tow, or float—we insure it right here in Bartlett. Tap bel
         hook: "Grab your insurance declarations page and check these three lines right now.",
         cta: "Comment \"TRANSLATE\"", complianceRequired: true,
         hashtags: "#InsuranceTips #FinancialEducation #BartlettTN #HomeAndAuto #AllstateAgent",
-        caption: `Grab your insurance declarations page and check these three lines right now.
-
-Line 1: Your bodily injury liability—if it’s under 100/300, you are leaving your savings exposed.
-
-Line 2: Your roof settlement—make sure it says "Replacement Cost" and not "Actual Cash Value."
-
-Line 3: Your deductibles—make sure you actually have that cash sitting in an emergency fund.
-
-If you don't know where to find these numbers, don't stress.
-
-Take a picture of your current policy, text it or bring it by our Bartlett office, and I’ll translate the insurance jargon into plain English for free.
-
-Comment "TRANSLATE" below to get started.`,
+        caption: `Grab your insurance declarations page and check these three lines right now.\n\nLine 1: Your bodily injury liability—if it’s under 100/300, you are leaving your savings exposed.\n\nLine 2: Your roof settlement—make sure it says "Replacement Cost" and not "Actual Cash Value."\n\nLine 3: Your deductibles—make sure you actually have that cash sitting in an emergency fund.\n\nIf you don't know where to find these numbers, don't stress.\n\nTake a picture of your current policy, text it or bring it by our Bartlett office, and I’ll translate the insurance jargon into plain English for free.\n\nComment "TRANSLATE" below to get started.`,
         guide: {
           mediaType: "3-Point Action Reel (9:16 • 45 seconds)",
           visualBreakdown: "Count down 1, 2, 3 on screen with clear text labels for Liability, Roof Settlement, and Deductible. End with the plain-English translation offer.",
           deliveryTone: "Empowering, no-jargon educator.",
-          vaChecklist: "1) Get compliance approval. 2) Add numbered overlays & captions. 3) Schedule for Monday 4:30 PM CT."
+          vaChecklist: "1) Get compliance approval. 2) Add numbered overlays & captions. 3) Schedule for Monday 4:30 PM CT.",
+          script: `[0:00-0:05] MICHAEL (holding a declarations page): Grab your insurance declarations page and check these three lines right now.\n[0:06-0:15] MICHAEL (pointing to line 1): Line 1: Your bodily injury liability—if it’s under 100/300, you are leaving your savings exposed. [TEXT ON SCREEN: 1. Liability Limits]\n[0:16-0:25] MICHAEL: Line 2: Your roof settlement—make sure it says "Replacement Cost" and not "Actual Cash Value." [TEXT ON SCREEN: 2. Roof Settlement]\n[0:26-0:35] MICHAEL: Line 3: Your deductibles—make sure you actually have that cash sitting in an emergency fund. [TEXT ON SCREEN: 3. Deductibles]\n[0:36-0:45] MICHAEL: If you don't know where to find these numbers, don't stress. Take a picture of your current policy, text it or bring it by our Bartlett office, and I’ll translate the insurance jargon into plain English for free. Comment "TRANSLATE" below to get started.\n[0:46-0:50] TEXT ON SCREEN: Comment "TRANSLATE" for a free policy review.`
         }
       },
       {
@@ -948,22 +844,18 @@ Comment "TRANSLATE" below to get started.`,
         hook: "Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#TheJohnsonAgency #BartlettTN #ClientAdvocate #PersonalizedService #TrustedAdvice",
-        caption: `Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.
-
-When you are dealing with a fender bender, a busted water heater, or storm damage, you already have enough stress on your plate.
-
-Our job at The Johnson Agency isn't just to sell you a piece of paper and disappear.
-
-Our job is to educate you before anything happens, and stand in your corner to help guide you through the process when it does.
-
-Personalized service and trusted advice—just like it should be.
-
-Visit our website in the bio to connect with Michael and the team.`,
+        caption: `Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.\n\nWhen you are dealing with a fender bender, a busted water heater, or storm damage, you already have enough stress on your plate.\n\nOur job at The Johnson Agency isn't just to sell you a piece of paper and disappear.\n\nOur job is to educate you before anything happens, and stand in your corner to help guide you through the process when it does.\n\nPersonalized service and trusted advice—just like it should be.\n\nVisit our website in the bio to connect with Michael and the team.`,
         guide: {
           mediaType: "4-Slide Client Advocacy Carousel (1080x1350px)",
           visualBreakdown: "Slide 1: Hook on stressful claim moments. Slide 2: 'Before Anything Happens: Education'. Slide 3: 'When It Happens: Local Guidance'. Slide 4: Connect with The Johnson Agency CTA.",
           deliveryTone: "Reassuring, dependable partnership tone.",
-          vaChecklist: "1) Build 4 slides in Canva. 2) Schedule for Tuesday 10:00 AM CT."
+          vaChecklist: "1) Build 4 slides in Canva. 2) Schedule for Tuesday 10:00 AM CT.",
+          carouselPlan: [
+            { slide: 1, background: "Solid Agency Navy (#0F294A)", image: "Icon of a person looking stressed with a phone.", text: "Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.", designNote: "White text, 40pt. Add a stress-free icon or a phone with a frown." },
+            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a person teaching with a lightbulb.", text: "Before anything happens: We educate you on what you have and why you have it.", designNote: "Navy text, 32pt. Use a lightbulb icon." },
+            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a person standing in front of a house with a shield.", text: "When it happens: We stand in your corner and guide you through the claim process.", designNote: "Dark slate text, 32pt. Use a shield icon." },
+            { slide: 4, background: "Agency Navy (#0F294A)", image: "Photo of Michael Johnson and team.", text: "Personalized service and trusted advice—just like it should be. Visit our website to connect.", designNote: "White text, 32pt. Add a 'Visit Website' button graphic." }
+          ]
         }
       },
       {
@@ -972,22 +864,19 @@ Visit our website in the bio to connect with Michael and the team.`,
         hook: "Here is how I look at protecting a Tennessee family from start to finish:",
         cta: "Book a call", complianceRequired: false,
         hashtags: "#FamilyProtection #FinancialPeace #BartlettTN #LifeAndHome #Tennessee",
-        caption: `Here is how I look at protecting a Tennessee family from start to finish:
-
-First, we protect your daily life—your cars, your home, and your liability so one bad afternoon doesn't drain your bank account.
-
-Second, we protect your lifestyle—your boats, RVs, rental properties, and umbrella coverage as your career and assets grow.
-
-Third, we protect your people—life insurance so your spouse and kids never have to worry about the mortgage if the unthinkable happens.
-
-It doesn't have to be complicated or overwhelming.
-
-If you want a calm, pressure-free conversation about where your family stands, book a call through our website today.`,
+        caption: `Here is how I look at protecting a Tennessee family from start to finish:\n\nFirst, we protect your daily life—your cars, your home, and your liability so one bad afternoon doesn't drain your bank account.\n\nSecond, we protect your lifestyle—your boats, RVs, rental properties, and umbrella coverage as your career and assets grow.\n\nThird, we protect your people—life insurance so your spouse and kids never have to worry about the mortgage if the unthinkable happens.\n\nIt doesn't have to be complicated or overwhelming.\n\nIf you want a calm, pressure-free conversation about where your family stands, book a call through our website today.`,
         guide: {
           mediaType: "3-Tier Blueprint Graphic + Text Post (1080x1080px)",
           visualBreakdown: "Show a clean 3-step ladder/tier graphic: 1) Daily Life & Liability, 2) Lifestyle & Assets, 3) Family & Mortgage (Life).",
           deliveryTone: "Structured, reassuring big-picture advisor.",
-          vaChecklist: "1) Create 3-tier graphic in Canva. 2) Schedule for Wednesday 4:00 PM CT."
+          vaChecklist: "1) Create 3-tier graphic in Canva. 2) Schedule for Wednesday 4:00 PM CT.",
+          graphicSpec: {
+            background: "White (#FFFFFF).",
+            image: "A 3-step ladder or staircase graphic, each step labeled: '1. Daily Life & Liability', '2. Lifestyle & Assets', '3. Family & Mortgage'. Use flat icons for each (car/house, boat/RV, family).",
+            text: "Headline: 'The Complete Family Protection Blueprint' Subtext: 'Protect your daily life, your lifestyle, and your people—in that order.'",
+            textStyle: "Navy text, 36pt bold for headline. Slate text, 24pt for subtext. Agency logo at the bottom.",
+            designNote: "Clean, infographic style. Use agency navy and slate blue colors."
+          }
         }
       },
       {
@@ -996,22 +885,13 @@ If you want a calm, pressure-free conversation about where your family stands, b
         hook: "If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.",
         cta: "Book a call (901-498-5001)", complianceRequired: true,
         hashtags: "#BartlettTN #TennesseeInsurance #FreeReview #FinancialCheckup #TheJohnsonAgency",
-        caption: `If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.
-
-Life moves fast—you buy cars, renovate kitchens, switch jobs, and build savings.
-
-If your insurance hasn't kept up with your life, you are probably either overpaying for old stuff or dangerously underinsured on new stuff.
-
-I’m opening up five spots on my calendar this week for a 15-minute Policy Clarity Call.
-
-We’ll look at what you have, spot any hidden gaps, and tell you honestly if you’re already in a great spot—even if that means staying right where you are.
-
-Click the link in my bio or call our office at 901-498-5001 to grab a spot.`,
+        caption: `If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.\n\nLife moves fast—you buy cars, renovate kitchens, switch jobs, and build savings.\n\nIf your insurance hasn't kept up with your life, you are probably either overpaying for old stuff or dangerously underinsured on new stuff.\n\nI’m opening up five spots on my calendar this week for a 15-minute Policy Clarity Call.\n\nWe’ll look at what you have, spot any hidden gaps, and tell you honestly if you’re already in a great spot—even if that means staying right where you are.\n\nClick the link in my bio or call our office at 901-498-5001 to grab a spot.`,
         guide: {
           mediaType: "Direct-to-Camera Invitation Reel (9:16 • 45–50 seconds)",
           visualBreakdown: "Film Michael in a relaxed, honest conversation format—no hard-sell energy, just a clear invitation for a 15-minute Policy Clarity Call.",
           deliveryTone: "Signature Frank Kern low-pressure, high-integrity invitation.",
-          vaChecklist: "1) Submit for compliance review. 2) Add captions & schedule for Thursday 7:30 AM CT."
+          vaChecklist: "1) Submit for compliance review. 2) Add captions & schedule for Thursday 7:30 AM CT.",
+          script: `[0:00-0:08] MICHAEL (relaxed, direct to camera): If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.\n[0:09-0:18] MICHAEL: Life moves fast—you buy cars, renovate kitchens, switch jobs, and build savings. If your insurance hasn't kept up with your life, you are probably either overpaying for old stuff or dangerously underinsured on new stuff.\n[0:19-0:35] MICHAEL: I’m opening up five spots on my calendar this week for a 15-minute Policy Clarity Call. We’ll look at what you have, spot any hidden gaps, and tell you honestly if you’re already in a great spot—even if that means staying right where you are.\n[0:36-0:45] MICHAEL: Click the link in my bio or call our office at 901-498-5001 to grab a spot.\n[0:46-0:50] TEXT ON SCREEN: 5 Spots This Week. 15-Minute Policy Clarity Call. Call (901) 498-5001.`
         }
       },
       {
@@ -1020,18 +900,19 @@ Click the link in my bio or call our office at 901-498-5001 to grab a spot.`,
         hook: "Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?",
         cta: "Comment your question", complianceRequired: false,
         hashtags: "#AskAnAgent #BartlettTN #InsuranceQuestions #TennesseeFamilies #TrustedAdvice",
-        caption: `Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?
-
-Drop it in the comments below—no question is too small or too basic.
-
-Our mission at The Johnson Agency is to make insurance make sense so you feel confident about what you’re paying for.
-
-I’ll reply to every single comment personally today.`,
+        caption: `Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?\n\nDrop it in the comments below—no question is too small or too basic.\n\nOur mission at The Johnson Agency is to make insurance make sense so you feel confident about what you’re paying for.\n\nI’ll reply to every single comment personally today.`,
         guide: {
           mediaType: "Open Q&A Prompt Graphic + Text Post (1080x1080px)",
           visualBreakdown: "Clean question card: 'What’s #1 Thing About Insurance That Still Confuses You? Drop It Below 👇'.",
           deliveryTone: "Open, welcoming, community conversation starter.",
-          vaChecklist: "1) Create Q&A graphic in Canva. 2) Schedule for Friday 12:15 PM CT and alert Michael to check comments."
+          vaChecklist: "1) Create Q&A graphic in Canva. 2) Schedule for Friday 12:15 PM CT and alert Michael to check comments.",
+          graphicSpec: {
+            background: "Solid agency light blue (#EAF2FA).",
+            image: "No photo. Use a large question mark icon in the center.",
+            text: "Headline: 'What’s the #1 thing about insurance that still confuses you?' Subtext: 'Drop it below 👇 I’ll reply personally.'",
+            textStyle: "Navy text, 42pt bold for headline. Slate text, 24pt for subtext. Agency logo at the bottom.",
+            designNote: "Friendly, approachable, conversation-starting."
+          }
         }
       }
     ];
@@ -1363,8 +1244,8 @@ I’ll reply to every single comment personally today.`,
       let complianceTotal = 0;
       let complianceApproved = 0;
 
-      const fmtTotals = { Reel: 0, Carousel: 0, 'Text Post': 0, Story: 0 };
-      const fmtPosted = { Reel: 0, Carousel: 0, 'Text Post': 0, Story: 0 };
+      const fmtTotals = { Reel: 0, Carousel: 0, 'Text Post': 0, 'Blog Post': 0 };
+      const fmtPosted = { Reel: 0, Carousel: 0, 'Text Post': 0, 'Blog Post': 0 };
 
       INITIAL_POSTS.forEach(post => {
         const st = appState.posts[post.day] || defaultPostState();
@@ -1402,7 +1283,7 @@ I’ll reply to every single comment personally today.`,
         { key: 'Reel', prefix: 'fmt-reel' },
         { key: 'Carousel', prefix: 'fmt-carousel' },
         { key: 'Text Post', prefix: 'fmt-text' },
-        { key: 'Story', prefix: 'fmt-story' }
+        { key: 'Blog Post', prefix: 'fmt-blog' }
       ];
 
       mapFmt.forEach(({ key, prefix }) => {
@@ -1426,8 +1307,8 @@ I’ll reply to every single comment personally today.`,
           return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-100 text-sky-900 border border-sky-200 text-xs font-extrabold">🎠 CAROUSEL</span>`;
         case 'Text Post':
           return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-200 text-slate-900 border border-slate-300 text-xs font-extrabold">📝 TEXT POST</span>`;
-        case 'Story':
-          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-pink-100 text-pink-900 border border-pink-200 text-xs font-extrabold">📱 STORY</span>`;
+        case 'Blog Post':
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-pink-100 text-pink-900 border border-pink-200 text-xs font-extrabold">📝 BLOG POST</span>`;
         default:
           return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">${fmt}</span>`;
       }
@@ -1530,9 +1411,9 @@ I’ll reply to every single comment personally today.`,
                   <span class="text-xs sm:text-sm">✅ Posted Live</span>
                 </label>
 
-                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${!post.complianceRequired ? 'bg-slate-50/60 border-slate-200 text-slate-400 cursor-default' : (st.compliance_approved ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-bold' : 'bg-orange-50/60 border-orange-200 text-orange-950 hover:bg-orange-100/60')}">
-                  <input type="checkbox" ${!post.complianceRequired ? 'disabled' : ''} ${st.compliance_approved ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'compliance_approved')" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer disabled:cursor-default" />
-                  <span class="text-xs sm:text-sm">${post.complianceRequired ? '🛡️ Compliance Approved' : '— No Review Needed'}</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${st.compliance_approved ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-bold' : 'bg-orange-50/60 border-orange-200 text-orange-950 hover:bg-orange-100/60'}">
+                  <input type="checkbox" ${st.compliance_approved ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'compliance_approved')" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer" />
+                  <span class="text-xs sm:text-sm">🛡️ Compliance Approved</span>
                 </label>
               </div>
             </div>
@@ -1565,23 +1446,76 @@ I’ll reply to every single comment personally today.`,
                 ` : ''}
 
                 ${currentTab === 'guide' ? `
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
-                      <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">1. Media Format & Specs</span>
-                      <p class="text-sm text-slate-800 font-semibold">${escapeHtml(post.guide.mediaType)}</p>
+                  <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">1. Media Format & Specs</span>
+                        <p class="text-sm text-slate-800 font-semibold">${escapeHtml(post.guide.mediaType)}</p>
+                      </div>
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-agency-slate">2. Approach & Tone</span>
+                        <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.deliveryTone)}</p>
+                      </div>
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-sky-900">3. What to Film / Design (Visual Breakdown)</span>
+                        <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.visualBreakdown)}</p>
+                      </div>
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800">4. Step-by-Step VA & Posting Action Plan</span>
+                        <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.vaChecklist)}</p>
+                      </div>
                     </div>
-                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
-                      <span class="text-xs font-extrabold uppercase tracking-wider text-agency-slate">2. Approach & Tone</span>
-                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.deliveryTone)}</p>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
-                      <span class="text-xs font-extrabold uppercase tracking-wider text-sky-900">3. What to Film / Design (Visual Breakdown)</span>
-                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.visualBreakdown)}</p>
-                    </div>
-                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
-                      <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800">4. Step-by-Step VA & Posting Action Plan</span>
-                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.vaChecklist)}</p>
-                    </div>
+
+                    ${post.format === 'Reel' && post.guide.script ? `
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">🎬 Spoon-Fed Script (Read Word-for-Word or Use as Guide)</span>
+                        <pre class="whitespace-pre-wrap font-sans text-sm text-slate-800 leading-relaxed bg-slate-50 p-3 rounded-lg">${escapeHtml(post.guide.script)}</pre>
+                      </div>
+                    ` : ''}
+
+                    ${post.format === 'Carousel' && post.guide.carouselPlan ? `
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-3">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-sky-900">🎠 Detailed Carousel Slide Plan</span>
+                        ${post.guide.carouselPlan.map(slide => `
+                          <div class="border border-slate-200 rounded-lg p-3 bg-slate-50/50">
+                            <div class="flex items-center gap-2 mb-1">
+                              <span class="bg-agency-navy text-white text-xs font-bold px-2 py-0.5 rounded">Slide ${slide.slide}</span>
+                              <span class="text-xs font-semibold text-slate-500">Background: ${escapeHtml(slide.background)}</span>
+                            </div>
+                            <p class="text-sm text-slate-700"><strong>Image:</strong> ${escapeHtml(slide.image)}</p>
+                            <p class="text-sm text-slate-700"><strong>Text:</strong> ${escapeHtml(slide.text)}</p>
+                            <p class="text-xs text-slate-500 mt-1"><strong>Design Note:</strong> ${escapeHtml(slide.designNote)}</p>
+                          </div>
+                        `).join('')}
+                      </div>
+                    ` : ''}
+
+                    ${post.format === 'Text Post' && post.guide.graphicSpec ? `
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-slate-800">📝 One-Graphic Image Specification</span>
+                        <div class="text-sm text-slate-700 space-y-1">
+                          <p><strong>Background:</strong> ${escapeHtml(post.guide.graphicSpec.background)}</p>
+                          <p><strong>Image/Visual:</strong> ${escapeHtml(post.guide.graphicSpec.image)}</p>
+                          <p><strong>Text:</strong> ${escapeHtml(post.guide.graphicSpec.text)}</p>
+                          <p><strong>Text Style:</strong> ${escapeHtml(post.guide.graphicSpec.textStyle)}</p>
+                          <p><strong>Design Note:</strong> ${escapeHtml(post.guide.graphicSpec.designNote)}</p>
+                        </div>
+                      </div>
+                    ` : ''}
+
+                    ${post.format === 'Blog Post' && post.guide.blogPlan ? `
+                      <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-2">
+                        <span class="text-xs font-extrabold uppercase tracking-wider text-pink-800">📝 Blog Post Plan</span>
+                        <div class="text-sm text-slate-700 space-y-1">
+                          <p><strong>Title:</strong> ${escapeHtml(post.guide.blogPlan.title)}</p>
+                          <p><strong>Featured Image:</strong> ${escapeHtml(post.guide.blogPlan.featuredImage)}</p>
+                          <p><strong>Structure:</strong></p>
+                          <ul class="list-disc list-inside text-slate-600 space-y-0.5">
+                            ${post.guide.blogPlan.sections.map(section => `<li>${escapeHtml(section)}</li>`).join('')}
+                          </ul>
+                        </div>
+                      </div>
+                    ` : ''}
                   </div>
                 ` : ''}
 
