@@ -60,7 +60,7 @@
           class="w-full rounded-xl border border-slate-300 px-3.5 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-navy"
         />
         <p class="text-xs text-slate-500">
-          Tip: In Firebase Console → Realtime Database → copy the URL at the top of the Data tab (starts with <code class="bg-slate-100 px-1 rounded">https://</code>).
+          Tip: You can also paste this directly into <code class="bg-slate-100 px-1 rounded">FIREBASE_DB_URL</code> inside the code so every team member auto-connects on load.
         </p>
       </div>
 
@@ -144,7 +144,7 @@
           <button onclick="triggerImport()" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-agency-slate hover:bg-blue-800 text-white border border-blue-400/30 text-xs sm:text-sm font-semibold transition cursor-pointer">
             Restore JSON
           </button>
-          <button onclick="openResetModal()" class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-red-600/90 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold transition cursor-pointer">
+          <button onclick="openResetModal()" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-red-600/90 hover:bg-red-700 text-white text-xs sm:text-sm font-semibold transition cursor-pointer">
             Reset
           </button>
         </div>
@@ -186,7 +186,7 @@
               <span id="stat-pending-pct" class="text-xs font-bold text-amber-700">0%</span>
             </div>
             <p id="stat-pending-count" class="text-2xl font-extrabold text-amber-950 mt-1">0 / 30</p>
-            <p class="text-xs text-amber-700 mt-0.5">Drafted / awaiting scheduling</p>
+            <p class="text-xs text-amber-700 mt-0.5">Marked pending post</p>
           </button>
 
           <button onclick="quickFilterStatus('scheduled')" class="text-left rounded-xl p-4 border border-blue-200 bg-blue-50/60 hover:bg-blue-100/70 transition cursor-pointer">
@@ -355,6 +355,12 @@
 
   <script>
     // =========================================================================
+    // 👇 PASTE YOUR FIREBASE REALTIME DATABASE URL BETWEEN THE QUOTES BELOW 👇
+    // Example: const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com";
+    // =========================================================================
+    const FIREBASE_DB_URL = "";
+
+    // =========================================================================
     // COMPLETE 30-DAY MONDAY-TO-FRIDAY DATASET (WEEKS 1 TO 6)
     // =========================================================================
     const INITIAL_POSTS = [
@@ -509,32 +515,32 @@ We help families balance monthly costs with real-world emergency readiness.
 
 Comment "DEDUCTIBLE" if you aren't sure what yours is right now, and I’ll walk you through how to check it.`,
         guide: {
-          mediaType: "4-Slide Visual Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook text over subtle home exterior background. Slide 2: Side-by-side comparison ($1,000 vs $5,000 deductible math). Slide 3: 'The Emergency Fund Rule'. Slide 4: Comment 'DEDUCTIBLE' callout.",
-          deliveryTone: "Practical, eye-opening financial common sense.",
-          vaChecklist: "1) Verify compliance sign-off. 2) Design 4 high-contrast slides in Canva. 3) Schedule Monday 12:00 PM CT and monitor comments for 'DEDUCTIBLE'."
+          mediaType: "4-Slide Comparison Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: Hook headline. Slide 2: 'The $5,000 Deductible Illusion'. Slide 3: 'Emergency Fund vs. Monthly Savings'. Slide 4: Comment 'DEDUCTIBLE' CTA graphic.",
+          deliveryTone: "Practical, eye-opening financial reality check.",
+          vaChecklist: "1) Get compliance approval. 2) Design 4-slide graphic in Canva. 3) Schedule for Monday 12:00 PM CT."
         }
       },
       {
-        day: 7, week: 2, dayOfWeek: "Tuesday", scheduleLabel: "Week 2 • Tuesday • 7:45 AM CT",
+        day: 7, week: 2, dayOfWeek: "Tuesday", scheduleLabel: "Week 2 • Tuesday • 4:00 PM CT",
         format: "Text Post", topic: "Community & Family Values",
-        hook: "In Tennessee, what we are really working so hard to protect has nothing to do with paperwork.",
+        hook: "Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.",
         cta: "Visit website", complianceRequired: false,
-        hashtags: "#BartlettTN #TennesseeLife #FamilyFirst #PeaceOfMind #TrustedAdvice",
-        caption: `In Tennessee, what we are really working so hard to protect has nothing to do with paperwork.
+        hashtags: "#BartlettTN #TennesseeLife #FamilyFirst #TrustedAdvice #ShelbyCounty",
+        caption: `Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.
 
-It’s not about policies, premiums, or fine print.
+It’s not about policies, premiums, or paperwork.
 
 It’s about the people sitting around your dinner table tonight.
 
-Whether you are a young couple buying your first starter home in Bartlett or empty nesters enjoying a quieter house, real peace of mind lets you stay present.
+Whether you are a young couple buying your first starter home or empty nesters enjoying a quieter house, peace of mind lets you stay present.
 
-Our agency has stood behind local families for over 40 years—and we’re proud to keep that tradition going every day.`,
+Keep building steady, Bartlett.`,
         guide: {
-          mediaType: "Warm Lifestyle / Agency Photo + Text Post",
-          visualBreakdown: "Pair with a warm, authentic photo of Michael smiling in the office or a welcoming Tennessee neighborhood scene.",
-          deliveryTone: "Heartfelt, zero-pitch relationship builder.",
-          vaChecklist: "1) Select high-res photo of Michael. 2) Schedule Tuesday 7:45 AM CT on FB and IG."
+          mediaType: "Authentic Lifestyle Photo + Text Post",
+          visualBreakdown: "Use a warm, natural photo of Bartlett, local parks, or Michael smiling in the office—avoid cheesy stock photos.",
+          deliveryTone: "Grounded, warm, human connection.",
+          vaChecklist: "1) Select authentic photo from agency library. 2) Schedule for Tuesday 4:00 PM CT."
         }
       },
       {
@@ -547,7 +553,7 @@ Our agency has stood behind local families for over 40 years—and we’re proud
 
 If you’ve asked yourself this recently, you aren't alone, and you aren't crazy.
 
-Here is what is actually happening behind the scenes across Tennessee.
+Here is what is actually happening behind the scenes across Tennessee:
 
 First, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras.
 
@@ -557,10 +563,10 @@ You can't control inflation, but you can control whether you are getting every d
 
 Comment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.`,
         guide: {
-          mediaType: "Talking-Head Explainer Reel with Visual Props (9:16 • 45 seconds)",
-          visualBreakdown: "Michael speaks directly to camera. Cut in brief B-roll of modern car bumper sensors and hail/roof repairs while explaining the two inflation drivers.",
-          deliveryTone: "Validating, transparent, 'us vs. the problem' advisor tone.",
-          vaChecklist: "1) Obtain compliance approval. 2) Add dynamic captions & B-roll overlays. 3) Schedule Wednesday 12:00 PM CT."
+          mediaType: "Short Explainer Reel (9:16 • 40–50 seconds)",
+          visualBreakdown: "Michael speaks directly to camera with two clean on-screen callouts: '1) Modern Car Tech & Repair Costs' and '2) Mid-South Storm & Lumber Costs'.",
+          deliveryTone: "Transparent, validating, zero excuses—explaining macro trends clearly.",
+          vaChecklist: "1) Submit script for compliance check. 2) Add two crisp callout banners in video editor. 3) Schedule for Wednesday 12:00 PM CT."
         }
       },
       {
@@ -581,12 +587,12 @@ Replacement Cost pays to actually replace it with new materials (minus your dedu
 
 Don't wait until shingles are in your yard to find out which one you have.
 
-Click the link in bio or call 901-498-5001 to book a 10-minute roof and policy check with our team.`,
+Click the link in bio to book a 10-minute roof and policy check with our team.`,
         guide: {
-          mediaType: "5-Slide Educational Breakdown Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Storm clouds over TN + Hook. Slide 2: 'RCV vs. ACV Explained Simply'. Slide 3: Real-world math example on a 12-year-old roof. Slide 4: How to check your policy page. Slide 5: Book a 10-min Roof Check CTA.",
-          deliveryTone: "Urgent, protective local advisor.",
-          vaChecklist: "1) Confirm compliance approval. 2) Create clean comparison graphics in Canva. 3) Schedule Thursday 5:15 PM CT."
+          mediaType: "5-Slide Educational Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: West Tennessee storm hook. Slide 2: 'Replacement Cost (RCV) Explained'. Slide 3: 'Actual Cash Value (ACV) Depreciation Trap'. Slide 4: 'Example on a 12-Year-Old Roof'. Slide 5: Book a 10-Minute Policy Check CTA.",
+          deliveryTone: "Helpful, proactive protector helping homeowners avoid nasty surprises.",
+          vaChecklist: "1) Obtain compliance approval. 2) Create 5-slide carousel in Canva. 3) Schedule for Thursday 5:15 PM CT."
         }
       },
       {
@@ -607,10 +613,10 @@ Flood coverage has to be written separately, and there is usually a 30-day waiti
 
 If you want to check your home’s flood zone risk in two minutes, visit our website or give our Bartlett office a call at 901-498-5001.`,
         guide: {
-          mediaType: "Bold Alert Text Graphic + Full Caption",
-          visualBreakdown: "Design a clean warning-style graphic: 'PSA for TN Homeowners: Standard Homeowners Policies Do NOT Cover Flooding.' Keep typography clean and legible.",
-          deliveryTone: "Clear, factual public-service announcement.",
-          vaChecklist: "1) Submit for compliance review. 2) Design graphic and schedule for Friday 7:45 AM CT."
+          mediaType: "Alert Graphic + Text Post (1080x1080px)",
+          visualBreakdown: "Use a high-contrast informational card: 'Standard Homeowners ≠ Flood Coverage' with subtext mentioning the typical 30-day waiting period.",
+          deliveryTone: "Urgent yet calm heads-up before heavy rain events.",
+          vaChecklist: "1) Route for compliance sign-off. 2) Create graphic in Canva. 3) Schedule for Friday 7:45 AM CT."
         }
       },
 
@@ -624,17 +630,15 @@ If you want to check your home’s flood zone risk in two minutes, visit our web
         caption: `Three things I look at first when someone asks me why their insurance is so high:
 
 1. Are you bundling home/renters and auto?
-
 2. Are you paying for coverage on an older car that isn't worth it anymore?
-
 3. Are your liability limits too low while your deductibles are too small?
 
 Want a second pair of eyes on yours? Tap below to message our office directly.`,
         guide: {
-          mediaType: "4-Frame Checklist Story Sequence (1080x1920px)",
-          visualBreakdown: "Frame 1: Hook title card. Frame 2: Checklist items 1 & 2 with checkmark icons. Frame 3: Checklist item 3 + quick tip. Frame 4: Link sticker to book a review or WhatsApp/Phone CTA.",
-          deliveryTone: "Fast, actionable, insider checklist.",
-          vaChecklist: "1) Verify compliance sign-off. 2) Export 4 Story frames. 3) Publish Monday 12:30 PM CT with clickable Link sticker."
+          mediaType: "3-Frame Checklist Story (1080x1920px)",
+          visualBreakdown: "Frame 1: '3 Things I Check First When Rates Rise'. Frame 2: Bundling + older vehicle coverage check. Frame 3: Liability vs. deductible balance + Link sticker to book a call.",
+          deliveryTone: "Actionable, checklist-style mini audit.",
+          vaChecklist: "1) Confirm compliance approval. 2) Design 3 Story slides. 3) Publish Monday 12:30 PM CT with Link sticker."
         }
       },
       {
@@ -655,16 +659,16 @@ If a fire or tornado ever hits, trying to remember every single item you owned w
 
 That 3-minute video can save you weeks of headaches and thousands of dollars on a claim.
 
-Comment "DONE" once you record yours, and share this with a friend or spouse so they do it tonight too.`,
+Share this with a friend or spouse so they do it tonight too.`,
         guide: {
-          mediaType: "Actionable How-To Demo Reel (9:16 • 35 seconds)",
-          visualBreakdown: "Start with Michael holding up a smartphone, then show a 5-second sample clip of panning across a living room/closet while narrating items. End with 'Email it to yourself tonight!' text overlay.",
-          deliveryTone: "Classic Frank Kern 'Results in Advance'—pure helpful value with zero sales pitch.",
-          vaChecklist: "1) Edit Reel with clear step captions. 2) Schedule Tuesday 4:45 PM CT so viewers see it right before heading home."
+          mediaType: "How-To Demo Reel (9:16 • 35–45 seconds)",
+          visualBreakdown: "Show Michael holding his phone walking through a room narrating items aloud, followed by a quick screen/phone shot emailing the file to himself.",
+          deliveryTone: "Classic Frank Kern 'Results in Advance'—pure practical help with zero pitch.",
+          vaChecklist: "1) Edit quick walkthrough video with captions. 2) Schedule for Tuesday 4:45 PM CT. 3) Reply to everyone who comments 'DONE'."
         }
       },
       {
-        day: 13, week: 3, dayOfWeek: "Wednesday", scheduleLabel: "Week 3 • Wednesday • 11:30 AM CT",
+        day: 13, week: 3, dayOfWeek: "Wednesday", scheduleLabel: "Week 3 • Wednesday • 10:00 AM CT",
         format: "Carousel", topic: "Q2 — Credit & Insurance in Tennessee",
         hook: "Did you know your credit score affects your car insurance rate in Tennessee?",
         cta: "Comment \"REVIEW\"", complianceRequired: true,
@@ -682,9 +686,9 @@ Companies rarely lower your rate automatically just because your credit went up�
 Comment "REVIEW" below and we’ll check if your current profile qualifies you for better options.`,
         guide: {
           mediaType: "4-Slide Educational Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook question with bold typography. Slide 2: 'How Credit-Based Insurance Scores Work in TN'. Slide 3: 'Improved Your Credit Recently? Ask for a Re-Rate'. Slide 4: Comment 'REVIEW' CTA.",
-          deliveryTone: "Insider financial tip that rewards responsible professionals.",
-          vaChecklist: "1) Confirm compliance approval. 2) Create 4 clean slides in Canva. 3) Schedule Wednesday 11:30 AM CT."
+          visualBreakdown: "Slide 1: Curiosity hook on credit & TN auto rates. Slide 2: How credit-based insurance scoring works in plain English. Slide 3: Why improved credit doesn't always trigger an automatic drop. Slide 4: Comment 'REVIEW' CTA.",
+          deliveryTone: "Informative, empowering financial literacy tone.",
+          vaChecklist: "1) Submit for compliance approval. 2) Create 4-slide carousel in Canva. 3) Schedule for Wednesday 10:00 AM CT."
         }
       },
       {
@@ -703,10 +707,10 @@ When you know what you have and why you have it, you sleep better.
 
 Visit our website anytime to learn more about our Bartlett team.`,
         guide: {
-          mediaType: "Agency Vision Graphic + Text Post",
-          visualBreakdown: "Use a branded graphic featuring The Johnson Agency tagline: 'Personalized Service. Trusted Advice.' alongside a photo of the Bartlett office team.",
-          deliveryTone: "Principled, relationship-first positioning.",
-          vaChecklist: "1) Format post with clean line breaks. 2) Schedule Thursday 5:00 PM CT."
+          mediaType: "Brand Manifesto Graphic + Text Post",
+          visualBreakdown: "Pair with a clean brand card featuring The Johnson Agency name and tagline: 'Personalized Service. Trusted Advice.'",
+          deliveryTone: "Confident, values-driven positioning.",
+          vaChecklist: "1) Prepare brand graphic. 2) Schedule for Thursday 5:00 PM CT."
         }
       },
       {
@@ -727,10 +731,10 @@ Getting a personal term life policy while you are young and healthy locks in low
 
 Comment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.`,
         guide: {
-          mediaType: "Talking-Head Video for Young Professionals & Parents (9:16 • 50 seconds)",
-          visualBreakdown: "Michael speaks directly to camera with on-screen bullet callouts: '1. Ends when you leave your job' and '2. Usually only 1x–2x salary'.",
-          deliveryTone: "Financial-planner authority drawing on Michael's 20+ years in financial services.",
-          vaChecklist: "1) Submit life insurance copy for compliance approval. 2) Add captions & bullet overlays. 3) Schedule Friday 7:30 AM CT."
+          mediaType: "Talking-Head Video Reel (9:16 • 45 seconds)",
+          visualBreakdown: "Michael speaking calmly to camera with clear text overlays: 'Workplace Policy = Tied to Your Job' vs 'Personal Policy = Yours to Keep'.",
+          deliveryTone: "Caring, big-brother/financial-advisor guidance for young families.",
+          vaChecklist: "1) Route life insurance copy for compliance review. 2) Add captions & schedule for Friday 7:30 AM CT."
         }
       },
 
@@ -745,22 +749,20 @@ Comment "FAMILY" below and I’ll help you figure out the exact number your fami
 
 Yes, adding a teen driver in Tennessee is going to raise your premium.
 
-There’s no magic wand to make it free, but there are smart ways to take the sting out of it.
+There’s no magic wand to make it free, but there are smart ways to take the sting out of it:
 
-First, Good Student Discounts: a "B" average or better can knock a noticeable chunk off their rate.
-
-Second, Driver Training Programs: certified teen safe-driving courses pay for themselves quickly.
-
-Third, Smart Vehicle Choice: putting them as the primary driver on the safest, most modest car in your driveway makes a big difference.
+1. Good Student Discounts: A "B" average or better can knock a noticeable chunk off their rate.
+2. Driver Training Programs: Certified teen safe-driving courses pay for themselves quickly.
+3. Smart Vehicle Choice: Putting them as the primary driver on the safest, most modest car in your driveway makes a big difference.
 
 Got a teen getting their permit soon?
 
 Book a quick 15-minute call through the link in bio before you add them so we can structure it the smartest way possible.`,
         guide: {
-          mediaType: "5-Slide Parent Guide Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Relatable hook about handing over car keys. Slide 2: Tip #1 Good Student Discount. Slide 3: Tip #2 Driver Training. Slide 4: Tip #3 Vehicle Assignment Strategy. Slide 5: Call (901) 498-5001 before adding your teen.",
-          deliveryTone: "Empathetic parent-to-parent advice.",
-          vaChecklist: "1) Verify compliance approval on discount mentions. 2) Create 5 Canva slides. 3) Schedule Monday 12:15 PM CT."
+          mediaType: "5-Slide Parent Playbook Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: Teen driver hook. Slide 2: Tip 1 — Good Student Discount. Slide 3: Tip 2 — Driver Training. Slide 4: Tip 3 — Vehicle Assignment Strategy. Slide 5: Book a 15-Minute Call Before Adding Your Teen.",
+          deliveryTone: "Relatable parent-to-parent strategy.",
+          vaChecklist: "1) Get compliance sign-off on discount mentions. 2) Design 5 slides in Canva. 3) Schedule for Monday 12:15 PM CT."
         }
       },
       {
@@ -781,10 +783,10 @@ An Umbrella policy steps in above those limits to protect your savings, your hom
 
 Visit our website to see how easy it is to add an extra layer of armor to your financial plan.`,
         guide: {
-          mediaType: "Clean Infographic Card + Text Post (1080x1080px)",
-          visualBreakdown: "Simple visual diagram showing an umbrella shielding a house, car, savings account, and paycheck from lawsuits.",
-          deliveryTone: "Smart, strategic wealth-protection framing for young professionals.",
-          vaChecklist: "1) Confirm compliance sign-off. 2) Design umbrella shield graphic. 3) Schedule Tuesday 5:30 PM CT."
+          mediaType: "Clean Concept Graphic + Text Post (1080x1080px)",
+          visualBreakdown: "Simple diagram or card showing 'Standard Auto/Home Liability' + '$1M+ Umbrella Layer' protecting future earnings and savings.",
+          deliveryTone: "Smart wealth-protection framing for professionals and growing households.",
+          vaChecklist: "1) Submit for compliance review. 2) Create clean visual card. 3) Schedule for Tuesday 5:30 PM CT."
         }
       },
       {
@@ -801,10 +803,10 @@ Term is great for covering big temporary responsibilities like a 30-year mortgag
 
 Want help figuring out which fits your budget? Tap below to schedule a quick chat.`,
         guide: {
-          mediaType: "3-Frame Interactive Story Sequence (1080x1920px)",
-          visualBreakdown: "Frame 1: Poll ('Team Term' vs 'Team Whole Life' vs 'Not Sure'). Frame 2: Side-by-side 10-second summary of each. Frame 3: Link sticker to schedule a 15-min chat.",
-          deliveryTone: "Balanced, jargon-free educational comparison.",
-          vaChecklist: "1) Confirm compliance approval. 2) Build 3 Story frames. 3) Schedule Wednesday 8:00 AM CT."
+          mediaType: "3-Frame Comparison Story (1080x1920px)",
+          visualBreakdown: "Frame 1: 'Term vs. Whole Life: Which Is Better?'. Frame 2: Side-by-side simple summary (temporary obligations vs. lifelong coverage). Frame 3: Schedule a quick chat Link sticker.",
+          deliveryTone: "Jargon-free, clear, zero-pressure.",
+          vaChecklist: "1) Confirm compliance approval. 2) Create 3 vertical Story frames. 3) Publish Wednesday 8:00 AM CT."
         }
       },
       {
@@ -827,14 +829,14 @@ Bumping your liability limits up to 100/300/100 often costs just a few extra dol
 
 Comment "LIMITS" below if you want me to check where yours stand.`,
         guide: {
-          mediaType: "Talking-Head Reel Holding an Insurance ID Card (9:16 • 45 seconds)",
-          visualBreakdown: "Michael points to where liability numbers appear on a sample ID card, with big text callouts showing '$15,000 limit vs. $55,000 truck'.",
-          deliveryTone: "Eye-opening wake-up call backed by simple math.",
-          vaChecklist: "1) Obtain compliance approval. 2) Blur any sensitive sample info and add captions. 3) Schedule Thursday 11:45 AM CT."
+          mediaType: "High-Attention Hook Reel (9:16 • 40 seconds)",
+          visualBreakdown: "Hold up a sample auto ID card (with fake/blurred details) pointing to the liability limits line, then cut to Michael explaining the $15k property limit gap on modern trucks.",
+          deliveryTone: "Sharp, eye-opening, protective.",
+          vaChecklist: "1) Route for compliance approval. 2) Edit video with captions & schedule for Thursday 11:45 AM CT."
         }
       },
       {
-        day: 20, week: 4, dayOfWeek: "Friday", scheduleLabel: "Week 4 • Friday • 12:30 PM CT",
+        day: 20, week: 4, dayOfWeek: "Friday", scheduleLabel: "Week 4 • Friday • 9:30 AM CT",
         format: "Carousel", topic: "Q5 — Empty Nesters Policy Update",
         hook: "Kids finally moved out of the house? Don't forget to tell your insurance agent.",
         cta: "Book a call", complianceRequired: true,
@@ -851,30 +853,30 @@ Let’s update your policies to match your new chapter.
 
 Click the link in bio to book a quick 15-minute review with our Bartlett office.`,
         guide: {
-          mediaType: "4-Slide Milestone Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook for Empty Nesters. Slide 2: 'Update Household Drivers'. Slide 3: 'Check Low-Mileage & Home Discounts'. Slide 4: Book a 15-min Empty Nester Review CTA.",
-          deliveryTone: "Celebratory, helpful transition advice.",
-          vaChecklist: "1) Verify compliance approval. 2) Create 4 Canva slides. 3) Schedule Friday 12:30 PM CT."
+          mediaType: "4-Slide Life-Stage Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: Empty nest transition hook. Slide 2: Removing out-of-area drivers. Slide 3: Checking mileage & home updates. Slide 4: Book a 15-Minute Review CTA.",
+          deliveryTone: "Upbeat, celebratory, practical next-chapter advice.",
+          vaChecklist: "1) Get compliance approval. 2) Create 4 slides in Canva. 3) Schedule for Friday 9:30 AM CT."
         }
       },
 
       // WEEK 5 (Days 21–25: Mon–Fri)
       {
-        day: 21, week: 5, dayOfWeek: "Monday", scheduleLabel: "Week 5 • Monday • 8:00 AM CT",
-        format: "Text Post", topic: "Behind the Scenes / Local Bartlett Love",
-        hook: "One of my favorite parts of running an agency in Bartlett is seeing familiar faces at the grocery store or local ballfields.",
+        day: 21, week: 5, dayOfWeek: "Monday", scheduleLabel: "Week 5 • Monday • 4:30 PM CT",
+        format: "Text Post", topic: "Behind the Scenes / Local Love",
+        hook: "One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.",
         cta: "Visit website", complianceRequired: false,
         hashtags: "#BartlettTN #SupportLocal #CommunityFirst #TheJohnsonAgency #Grateful",
-        caption: `One of my favorite parts of running an agency in Bartlett is seeing familiar faces at the grocery store or local ballfields.
+        caption: `One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.
 
 You treat people right, give them honest advice, and show up when it counts—that’s how you build a business that lasts over 40 years.
 
 Thank you to everyone who trusts The Johnson Agency with their family’s protection.`,
         guide: {
-          mediaType: "Candid Community / Office Photo + Short Text Post",
-          visualBreakdown: "Share a genuine photo of Michael in Bartlett or outside the agency storefront.",
-          deliveryTone: "Neighborly, grateful, local trust builder.",
-          vaChecklist: "1) Pair with a crisp horizontal or square photo. 2) Schedule Monday 8:00 AM CT."
+          mediaType: "Local Community Photo + Text Post",
+          visualBreakdown: "Feature a friendly photo of Michael or the agency team in Bartlett.",
+          deliveryTone: "Sincere, grateful local business owner.",
+          vaChecklist: "1) Pick photo & schedule for Monday 4:30 PM CT."
         }
       },
       {
@@ -895,10 +897,10 @@ The crazy part? Renters insurance usually costs around $15 to $20 a month—less
 
 Comment "RENTERS" below and I’ll help you get protected in less than 10 minutes.`,
         guide: {
-          mediaType: "Fast-Paced Myth-Buster Reel for Young Professionals (9:16 • 35 seconds)",
-          visualBreakdown: "Michael speaks directly to camera with B-roll of apartment living, laptops, and furniture. Highlight '$0 covered by landlord policy' on screen.",
-          deliveryTone: "Energetic, relatable, zero-jargon advice for renters.",
-          vaChecklist: "1) Obtain compliance sign-off (note estimated price range mention). 2) Add captions. 3) Schedule Tuesday 12:00 PM CT."
+          mediaType: "Fast-Paced Myth-Buster Reel (9:16 • 35–45 seconds)",
+          visualBreakdown: "Hook in first 2 seconds with 'Landlord Policy ≠ Your Stuff' graphic. Show quick visual callouts for personal belongings and personal liability.",
+          deliveryTone: "Energetic, helpful 'adulting' wake-up call for young professionals and renters.",
+          vaChecklist: "1) Route pricing & coverage details for compliance review. 2) Add captions & schedule for Tuesday 12:00 PM CT."
         }
       },
       {
@@ -919,17 +921,17 @@ Whether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps
 
 Visit our website in the bio to make sure your weekend gear is covered properly.`,
         guide: {
-          mediaType: "4-Slide Outdoor Lifestyle Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Boat/ATV outdoor photo + Hook. Slide 2: 'What Your Auto Policy Actually Covers When Towing'. Slide 3: 'Why Home Policies Cap Recreational Gear'. Slide 4: Insure Your Boats, RVs & ATVs in Bartlett CTA.",
-          deliveryTone: "Enthusiastic outdoor-lifestyle advisor.",
-          vaChecklist: "1) Confirm compliance approval. 2) Create 4 slides in Canva. 3) Schedule Wednesday 5:15 PM CT."
+          mediaType: "4-Slide Outdoor Gear Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: Lake/trail hook. Slide 2: Auto trailer liability vs. physical damage to toys. Slide 3: Homeowners sub-limits on recreational vehicles. Slide 4: Check your gear coverage CTA.",
+          deliveryTone: "Fun, outdoorsy Tennessee tone with practical protection tips.",
+          vaChecklist: "1) Obtain compliance sign-off. 2) Create 4 slides in Canva. 3) Schedule for Wednesday 5:15 PM CT."
         }
       },
       {
         day: 24, week: 5, dayOfWeek: "Thursday", scheduleLabel: "Week 5 • Thursday • 7:45 AM CT",
         format: "Text Post", topic: "Q6 — Landlord Insurance vs. Homeowners Insurance",
         hook: "Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.",
-        cta: "Book a call / Call 901-498-5001", complianceRequired: true,
+        cta: "Book a call (901-498-5001)", complianceRequired: true,
         hashtags: "#RealEstateInvesting #TennesseeLandlord #RentalProperty #BartlettTN #PropertyManagement",
         caption: `Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.
 
@@ -942,9 +944,9 @@ Owning rental property is a great way to build wealth—just make sure the found
 Call our Bartlett office at 901-498-5001 or click the link in bio to review your rental coverage.`,
         guide: {
           mediaType: "Investor Alert Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Clean headline graphic: 'TN Landlords: Homeowners Insurance ≠ Landlord Insurance.' Pair with the full caption.",
-          deliveryTone: "Sharp, wealth-preserving advice for local real estate investors.",
-          vaChecklist: "1) Route for compliance approval. 2) Design graphic and schedule Thursday 7:45 AM CT."
+          visualBreakdown: "Bold headline graphic: 'Moved Out & Rented It Out? Check Your Policy Type.' Include office number (901) 498-5001.",
+          deliveryTone: "Serious, authoritative real estate protection note.",
+          vaChecklist: "1) Route for compliance approval. 2) Create graphic & schedule for Thursday 7:45 AM CT."
         }
       },
       {
@@ -956,23 +958,21 @@ Call our Bartlett office at 901-498-5001 or click the link in bio to review your
         caption: `Be honest: if you could buy one weekend toy right now, which one are you picking?
 
 A) Bass boat or pontoon
-
 B) Class A RV for road trips
-
 C) Side-by-side ATV for the trails
 
 Whatever you drive, tow, or float—we insure it right here in Bartlett. Tap below to get a quick quote.`,
         guide: {
-          mediaType: "2-Frame Friday Poll Story (1080x1920px)",
-          visualBreakdown: "Frame 1: Split collage of Bass Boat, RV, and ATV + interactive Instagram Poll sticker. Frame 2: 'We insure them all in Bartlett!' + Link sticker to agency website.",
-          deliveryTone: "Fun Friday engagement starter.",
-          vaChecklist: "1) Create 2 Story graphics in Canva. 2) Schedule Friday 12:30 PM CT with Poll & Link stickers."
+          mediaType: "3-Frame Fun Friday Story (1080x1920px)",
+          visualBreakdown: "Frame 1: Fun Friday poll ('Boat', 'RV', or 'ATV/Side-by-Side'). Frame 2: Show results/teaser. Frame 3: Link sticker to agency website.",
+          deliveryTone: "Lighthearted Friday engagement booster.",
+          vaChecklist: "1) Create 3 Story frames in Canva. 2) Publish Friday 12:30 PM CT with Poll & Link stickers."
         }
       },
 
       // WEEK 6 (Days 26–30: Mon–Fri)
       {
-        day: 26, week: 6, dayOfWeek: "Monday", scheduleLabel: "Week 6 • Monday • 12:00 PM CT",
+        day: 26, week: 6, dayOfWeek: "Monday", scheduleLabel: "Week 6 • Monday • 4:30 PM CT",
         format: "Reel", topic: "Q1 & Q7 — The 3-Minute Policy Health Check",
         hook: "Grab your insurance declarations page and check these three lines right now.",
         cta: "Comment \"TRANSLATE\"", complianceRequired: true,
@@ -991,14 +991,14 @@ Take a picture of your current policy, text it or bring it by our Bartlett offic
 
 Comment "TRANSLATE" below to get started.`,
         guide: {
-          mediaType: "3-Step Action Checklist Reel (9:16 • 45 seconds)",
-          visualBreakdown: "Michael holds up a sample declarations page and counts off Lines 1, 2, and 3 on his fingers with bold on-screen labels for each line.",
-          deliveryTone: "Practical, empowering 'Results in Advance' tutorial.",
-          vaChecklist: "1) Confirm compliance approval. 2) Add clear numbered text overlays. 3) Schedule Monday 12:00 PM CT."
+          mediaType: "3-Point Action Reel (9:16 • 45 seconds)",
+          visualBreakdown: "Count down 1, 2, 3 on screen with clear text labels for Liability, Roof Settlement, and Deductible. End with the plain-English translation offer.",
+          deliveryTone: "Empowering, no-jargon educator.",
+          vaChecklist: "1) Get compliance approval. 2) Add numbered overlays & captions. 3) Schedule for Monday 4:30 PM CT."
         }
       },
       {
-        day: 27, week: 6, dayOfWeek: "Tuesday", scheduleLabel: "Week 6 • Tuesday • 5:15 PM CT",
+        day: 27, week: 6, dayOfWeek: "Tuesday", scheduleLabel: "Week 6 • Tuesday • 10:00 AM CT",
         format: "Carousel", topic: "Q10 — Why Having an Advocate Matters During a Claim",
         hook: "Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.",
         cta: "Visit website", complianceRequired: false,
@@ -1015,19 +1015,19 @@ Personalized service and trusted advice—just like it should be.
 
 Visit our website in the bio to connect with Michael and the team.`,
         guide: {
-          mediaType: "4-Slide Brand Promise Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook on Navy background. Slide 2: 'Step 1: Educate Before Anything Happens'. Slide 3: 'Step 2: Stand in Your Corner When Life Happens'. Slide 4: Meet Michael & The Bartlett Team + Website CTA.",
-          deliveryTone: "Steady, dependable, service-first.",
-          vaChecklist: "1) Build 4 slides in Canva. 2) Schedule Tuesday 5:15 PM CT."
+          mediaType: "4-Slide Client Advocacy Carousel (1080x1350px)",
+          visualBreakdown: "Slide 1: Hook on stressful claim moments. Slide 2: 'Before Anything Happens: Education'. Slide 3: 'When It Happens: Local Guidance'. Slide 4: Connect with The Johnson Agency CTA.",
+          deliveryTone: "Reassuring, dependable partnership tone.",
+          vaChecklist: "1) Build 4 slides in Canva. 2) Schedule for Tuesday 10:00 AM CT."
         }
       },
       {
-        day: 28, week: 6, dayOfWeek: "Wednesday", scheduleLabel: "Week 6 • Wednesday • 12:15 PM CT",
+        day: 28, week: 6, dayOfWeek: "Wednesday", scheduleLabel: "Week 6 • Wednesday • 4:00 PM CT",
         format: "Text Post", topic: "Q3 & Q8 — The Complete Family Protection Blueprint",
         hook: "Here is how I look at protecting a Tennessee family from start to finish:",
         cta: "Book a call", complianceRequired: false,
         hashtags: "#FamilyProtection #FinancialPeace #BartlettTN #LifeAndHome #Tennessee",
-        caption: `Here is how I look at protecting a Tennessee family from start to finish.
+        caption: `Here is how I look at protecting a Tennessee family from start to finish:
 
 First, we protect your daily life—your cars, your home, and your liability so one bad afternoon doesn't drain your bank account.
 
@@ -1040,16 +1040,16 @@ It doesn't have to be complicated or overwhelming.
 If you want a calm, pressure-free conversation about where your family stands, book a call through our website today.`,
         guide: {
           mediaType: "3-Tier Blueprint Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Clean 3-step pyramid or stacked card graphic: '1. Daily Life (Auto/Home) → 2. Lifestyle (Toys/Umbrella) → 3. Your People (Life Insurance)'.",
-          deliveryTone: "Clear, big-picture holistic advisor.",
-          vaChecklist: "1) Create 3-tier graphic in Canva. 2) Schedule Wednesday 12:15 PM CT."
+          visualBreakdown: "Show a clean 3-step ladder/tier graphic: 1) Daily Life & Liability, 2) Lifestyle & Assets, 3) Family & Mortgage (Life).",
+          deliveryTone: "Structured, reassuring big-picture advisor.",
+          vaChecklist: "1) Create 3-tier graphic in Canva. 2) Schedule for Wednesday 4:00 PM CT."
         }
       },
       {
         day: 29, week: 6, dayOfWeek: "Thursday", scheduleLabel: "Week 6 • Thursday • 7:30 AM CT",
         format: "Reel", topic: "Q10 — Direct Invitation (Frank Kern \"Super Signature\" Style)",
         hook: "If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.",
-        cta: "Book a call", complianceRequired: true,
+        cta: "Book a call (901-498-5001)", complianceRequired: true,
         hashtags: "#BartlettTN #TennesseeInsurance #FreeReview #FinancialCheckup #TheJohnsonAgency",
         caption: `If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.
 
@@ -1063,19 +1063,19 @@ We’ll look at what you have, spot any hidden gaps, and tell you honestly if yo
 
 Click the link in my bio or call our office at 901-498-5001 to grab a spot.`,
         guide: {
-          mediaType: "Direct-to-Camera Invitation Reel (9:16 • 45 seconds)",
-          visualBreakdown: "Michael speaks directly to camera with a warm, low-pressure invitation. Display phone number '(901) 498-5001' and '15-Minute Policy Clarity Call' on screen.",
-          deliveryTone: "Classic Frank Kern 'Super Signature'—zero pressure, honest diagnosis, limited weekly slots.",
-          vaChecklist: "1) Confirm compliance approval. 2) Add captions & phone overlay. 3) Schedule Thursday 7:30 AM CT."
+          mediaType: "Direct-to-Camera Invitation Reel (9:16 • 45–50 seconds)",
+          visualBreakdown: "Film Michael in a relaxed, honest conversation format—no hard-sell energy, just a clear invitation for a 15-minute Policy Clarity Call.",
+          deliveryTone: "Signature Frank Kern low-pressure, high-integrity invitation.",
+          vaChecklist: "1) Submit for compliance review. 2) Add captions & schedule for Thursday 7:30 AM CT."
         }
       },
       {
         day: 30, week: 6, dayOfWeek: "Friday", scheduleLabel: "Week 6 • Friday • 12:15 PM CT",
         format: "Text Post", topic: "Month-End Wrap & Engagement Question",
-        hook: "Quick question before we wrap up the month: what is the #1 thing about insurance that still confuses you?",
-        cta: "Comment in comments", complianceRequired: false,
+        hook: "Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?",
+        cta: "Comment your question", complianceRequired: false,
         hashtags: "#AskAnAgent #BartlettTN #InsuranceQuestions #TennesseeFamilies #TrustedAdvice",
-        caption: `Quick question before we wrap up the month: what is the #1 thing about insurance that still confuses you?
+        caption: `Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?
 
 Drop it in the comments below—no question is too small or too basic.
 
@@ -1083,215 +1083,176 @@ Our mission at The Johnson Agency is to make insurance make sense so you feel co
 
 I’ll reply to every single comment personally today.`,
         guide: {
-          mediaType: "Bold Question Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "High-contrast Navy & Gold question card: 'Ask an Agent: What is the #1 thing about insurance that still confuses you?'",
-          deliveryTone: "Open, approachable, conversational community wrap-up.",
-          vaChecklist: "1) Create question card in Canva. 2) Schedule Friday 12:15 PM CT and alert Michael when comments arrive so he can reply personally."
+          mediaType: "Open Q&A Prompt Graphic + Text Post (1080x1080px)",
+          visualBreakdown: "Clean question card: 'What’s #1 Thing About Insurance That Still Confuses You? Drop It Below 👇'.",
+          deliveryTone: "Open, welcoming, community conversation starter.",
+          vaChecklist: "1) Create Q&A graphic in Canva. 2) Schedule for Friday 12:15 PM CT and alert Michael to check comments."
         }
       }
     ];
 
     // =========================================================================
-    // STATE MANAGEMENT & PERSISTENCE (localStorage + Optional Firebase RTDB)
+    // STATE MANAGEMENT, FIREBASE SYNC & PERSISTENCE
     // =========================================================================
-    const STORAGE_KEY = 'johnson_agency_tracker_v4';
-    const SYNC_URL_KEY = 'johnson_agency_firebase_rtdb_url';
+    const STORAGE_KEY = 'johnson_agency_30day_mf_tracker_v1';
+    const FIREBASE_STORAGE_KEY = 'johnson_agency_firebase_url_v1';
 
-    let state = {
-      progress: {},
-      expandedDays: {},
-      activeTabByDay: {}, // 'copy' | 'guide' | 'handoff'
-      weekFilter: 'all',
-      formatFilter: 'all',
-      statusFilter: 'all',
-      searchQuery: '',
-      firebaseUrl: '',
-      lastSyncedAt: null
-    };
+    let activeFirebaseUrl = (FIREBASE_DB_URL || localStorage.getItem(FIREBASE_STORAGE_KEY) || '').trim().replace(/\/+$/, '');
+    let firebasePollTimer = null;
+    let isRemoteUpdating = false;
 
-    let syncIntervalId = null;
-    let isSyncing = false;
+    function defaultPostState() {
+      return {
+        pending_post: false,
+        scheduled: false,
+        posted: false,
+        compliance_approved: false,
+        notes: '',
+        leads: ''
+      };
+    }
 
-    function normalizeFirebaseUrl(raw) {
-      if (!raw) return '';
-      let cleaned = raw.trim().replace(/\/+$/, '');
-      if (cleaned.endsWith('/trackerState.json')) {
-        cleaned = cleaned.replace(/\/trackerState\.json$/, '');
-      }
-      return cleaned;
+    function buildDefaultState() {
+      const posts = {};
+      INITIAL_POSTS.forEach(p => {
+        posts[p.day] = defaultPostState();
+      });
+      return { posts, lastUpdated: Date.now() };
     }
 
     function loadLocalState() {
       try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (parsed && typeof parsed === 'object') {
-            state.progress = parsed;
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return buildDefaultState();
+        const parsed = JSON.parse(raw);
+        const base = buildDefaultState();
+        INITIAL_POSTS.forEach(p => {
+          if (parsed.posts && parsed.posts[p.day]) {
+            base.posts[p.day] = { ...defaultPostState(), ...parsed.posts[p.day] };
           }
-        }
-        const savedUrl = localStorage.getItem(SYNC_URL_KEY);
-        if (savedUrl) {
-          state.firebaseUrl = normalizeFirebaseUrl(savedUrl);
-        }
-      } catch (e) {
-        console.warn('Error loading local state:', e);
+        });
+        base.lastUpdated = parsed.lastUpdated || Date.now();
+        return base;
+      } catch (err) {
+        console.error('Error loading local state:', err);
+        return buildDefaultState();
       }
     }
+
+    let appState = loadLocalState();
+    let filters = {
+      search: '',
+      week: 'all',
+      format: 'all',
+      status: 'all'
+    };
+    let expandedDays = new Set([1]);
+    let activeTabs = {}; // day -> 'copy' | 'guide' | 'handoff'
 
     function saveLocalState() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
-      } catch (e) {
-        console.warn('Error saving local state:', e);
-      }
+      appState.lastUpdated = Date.now();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
     }
 
-    function getDayState(day) {
-      if (!state.progress[day]) {
-        state.progress[day] = {
-          pendingPost: false,
-          scheduled: false,
-          posted: false,
-          complianceApproved: false,
-          leads: '',
-          note: '',
-          postUrl: '',
-          updatedAt: 0
-        };
-      }
-      const d = state.progress[day];
-      if (typeof d.pendingPost === 'undefined') d.pendingPost = false;
-      if (typeof d.scheduled === 'undefined') d.scheduled = false;
-      if (typeof d.posted === 'undefined') d.posted = false;
-      if (typeof d.complianceApproved === 'undefined') d.complianceApproved = false;
-      if (typeof d.leads === 'undefined') d.leads = '';
-      if (typeof d.note === 'undefined') d.note = '';
-      if (typeof d.postUrl === 'undefined') d.postUrl = '';
-      return d;
-    }
-
-    function getActiveTab(day) {
-      return state.activeTabByDay[day] || 'copy';
-    }
-
-    function persistChange() {
-      saveLocalState();
-      if (state.firebaseUrl) {
-        pushToFirebase();
-      }
-    }
-
-    // =========================================================================
-    // FIREBASE REALTIME DATABASE REST SYNC (Zero-Build Team Sync)
-    // =========================================================================
     async function pushToFirebase() {
-      if (!state.firebaseUrl) return;
+      if (!activeFirebaseUrl || isRemoteUpdating) return;
       try {
-        const endpoint = `${state.firebaseUrl}/trackerState.json`;
+        const endpoint = `${activeFirebaseUrl}/johnsonAgencyTracker.json`;
         const res = await fetch(endpoint, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            updatedAt: Date.now(),
-            progress: state.progress
-          })
+          body: JSON.stringify(appState)
         });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        state.lastSyncedAt = new Date();
-        updateSyncUI(true);
-      } catch (err) {
-        console.warn('Firebase push error:', err);
-        updateSyncUI(false, 'Sync warning — check DB rules');
-      }
-    }
-
-    async function pullFromFirebase(silent = true) {
-      if (!state.firebaseUrl || isSyncing) return;
-      isSyncing = true;
-      try {
-        const endpoint = `${state.firebaseUrl}/trackerState.json`;
-        const res = await fetch(endpoint, { cache: 'no-store' });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (data && data.progress && typeof data.progress === 'object') {
-          const remoteStr = JSON.stringify(data.progress);
-          const localStr = JSON.stringify(state.progress);
-          if (remoteStr !== localStr) {
-            state.progress = data.progress;
-            saveLocalState();
-            updateDashboard();
-            renderPosts();
-          }
+        if (res.ok) {
+          updateSyncBadge(true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
         }
-        state.lastSyncedAt = new Date();
-        updateSyncUI(true);
-        if (!silent) showToast('Connected to Live Team Sync!');
       } catch (err) {
-        console.warn('Firebase pull error:', err);
-        updateSyncUI(false, 'Unable to reach Firebase URL');
-        if (!silent) showToast('Could not connect. Check URL & Firebase Rules.', 'error');
-      } finally {
-        isSyncing = false;
+        console.warn('Firebase push failed:', err);
       }
     }
 
-    function startSyncPolling() {
-      stopSyncPolling();
-      if (!state.firebaseUrl) return;
-      pullFromFirebase(true);
-      syncIntervalId = setInterval(() => pullFromFirebase(true), 6000);
-    }
-
-    function stopSyncPolling() {
-      if (syncIntervalId) {
-        clearInterval(syncIntervalId);
-        syncIntervalId = null;
+    async function pullFromFirebase(showToastOnConnect = false) {
+      if (!activeFirebaseUrl) return;
+      try {
+        const endpoint = `${activeFirebaseUrl}/johnsonAgencyTracker.json`;
+        const res = await fetch(endpoint);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (data && data.posts) {
+          if (!data.lastUpdated || data.lastUpdated > appState.lastUpdated) {
+            isRemoteUpdating = true;
+            const merged = buildDefaultState();
+            INITIAL_POSTS.forEach(p => {
+              if (data.posts[p.day]) {
+                merged.posts[p.day] = { ...defaultPostState(), ...data.posts[p.day] };
+              }
+            });
+            merged.lastUpdated = data.lastUpdated || Date.now();
+            appState = merged;
+            saveLocalState();
+            renderAll();
+            isRemoteUpdating = false;
+          } else if (data.lastUpdated < appState.lastUpdated) {
+            await pushToFirebase();
+          }
+          updateSyncBadge(true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+          if (showToastOnConnect) showToast('Connected to Live Team Sync!', 'success');
+        } else {
+          // Initialize empty DB node with current state
+          await pushToFirebase();
+          if (showToastOnConnect) showToast('Connected & initialized Live Team Sync!', 'success');
+        }
+      } catch (err) {
+        console.warn('Firebase pull failed:', err);
+        updateSyncBadge(false, 'Sync error — check URL');
+        if (showToastOnConnect) showToast('Could not reach Firebase URL. Check rules/URL.', 'error');
       }
     }
 
-    function updateSyncUI(connected, errorMsg = '') {
-      const btn = document.getElementById('header-sync-btn');
+    function startFirebasePolling() {
+      if (firebasePollTimer) clearInterval(firebasePollTimer);
+      if (!activeFirebaseUrl) {
+        updateSyncBadge(false);
+        return;
+      }
+      pullFromFirebase(false);
+      firebasePollTimer = setInterval(() => pullFromFirebase(false), 6000);
+    }
+
+    function updateSyncBadge(connected, detailText = '') {
       const dot = document.getElementById('header-sync-dot');
       const label = document.getElementById('header-sync-label');
-      const indicator = document.getElementById('storage-indicator');
-      const modalText = document.getElementById('sync-modal-status-text');
+      const statusText = document.getElementById('sync-modal-status-text');
       const lastTime = document.getElementById('sync-last-time');
       const disconnectBtn = document.getElementById('disconnect-sync-btn');
+      const storageInd = document.getElementById('storage-indicator');
 
-      if (state.firebaseUrl && connected) {
-        btn.className = 'inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-slate-950 text-xs sm:text-sm font-extrabold shadow-sm transition cursor-pointer';
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-950 animate-pulse';
+      if (activeFirebaseUrl && connected) {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse';
         label.textContent = '☁️ Live Sync Active';
-        indicator.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse inline-block"></span> Live Cloud Sync Active`;
-        modalText.textContent = 'Status: Connected & Syncing Live with Team';
-        modalText.className = 'font-bold text-emerald-700';
+        statusText.textContent = 'Status: Connected to Firebase Realtime DB';
+        lastTime.textContent = detailText ? `Synced ${detailText}` : '';
         disconnectBtn.classList.remove('hidden');
-        if (state.lastSyncedAt) {
-          lastTime.textContent = `Synced ${state.lastSyncedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
-        }
-      } else if (state.firebaseUrl && !connected) {
-        btn.className = 'inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-white text-xs sm:text-sm font-extrabold shadow-sm transition cursor-pointer';
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-white';
+        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Auto-Saving + Live Team Sync`;
+      } else if (activeFirebaseUrl) {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-red-600';
         label.textContent = '☁️ Sync Issue';
-        indicator.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Saved Locally (${errorMsg || 'Offline'})`;
-        modalText.textContent = `Status: ${errorMsg || 'Connection Error'}`;
-        modalText.className = 'font-bold text-red-600';
+        statusText.textContent = 'Status: Trying to reach Firebase DB';
+        lastTime.textContent = detailText || '';
         disconnectBtn.classList.remove('hidden');
+        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Saved Locally (Sync Retry)`;
       } else {
-        btn.className = 'inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs sm:text-sm font-extrabold shadow-sm transition cursor-pointer';
         dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-900';
         label.textContent = '☁️ Live Team Sync';
-        indicator.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Auto-Saved Locally`;
-        modalText.textContent = 'Status: Local Browser Storage Only';
-        modalText.className = 'font-semibold text-slate-700';
-        disconnectBtn.classList.add('hidden');
+        statusText.textContent = 'Status: Local Browser Storage Only';
         lastTime.textContent = '';
+        disconnectBtn.classList.add('hidden');
+        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Saved Locally`;
       }
     }
 
     function openSyncModal() {
-      document.getElementById('firebase-url-input').value = state.firebaseUrl || '';
+      document.getElementById('firebase-url-input').value = activeFirebaseUrl;
       const modal = document.getElementById('sync-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1303,94 +1264,232 @@ I’ll reply to every single comment personally today.`,
       modal.classList.remove('flex');
     }
 
-    async function connectFirebaseSync() {
-      const raw = document.getElementById('firebase-url-input').value;
-      const cleaned = normalizeFirebaseUrl(raw);
-      if (!cleaned || !cleaned.startsWith('https://')) {
-        showToast('Please enter a valid https:// Firebase URL.', 'error');
+    function connectFirebaseSync() {
+      const input = document.getElementById('firebase-url-input').value.trim().replace(/\/+$/, '');
+      if (!input || !input.startsWith('https://')) {
+        showToast('Please enter a valid https:// Firebase Realtime Database URL.', 'error');
         return;
       }
-      state.firebaseUrl = cleaned;
-      localStorage.setItem(SYNC_URL_KEY, cleaned);
-      await pullFromFirebase(false);
-      await pushToFirebase();
-      startSyncPolling();
+      activeFirebaseUrl = input;
+      localStorage.setItem(FIREBASE_STORAGE_KEY, activeFirebaseUrl);
       closeSyncModal();
+      pullFromFirebase(true);
+      startFirebasePolling();
     }
 
     function disconnectFirebaseSync() {
-      stopSyncPolling();
-      state.firebaseUrl = '';
-      localStorage.removeItem(SYNC_URL_KEY);
-      updateSyncUI(false);
+      activeFirebaseUrl = '';
+      localStorage.removeItem(FIREBASE_STORAGE_KEY);
+      if (firebasePollTimer) clearInterval(firebasePollTimer);
+      updateSyncBadge(false);
       closeSyncModal();
-      showToast('Disconnected from Live Sync. Using local storage.', 'info');
+      showToast('Disconnected Live Sync (local saves remain active).', 'info');
+    }
+
+    function mutateAndPersist() {
+      saveLocalState();
+      updateStats();
+      pushToFirebase();
     }
 
     // =========================================================================
-    // UI HELPERS & RENDERING
+    // TOAST & MODAL HELPERS
     // =========================================================================
     function showToast(message, type = 'success') {
       const container = document.getElementById('toast-container');
       const toast = document.createElement('div');
-      const bg = type === 'error' ? 'bg-red-600' : (type === 'info' ? 'bg-slate-800' : 'bg-emerald-600');
-      toast.className = `${bg} text-white px-4 py-3 rounded-xl shadow-lg text-sm font-bold pointer-events-auto transition transform translate-y-2 opacity-0`;
+      const colors = type === 'error'
+        ? 'bg-red-600 text-white'
+        : type === 'info'
+          ? 'bg-agency-navy text-white'
+          : 'bg-emerald-700 text-white';
+      toast.className = `${colors} px-4 py-3 rounded-xl shadow-lg text-sm font-semibold flex items-center gap-2 transition-all duration-300`;
       toast.textContent = message;
       container.appendChild(toast);
-      requestAnimationFrame(() => toast.classList.remove('translate-y-2', 'opacity-0'));
       setTimeout(() => {
-        toast.classList.add('translate-y-2', 'opacity-0');
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(8px)';
         setTimeout(() => toast.remove(), 300);
-      }, 3000);
+      }, 2600);
     }
 
-    function escapeHTML(str) {
-      return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+    function openResetModal() {
+      const m = document.getElementById('reset-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
     }
 
-    function getFormatBadge(format) {
-      switch (format) {
-        case 'Reel': return { label: '🎬 REEL', classes: 'bg-purple-100 text-purple-900 border-purple-300' };
-        case 'Carousel': return { label: '🎠 CAROUSEL', classes: 'bg-sky-100 text-sky-900 border-sky-300' };
-        case 'Story': return { label: '📱 STORY', classes: 'bg-pink-100 text-pink-900 border-pink-300' };
-        default: return { label: '📝 TEXT POST', classes: 'bg-slate-200/80 text-slate-800 border-slate-300' };
-      }
+    function closeResetModal() {
+      const m = document.getElementById('reset-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
     }
 
-    function updateDashboard() {
+    function confirmResetAll() {
+      appState = buildDefaultState();
+      saveLocalState();
+      pushToFirebase();
+      closeResetModal();
+      renderAll();
+      showToast('All 30 days reset.', 'info');
+    }
+
+    // =========================================================================
+    // CHECKBOX, TAB & FIELD HANDLERS
+    // =========================================================================
+    function toggleCheckbox(day, field) {
+      if (!appState.posts[day]) appState.posts[day] = defaultPostState();
+      appState.posts[day][field] = !appState.posts[day][field];
+      mutateAndPersist();
+      renderAll();
+    }
+
+    function toggleDrawer(day) {
+      if (expandedDays.has(day)) expandedDays.delete(day);
+      else expandedDays.add(day);
+      renderPosts();
+    }
+
+    function toggleAllDrawers(expand) {
+      if (expand) INITIAL_POSTS.forEach(p => expandedDays.add(p.day));
+      else expandedDays.clear();
+      renderPosts();
+    }
+
+    function setActiveTab(day, tabName) {
+      activeTabs[day] = tabName;
+      renderPosts();
+    }
+
+    function updateNotes(day, val) {
+      if (!appState.posts[day]) appState.posts[day] = defaultPostState();
+      appState.posts[day].notes = val;
+      mutateAndPersist();
+    }
+
+    function updateLeads(day, val) {
+      if (!appState.posts[day]) appState.posts[day] = defaultPostState();
+      appState.posts[day].leads = val;
+      mutateAndPersist();
+    }
+
+    function copyCaption(day) {
+      const post = INITIAL_POSTS.find(p => p.day === day);
+      if (!post) return;
+      const fullText = `${post.caption}\n\n${post.hashtags}`;
+      navigator.clipboard.writeText(fullText).then(() => {
+        showToast(`Day ${day} caption + hashtags copied!`, 'success');
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = fullText;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        showToast(`Day ${day} caption + hashtags copied!`, 'success');
+      });
+    }
+
+    // =========================================================================
+    // FILTERING & STATS
+    // =========================================================================
+    function setWeekFilter(val) {
+      filters.week = val;
+      renderPosts();
+    }
+
+    function setFormatFilter(val) {
+      filters.format = val;
+      renderPosts();
+    }
+
+    function setStatusFilter(val) {
+      filters.status = val;
+      renderPosts();
+    }
+
+    function quickFilterStatus(statusVal) {
+      filters.status = statusVal;
+      document.getElementById('status-filter').value = statusVal;
+      renderPosts();
+      document.getElementById('posts-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function quickFilterFormat(formatVal) {
+      filters.format = formatVal;
+      document.getElementById('format-filter').value = formatVal;
+      renderPosts();
+      document.getElementById('posts-list').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function clearSearch() {
+      filters.search = '';
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      renderPosts();
+    }
+
+    function resetAllFilters() {
+      filters = { search: '', week: 'all', format: 'all', status: 'all' };
+      document.getElementById('search-input').value = '';
+      document.getElementById('clear-search-btn').classList.add('hidden');
+      document.getElementById('week-filter').value = 'all';
+      document.getElementById('format-filter').value = 'all';
+      document.getElementById('status-filter').value = 'all';
+      renderPosts();
+    }
+
+    function getFilteredPosts() {
+      const q = filters.search.trim().toLowerCase();
+      return INITIAL_POSTS.filter(post => {
+        const st = appState.posts[post.day] || defaultPostState();
+
+        if (filters.week !== 'all' && String(post.week) !== String(filters.week)) return false;
+        if (filters.format !== 'all' && post.format !== filters.format) return false;
+
+        if (filters.status === 'pending_post' && !st.pending_post) return false;
+        if (filters.status === 'scheduled' && !st.scheduled) return false;
+        if (filters.status === 'posted' && !st.posted) return false;
+        if (filters.status === 'not_posted' && st.posted) return false;
+        if (filters.status === 'compliance' && (!post.complianceRequired || st.compliance_approved)) return false;
+
+        if (q) {
+          const hay = [
+            `day ${post.day}`, post.dayOfWeek, post.scheduleLabel,
+            post.format, post.topic, post.hook, post.caption,
+            post.cta, post.hashtags, post.guide.mediaType, post.guide.visualBreakdown,
+            st.notes || '', st.leads || ''
+          ].join(' ').toLowerCase();
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      });
+    }
+
+    function updateStats() {
       const total = INITIAL_POSTS.length;
       let pendingCount = 0;
       let scheduledCount = 0;
       let postedCount = 0;
-      let complianceFlaggedTotal = 0;
-      let complianceApprovedCount = 0;
+      let complianceTotal = 0;
+      let complianceApproved = 0;
 
-      const fmt = {
-        'Reel': { total: 0, posted: 0 },
-        'Carousel': { total: 0, posted: 0 },
-        'Text Post': { total: 0, posted: 0 },
-        'Story': { total: 0, posted: 0 }
-      };
+      const fmtTotals = { Reel: 0, Carousel: 0, 'Text Post': 0, Story: 0 };
+      const fmtPosted = { Reel: 0, Carousel: 0, 'Text Post': 0, Story: 0 };
 
-      INITIAL_POSTS.forEach(p => {
-        const s = getDayState(p.day);
-        if (s.pendingPost) pendingCount++;
-        if (s.scheduled) scheduledCount++;
-        if (s.posted) postedCount++;
+      INITIAL_POSTS.forEach(post => {
+        const st = appState.posts[post.day] || defaultPostState();
+        if (st.pending_post) pendingCount++;
+        if (st.scheduled) scheduledCount++;
+        if (st.posted) postedCount++;
 
-        if (fmt[p.format]) {
-          fmt[p.format].total++;
-          if (s.posted) fmt[p.format].posted++;
+        if (post.complianceRequired) {
+          complianceTotal++;
+          if (st.compliance_approved) complianceApproved++;
         }
 
-        if (p.complianceRequired) {
-          complianceFlaggedTotal++;
-          if (s.complianceApproved) complianceApprovedCount++;
-        }
+        fmtTotals[post.format] = (fmtTotals[post.format] || 0) + 1;
+        if (st.posted) fmtPosted[post.format] = (fmtPosted[post.format] || 0) + 1;
       });
 
       const pct = Math.round((postedCount / total) * 100);
@@ -1407,61 +1506,64 @@ I’ll reply to every single comment personally today.`,
       document.getElementById('stat-posted-count').textContent = `${postedCount} / ${total}`;
       document.getElementById('stat-posted-pct').textContent = `${pct}%`;
 
-      const compPct = complianceFlaggedTotal > 0 ? Math.round((complianceApprovedCount / complianceFlaggedTotal) * 100) : 0;
-      document.getElementById('stat-compliance-count').textContent = `${complianceApprovedCount} / ${complianceFlaggedTotal}`;
-      document.getElementById('stat-compliance-pct').textContent = `${compPct}%`;
+      document.getElementById('stat-compliance-count').textContent = `${complianceApproved} / ${complianceTotal}`;
+      document.getElementById('stat-compliance-pct').textContent = `${complianceTotal ? Math.round((complianceApproved / complianceTotal) * 100) : 0}%`;
 
-      const setFmtCard = (key, slug) => {
-        const item = fmt[key];
-        const fPct = item.total > 0 ? Math.round((item.posted / item.total) * 100) : 0;
-        document.getElementById(`fmt-${slug}-count`).textContent = `${item.posted} / ${item.total}`;
-        document.getElementById(`fmt-${slug}-pct`).textContent = `${fPct}%`;
-        document.getElementById(`fmt-${slug}-bar`).style.width = `${fPct}%`;
-      };
+      const mapFmt = [
+        { key: 'Reel', prefix: 'fmt-reel' },
+        { key: 'Carousel', prefix: 'fmt-carousel' },
+        { key: 'Text Post', prefix: 'fmt-text' },
+        { key: 'Story', prefix: 'fmt-story' }
+      ];
 
-      setFmtCard('Reel', 'reel');
-      setFmtCard('Carousel', 'carousel');
-      setFmtCard('Text Post', 'text');
-      setFmtCard('Story', 'story');
-    }
-
-    function getFilteredPosts() {
-      const q = state.searchQuery.trim().toLowerCase();
-      return INITIAL_POSTS.filter(p => {
-        const s = getDayState(p.day);
-
-        if (state.weekFilter !== 'all' && String(p.week) !== String(state.weekFilter)) return false;
-        if (state.formatFilter !== 'all' && p.format !== state.formatFilter) return false;
-
-        if (state.statusFilter === 'pending_post' && !s.pendingPost) return false;
-        if (state.statusFilter === 'scheduled' && !s.scheduled) return false;
-        if (state.statusFilter === 'posted' && !s.posted) return false;
-        if (state.statusFilter === 'not_posted' && s.posted) return false;
-        if (state.statusFilter === 'compliance' && (!p.complianceRequired || s.complianceApproved)) return false;
-
-        if (q) {
-          const hay = [
-            `day ${p.day}`, `week ${p.week}`, p.dayOfWeek, p.scheduleLabel,
-            p.format, p.topic, p.hook, p.cta, p.hashtags, p.caption,
-            p.guide.mediaType, p.guide.visualBreakdown, p.guide.vaChecklist,
-            s.note, s.leads
-          ].join(' ').toLowerCase();
-          if (!hay.includes(q)) return false;
-        }
-        return true;
+      mapFmt.forEach(({ key, prefix }) => {
+        const done = fmtPosted[key] || 0;
+        const cap = fmtTotals[key] || 1;
+        const p = Math.round((done / cap) * 100);
+        document.getElementById(`${prefix}-count`).textContent = `${done} / ${cap}`;
+        document.getElementById(`${prefix}-pct`).textContent = `${p}%`;
+        document.getElementById(`${prefix}-bar`).style.width = `${p}%`;
       });
     }
 
+    // =========================================================================
+    // RENDER POST CARDS
+    // =========================================================================
+    function formatBadge(fmt) {
+      switch (fmt) {
+        case 'Reel':
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-purple-100 text-purple-900 border border-purple-200 text-xs font-extrabold">🎬 REEL</span>`;
+        case 'Carousel':
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-sky-100 text-sky-900 border border-sky-200 text-xs font-extrabold">🎠 CAROUSEL</span>`;
+        case 'Text Post':
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-200 text-slate-900 border border-slate-300 text-xs font-extrabold">📝 TEXT POST</span>`;
+        case 'Story':
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-pink-100 text-pink-900 border border-pink-200 text-xs font-extrabold">📱 STORY</span>`;
+        default:
+          return `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-800 text-xs font-bold">${fmt}</span>`;
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
     function renderPosts() {
-      const filtered = getFilteredPosts();
       const container = document.getElementById('posts-list');
       const emptyState = document.getElementById('empty-state');
       const filterBar = document.getElementById('active-filter-bar');
+      const filterCount = document.getElementById('filter-result-count');
 
-      const hasFilters = state.weekFilter !== 'all' || state.formatFilter !== 'all' || state.statusFilter !== 'all' || state.searchQuery.trim().length > 0;
-      if (hasFilters) {
+      const filtered = getFilteredPosts();
+      const hasActiveFilter = filters.search.trim() !== '' || filters.week !== 'all' || filters.format !== 'all' || filters.status !== 'all';
+
+      if (hasActiveFilter) {
         filterBar.classList.remove('hidden');
-        document.getElementById('filter-result-count').textContent = `Showing ${filtered.length} of ${INITIAL_POSTS.length} business days`;
+        filterCount.textContent = `Showing ${filtered.length} of ${INITIAL_POSTS.length} business days`;
       } else {
         filterBar.classList.add('hidden');
       }
@@ -1475,239 +1577,147 @@ I’ll reply to every single comment personally today.`,
       emptyState.classList.add('hidden');
 
       container.innerHTML = filtered.map(post => {
-        const s = getDayState(post.day);
-        const isExpanded = !!state.expandedDays[post.day];
-        const activeTab = getActiveTab(post.day);
-        const badge = getFormatBadge(post.format);
+        const st = appState.posts[post.day] || defaultPostState();
+        const isExpanded = expandedDays.has(post.day);
+        const currentTab = activeTabs[post.day] || 'copy';
 
-        const cardBorder = s.posted
-          ? 'border-emerald-400 bg-emerald-50/15'
-          : (post.complianceRequired && !s.complianceApproved ? 'border-amber-300 bg-white' : 'border-slate-200 bg-white');
+        const cardBorder = st.posted
+          ? 'border-emerald-300 bg-emerald-50/20'
+          : 'border-slate-200 bg-white';
+
+        const complianceBadge = post.complianceRequired
+          ? (st.compliance_approved
+              ? `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-900 border border-emerald-200 text-xs font-bold">✅ Compliance Approved</span>`
+              : `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-950 border border-amber-300 text-xs font-bold">⚠️ Compliance Review</span>`)
+          : `<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold">No Compliance Flag</span>`;
 
         return `
-          <article class="rounded-2xl border-2 ${cardBorder} shadow-sm transition-all overflow-hidden">
-            <!-- Card Top Summary -->
-            <div class="p-4 sm:p-6 space-y-3.5">
-              <!-- Badges Row -->
-              <div class="flex flex-wrap items-center justify-between gap-2">
+          <article class="rounded-2xl border ${cardBorder} shadow-sm overflow-hidden transition">
+            <div class="p-4 sm:p-5 space-y-4">
+              <!-- Top Row: Day, Format Badge, Schedule, Compliance -->
+              <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
                 <div class="flex flex-wrap items-center gap-2">
-                  <span class="inline-flex items-center px-3 py-1 rounded-lg bg-agency-navy text-white text-xs sm:text-sm font-extrabold">
-                    Day ${post.day}
+                  <span class="px-3 py-1 rounded-lg bg-agency-navy text-white text-xs font-extrabold tracking-wide">
+                    DAY ${post.day} • ${post.dayOfWeek.toUpperCase()}
                   </span>
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-blue-50 text-agency-slate border border-blue-200 text-xs font-bold">
-                    ${post.scheduleLabel}
-                  </span>
-                  <span class="inline-flex items-center px-2.5 py-1 rounded-lg border text-xs font-extrabold ${badge.classes}">
-                    ${badge.label}
-                  </span>
-                  ${post.complianceRequired
-                    ? `<span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold border ${s.complianceApproved ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-900 border-amber-300'}">${s.complianceApproved ? '✅ Compliance Approved' : '⚠️ COMPLIANCE REVIEW'}</span>`
-                    : `<span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">✅ Standard</span>`
-                  }
+                  ${formatBadge(post.format)}
+                  <span class="text-xs font-semibold text-slate-500">${escapeHtml(post.scheduleLabel)}</span>
+                  ${complianceBadge}
                 </div>
 
-                <button
-                  onclick="toggleDrawer(${post.day})"
-                  class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-agency-light hover:bg-blue-100 text-agency-navy font-bold text-xs sm:text-sm transition cursor-pointer"
-                >
-                  <svg class="w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-                  <span>${isExpanded ? 'Collapse Details' : 'Open Tabs & Guide'}</span>
+                <button onclick="toggleDrawer(${post.day})" class="self-start md:self-auto inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition cursor-pointer">
+                  <span>${isExpanded ? 'Hide Details & Guide' : 'Open Caption & Step-by-Step Guide'}</span>
+                  <svg class="w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                 </button>
               </div>
 
               <!-- Topic & Hook -->
               <div>
-                <p class="text-xs font-bold uppercase tracking-wider text-agency-slate ${s.posted ? 'line-through opacity-60' : ''}">
-                  ${escapeHTML(post.topic)}
+                <h3 class="text-base sm:text-lg font-extrabold text-agency-navy">${escapeHtml(post.topic)}</h3>
+                <p class="text-sm sm:text-base font-medium text-slate-700 mt-1">
+                  <span class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mr-1.5">Hook:</span>
+                  “${escapeHtml(post.hook)}”
                 </p>
-                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mt-1 leading-snug ${s.posted ? 'line-through text-slate-400' : ''}">
-                  ${escapeHTML(post.hook)}
-                </h3>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2 text-xs text-slate-500">
+                  <span><strong class="text-slate-700">CTA:</strong> ${escapeHtml(post.cta)}</span>
+                  <span><strong class="text-slate-700">Tags:</strong> ${escapeHtml(post.hashtags)}</span>
+                </div>
               </div>
 
-              <!-- 4 Workflow Checkboxes Row -->
-              <div class="pt-3 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
-                <!-- 1. Pending Post -->
-                <label class="flex items-center gap-2.5 px-3 py-2 rounded-xl border text-xs sm:text-sm font-bold cursor-pointer select-none transition ${s.pendingPost ? 'bg-amber-50 border-amber-300 text-amber-900' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
-                  <input
-                    type="checkbox"
-                    ${s.pendingPost ? 'checked' : ''}
-                    onchange="toggleCheckbox(${post.day}, 'pendingPost')"
-                    class="w-4 h-4 rounded accent-amber-600 cursor-pointer"
-                  />
-                  <span>⏳ Pending Post</span>
+              <!-- 4 Workflow Checkboxes: Pending Post, Scheduled / Ready, Posted Live, Compliance Approved -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-1">
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${st.pending_post ? 'bg-amber-50 border-amber-300 text-amber-950 font-bold' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+                  <input type="checkbox" ${st.pending_post ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'pending_post')" class="w-4 h-4 rounded accent-amber-600 cursor-pointer" />
+                  <span class="text-xs sm:text-sm">⏳ Pending Post</span>
                 </label>
 
-                <!-- 2. Scheduled / Ready -->
-                <label class="flex items-center gap-2.5 px-3 py-2 rounded-xl border text-xs sm:text-sm font-bold cursor-pointer select-none transition ${s.scheduled ? 'bg-blue-50 border-blue-300 text-agency-navy' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
-                  <input
-                    type="checkbox"
-                    ${s.scheduled ? 'checked' : ''}
-                    onchange="toggleCheckbox(${post.day}, 'scheduled')"
-                    class="w-4 h-4 rounded accent-blue-700 cursor-pointer"
-                  />
-                  <span>🗓️ Scheduled / Ready</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${st.scheduled ? 'bg-blue-50 border-blue-300 text-agency-navy font-bold' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+                  <input type="checkbox" ${st.scheduled ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'scheduled')" class="w-4 h-4 rounded accent-agency-slate cursor-pointer" />
+                  <span class="text-xs sm:text-sm">🗓️ Scheduled / Ready</span>
                 </label>
 
-                <!-- 3. Posted Live -->
-                <label class="flex items-center gap-2.5 px-3 py-2 rounded-xl border text-xs sm:text-sm font-bold cursor-pointer select-none transition ${s.posted ? 'bg-emerald-50 border-emerald-400 text-emerald-900' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
-                  <input
-                    type="checkbox"
-                    ${s.posted ? 'checked' : ''}
-                    onchange="toggleCheckbox(${post.day}, 'posted')"
-                    class="w-4 h-4 rounded accent-emerald-600 cursor-pointer"
-                  />
-                  <span>✅ Posted Live</span>
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${st.posted ? 'bg-emerald-50 border-emerald-400 text-emerald-950 font-bold' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100'}">
+                  <input type="checkbox" ${st.posted ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'posted')" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer" />
+                  <span class="text-xs sm:text-sm">✅ Posted Live</span>
                 </label>
 
-                <!-- 4. Compliance Approved -->
-                ${post.complianceRequired ? `
-                  <label class="flex items-center gap-2.5 px-3 py-2 rounded-xl border text-xs sm:text-sm font-bold cursor-pointer select-none transition ${s.complianceApproved ? 'bg-emerald-50 border-emerald-300 text-emerald-800' : 'bg-orange-50 border-orange-300 text-orange-900 hover:bg-orange-100/70'}">
-                    <input
-                      type="checkbox"
-                      ${s.complianceApproved ? 'checked' : ''}
-                      onchange="toggleCheckbox(${post.day}, 'complianceApproved')"
-                      class="w-4 h-4 rounded accent-emerald-600 cursor-pointer"
-                    />
-                    <span>🛡️ Compliance Approved</span>
-                  </label>
-                ` : `
-                  <div class="flex items-center gap-2 px-3 py-2 rounded-xl border border-slate-200 bg-slate-100/70 text-slate-400 text-xs sm:text-sm font-semibold select-none">
-                    <input type="checkbox" disabled class="w-4 h-4 rounded opacity-40" />
-                    <span>Compliance N/A</span>
-                  </div>
-                `}
+                <label class="flex items-center gap-2.5 p-2.5 rounded-xl border cursor-pointer transition select-none ${!post.complianceRequired ? 'bg-slate-50/60 border-slate-200 text-slate-400 cursor-default' : (st.compliance_approved ? 'bg-emerald-50 border-emerald-300 text-emerald-950 font-bold' : 'bg-orange-50/60 border-orange-200 text-orange-950 hover:bg-orange-100/60')}">
+                  <input type="checkbox" ${!post.complianceRequired ? 'disabled' : ''} ${st.compliance_approved ? 'checked' : ''} onchange="toggleCheckbox(${post.day}, 'compliance_approved')" class="w-4 h-4 rounded accent-emerald-600 cursor-pointer disabled:cursor-default" />
+                  <span class="text-xs sm:text-sm">${post.complianceRequired ? '🛡️ Compliance Approved' : '— No Review Needed'}</span>
+                </label>
               </div>
             </div>
 
-            <!-- Expandable 3-Tab Section -->
+            <!-- Expandable 3-Tab Drawer -->
             ${isExpanded ? `
-              <div class="bg-slate-50 border-t border-slate-200">
-                <!-- Tab Bar -->
-                <div class="flex flex-wrap border-b border-slate-200 bg-white px-4 sm:px-6 pt-2 gap-2">
-                  <button
-                    onclick="switchTab(${post.day}, 'copy')"
-                    class="px-4 py-2.5 text-xs sm:text-sm font-bold rounded-t-xl border-b-2 transition cursor-pointer ${activeTab === 'copy' ? 'border-agency-navy text-agency-navy bg-slate-50' : 'border-transparent text-slate-500 hover:text-slate-800'}"
-                  >
-                    📝 Copy & Caption
+              <div class="border-t border-slate-200 bg-slate-50/80 p-4 sm:p-5 space-y-4">
+                <div class="flex flex-wrap gap-2 border-b border-slate-200 pb-3">
+                  <button onclick="setActiveTab(${post.day}, 'copy')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${currentTab === 'copy' ? 'bg-agency-navy text-white shadow-xs' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'}">
+                    📋 Copy & Caption
                   </button>
-                  <button
-                    onclick="switchTab(${post.day}, 'guide')"
-                    class="px-4 py-2.5 text-xs sm:text-sm font-bold rounded-t-xl border-b-2 transition cursor-pointer ${activeTab === 'guide' ? 'border-agency-navy text-agency-navy bg-slate-50' : 'border-transparent text-slate-500 hover:text-slate-800'}"
-                  >
+                  <button onclick="setActiveTab(${post.day}, 'guide')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${currentTab === 'guide' ? 'bg-agency-navy text-white shadow-xs' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'}">
                     🎬 Step-by-Step Production Guide
                   </button>
-                  <button
-                    onclick="switchTab(${post.day}, 'handoff')"
-                    class="px-4 py-2.5 text-xs sm:text-sm font-bold rounded-t-xl border-b-2 transition cursor-pointer ${activeTab === 'handoff' ? 'border-agency-navy text-agency-navy bg-slate-50' : 'border-transparent text-slate-500 hover:text-slate-800'}"
-                  >
-                    🤝 Handoff & Leads ${(s.note || s.leads || s.postUrl) ? '•' : ''}
+                  <button onclick="setActiveTab(${post.day}, 'handoff')" class="px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${currentTab === 'handoff' ? 'bg-agency-navy text-white shadow-xs' : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-100'}">
+                    📝 VA Handoff & Leads
                   </button>
                 </div>
 
-                <!-- Tab Content Container -->
-                <div class="p-4 sm:p-6">
-                  ${activeTab === 'copy' ? `
-                    <div class="space-y-4">
-                      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Full Frank Kern-Style Caption (Blank Lines Included)</span>
-                        <button
-                          onclick="copyPostText(${post.day})"
-                          class="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-xl bg-agency-navy hover:bg-agency-dark text-white text-xs sm:text-sm font-bold shadow-sm transition cursor-pointer"
-                        >
-                          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
-                          Copy Caption + Hashtags
-                        </button>
-                      </div>
-
-                      <div class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 text-slate-800 text-sm sm:text-base whitespace-pre-line leading-relaxed select-all shadow-inner">${escapeHTML(post.caption)}
-
-<span class="text-agency-slate font-semibold">${escapeHTML(post.hashtags)}</span></div>
-
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <div class="bg-white rounded-xl border border-slate-200 p-3.5">
-                          <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Call To Action (CTA)</span>
-                          <p class="text-sm font-extrabold text-agency-navy">${escapeHTML(post.cta)}</p>
-                        </div>
-                        <div class="bg-white rounded-xl border border-slate-200 p-3.5">
-                          <span class="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">Hashtags</span>
-                          <p class="text-sm font-medium text-agency-slate break-words">${escapeHTML(post.hashtags)}</p>
-                        </div>
-                      </div>
+                ${currentTab === 'copy' ? `
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-slate-500">Full Caption (Blank Line Between Sentences)</span>
+                      <button onclick="copyCaption(${post.day})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-agency-slate hover:bg-agency-navy text-white text-xs font-bold transition cursor-pointer">
+                        Copy Caption + Hashtags
+                      </button>
                     </div>
-                  ` : ''}
+                    <pre class="whitespace-pre-wrap font-sans text-sm text-slate-800 bg-white border border-slate-200 rounded-xl p-4 leading-relaxed">${escapeHtml(post.caption)}\n\n${escapeHtml(post.hashtags)}</pre>
+                  </div>
+                ` : ''}
 
-                  ${activeTab === 'guide' ? `
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-1.5">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800 block">1. Media Type & Specs Needed</span>
-                        <p class="text-sm text-slate-800 font-semibold leading-relaxed">${escapeHTML(post.guide.mediaType)}</p>
-                      </div>
-
-                      <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-1.5">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-amber-800 block">2. Delivery Approach & Tone</span>
-                        <p class="text-sm text-slate-700 leading-relaxed">${escapeHTML(post.guide.deliveryTone)}</p>
-                      </div>
-
-                      <div class="bg-white rounded-xl border border-slate-200 p-4 space-y-1.5">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-agency-slate block">3. Visual / Camera / Slide-by-Slide Breakdown</span>
-                        <p class="text-sm text-slate-700 leading-relaxed">${escapeHTML(post.guide.visualBreakdown)}</p>
-                      </div>
-
-                      <div class="bg-blue-50/70 rounded-xl border border-blue-200 p-4 space-y-1.5">
-                        <span class="text-xs font-extrabold uppercase tracking-wider text-agency-navy block">4. VA Workflow Checklist (9:00 AM – 1:00 PM ET Shift)</span>
-                        <p class="text-sm text-slate-800 leading-relaxed">${escapeHTML(post.guide.vaChecklist)}</p>
-                      </div>
+                ${currentTab === 'guide' ? `
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-purple-800">1. Media Format & Specs</span>
+                      <p class="text-sm text-slate-800 font-semibold">${escapeHtml(post.guide.mediaType)}</p>
                     </div>
-                  ` : ''}
-
-                  ${activeTab === 'handoff' ? `
-                    <div class="space-y-4">
-                      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-white rounded-xl border border-slate-200 p-4">
-                          <label class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                            <span>Engagement & Leads Tracker</span>
-                            <span class="text-emerald-600 font-semibold normal-case" id="saved-leads-${post.day}"></span>
-                          </label>
-                          <input
-                            type="text"
-                            value="${escapeHTML(s.leads)}"
-                            oninput="updateField(${post.day}, 'leads', this.value)"
-                            placeholder="e.g., 4 comments, 2 DMs ('CHECKUP'), 1 booked call"
-                            class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-navy"
-                          />
-                        </div>
-
-                        <div class="bg-white rounded-xl border border-slate-200 p-4">
-                          <label class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                            <span>Live Post URL (Facebook / Instagram)</span>
-                            <span class="text-emerald-600 font-semibold normal-case" id="saved-postUrl-${post.day}"></span>
-                          </label>
-                          <input
-                            type="url"
-                            value="${escapeHTML(s.postUrl)}"
-                            oninput="updateField(${post.day}, 'postUrl', this.value)"
-                            placeholder="https://www.facebook.com/..."
-                            class="w-full rounded-xl border border-slate-300 px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-navy"
-                          />
-                        </div>
-                      </div>
-
-                      <div class="bg-white rounded-xl border border-slate-200 p-4">
-                        <label class="flex items-center justify-between text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
-                          <span>VA & Michael Handoff Notes</span>
-                          <span class="text-emerald-600 font-semibold normal-case" id="saved-note-${post.day}"></span>
-                        </label>
-                        <textarea
-                          rows="3"
-                          oninput="updateField(${post.day}, 'note', this.value)"
-                          placeholder="Leave notes for your colleague or VA (e.g., 'Canva slides uploaded to Drive folder', 'Compliance approved on 11/19', 'Michael replied to comments')..."
-                          class="w-full rounded-xl border border-slate-300 p-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-navy"
-                        >${escapeHTML(s.note)}</textarea>
-                      </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1">
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-agency-slate">2. Approach & Tone</span>
+                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.deliveryTone)}</p>
                     </div>
-                  ` : ''}
-                </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-sky-900">3. What to Film / Design (Visual Breakdown)</span>
+                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.visualBreakdown)}</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-xl p-4 space-y-1 md:col-span-2">
+                      <span class="text-xs font-extrabold uppercase tracking-wider text-emerald-800">4. Step-by-Step VA & Posting Action Plan</span>
+                      <p class="text-sm text-slate-700 leading-relaxed">${escapeHtml(post.guide.vaChecklist)}</p>
+                    </div>
+                  </div>
+                ` : ''}
+
+                ${currentTab === 'handoff' ? `
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">VA & Owner Handoff Notes (9 AM–1 PM ET Shift)</label>
+                      <textarea
+                        rows="3"
+                        placeholder="Add asset links, compliance feedback, or scheduling notes..."
+                        oninput="updateNotes(${post.day}, this.value)"
+                        class="w-full rounded-xl border border-slate-300 bg-white p-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-agency-navy"
+                      >${escapeHtml(st.notes)}</textarea>
+                    </div>
+                    <div>
+                      <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Engagement, Keywords & Leads Logged</label>
+                      <textarea
+                        rows="3"
+                        placeholder="Log CHECKUP/RATES comments, DMs, or booked calls..."
+                        oninput="updateLeads(${post.day}, this.value)"
+                        class="w-full rounded-xl border border-slate-300 bg-white p-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-agency-navy"
+                      >${escapeHtml(st.leads)}</textarea>
+                    </div>
+                  </div>
+                ` : ''}
               </div>
             ` : ''}
           </article>
@@ -1715,232 +1725,100 @@ I’ll reply to every single comment personally today.`,
       }).join('');
     }
 
-    // =========================================================================
-    // INTERACTIONS & HANDLERS
-    // =========================================================================
-    function toggleCheckbox(day, field) {
-      const s = getDayState(day);
-      s[field] = !s[field];
-      s.updatedAt = Date.now();
-      persistChange();
-      updateDashboard();
+    function renderAll() {
+      updateStats();
       renderPosts();
-
-      const labels = {
-        pendingPost: s.pendingPost ? 'marked Pending Post' : 'unmarked Pending Post',
-        scheduled: s.scheduled ? 'marked Scheduled / Ready' : 'unmarked Scheduled',
-        posted: s.posted ? 'marked Posted Live!' : 'unmarked Posted Live',
-        complianceApproved: s.complianceApproved ? 'Compliance Approved' : 'Compliance Pending'
-      };
-      showToast(`Day ${day} ${labels[field]}`, s[field] ? 'success' : 'info');
-    }
-
-    function toggleDrawer(day) {
-      state.expandedDays[day] = !state.expandedDays[day];
-      renderPosts();
-    }
-
-    function toggleAllDrawers(expand) {
-      INITIAL_POSTS.forEach(p => { state.expandedDays[p.day] = expand; });
-      renderPosts();
-    }
-
-    function switchTab(day, tabName) {
-      state.activeTabByDay[day] = tabName;
-      state.expandedDays[day] = true;
-      renderPosts();
-    }
-
-    let fieldDebounceTimers = {};
-    function updateField(day, field, value) {
-      const s = getDayState(day);
-      s[field] = value;
-      s.updatedAt = Date.now();
-      saveLocalState();
-
-      const badge = document.getElementById(`saved-${field}-${day}`);
-      if (badge) {
-        badge.textContent = '✓ Saved';
-        clearTimeout(badge._t);
-        badge._t = setTimeout(() => { badge.textContent = ''; }, 1500);
-      }
-
-      if (state.firebaseUrl) {
-        clearTimeout(fieldDebounceTimers[`${day}-${field}`]);
-        fieldDebounceTimers[`${day}-${field}`] = setTimeout(() => pushToFirebase(), 800);
-      }
-    }
-
-    function setWeekFilter(val) { state.weekFilter = val; renderPosts(); }
-    function setFormatFilter(val) { state.formatFilter = val; renderPosts(); }
-    function setStatusFilter(val) { state.statusFilter = val; renderPosts(); }
-
-    function quickFilterStatus(statusVal) {
-      state.statusFilter = (state.statusFilter === statusVal) ? 'all' : statusVal;
-      document.getElementById('status-filter').value = state.statusFilter;
-      renderPosts();
-    }
-
-    function quickFilterFormat(fmtVal) {
-      state.formatFilter = (state.formatFilter === fmtVal) ? 'all' : fmtVal;
-      document.getElementById('format-filter').value = state.formatFilter;
-      renderPosts();
-    }
-
-    function clearSearch() {
-      state.searchQuery = '';
-      document.getElementById('search-input').value = '';
-      document.getElementById('clear-search-btn').classList.add('hidden');
-      renderPosts();
-    }
-
-    function resetAllFilters() {
-      state.weekFilter = 'all';
-      state.formatFilter = 'all';
-      state.statusFilter = 'all';
-      document.getElementById('week-filter').value = 'all';
-      document.getElementById('format-filter').value = 'all';
-      document.getElementById('status-filter').value = 'all';
-      clearSearch();
-      renderPosts();
-    }
-
-    function copyPostText(day) {
-      const post = INITIAL_POSTS.find(p => p.day === day);
-      if (!post) return;
-      const fullText = `${post.caption}\n\n${post.hashtags}`;
-      const ta = document.createElement('textarea');
-      ta.value = fullText;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try {
-        if (document.execCommand('copy')) {
-          showToast(`Day ${day} caption + hashtags copied!`);
-        } else {
-          showToast('Copy failed — please select and copy manually.', 'error');
-        }
-      } catch (e) {
-        showToast('Copy failed.', 'error');
-      } finally {
-        document.body.removeChild(ta);
-      }
     }
 
     // =========================================================================
-    // EXPORT CSV, BACKUP JSON, RESTORE JSON & RESET
+    // CSV & JSON EXPORT / IMPORT
     // =========================================================================
-    function downloadFile(content, filename, mime) {
-      const blob = new Blob([content], { type: mime });
+    function exportCSV() {
+      const headers = [
+        'Day', 'Day of Week', 'Schedule', 'Format', 'Topic', 'Hook', 'CTA',
+        'Pending Post', 'Scheduled / Ready', 'Posted Live',
+        'Compliance Required', 'Compliance Approved', 'Notes', 'Leads'
+      ];
+      const rows = INITIAL_POSTS.map(p => {
+        const st = appState.posts[p.day] || defaultPostState();
+        return [
+          p.day, p.dayOfWeek, p.scheduleLabel, p.format, p.topic, p.hook, p.cta,
+          st.pending_post ? 'Yes' : 'No',
+          st.scheduled ? 'Yes' : 'No',
+          st.posted ? 'Yes' : 'No',
+          p.complianceRequired ? 'Yes' : 'No',
+          p.complianceRequired ? (st.compliance_approved ? 'Yes' : 'No') : 'N/A',
+          st.notes || '',
+          st.leads || ''
+        ].map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',');
+      });
+
+      const csvContent = [headers.join(','), ...rows].join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
+      a.download = `johnson-agency-30day-mf-tracker-${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
-      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-    }
-
-    function exportCSV() {
-      const headers = [
-        'Day', 'Week', 'Day of Week', 'Schedule (CT)', 'Format', 'Topic',
-        'Pending Post', 'Scheduled / Ready', 'Posted Live', 'Compliance Flag', 'Compliance Approved',
-        'CTA', 'Hashtags', 'Leads & Engagement', 'Live Post URL', 'VA & Owner Notes'
-      ];
-      const rows = INITIAL_POSTS.map(p => {
-        const s = getDayState(p.day);
-        return [
-          p.day, `Week ${p.week}`, p.dayOfWeek, p.scheduleLabel, p.format, p.topic,
-          s.pendingPost ? 'Yes' : 'No',
-          s.scheduled ? 'Yes' : 'No',
-          s.posted ? 'Yes' : 'No',
-          p.complianceRequired ? 'Compliance Review' : 'Standard',
-          p.complianceRequired ? (s.complianceApproved ? 'Approved' : 'Pending') : 'N/A',
-          p.cta, p.hashtags, s.leads || '', s.postUrl || '', s.note || ''
-        ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
-      });
-      downloadFile([headers.join(','), ...rows].join('\n'), 'Johnson_Agency_30Day_MF_Tracker.csv', 'text/csv;charset=utf-8;');
-      showToast('CSV report exported!');
+      showToast('CSV report exported!', 'success');
     }
 
     function exportJSON() {
-      const payload = {
-        agency: 'The Johnson Agency — Bartlett, TN',
-        exportedAt: new Date().toISOString(),
-        progress: state.progress
-      };
-      downloadFile(JSON.stringify(payload, null, 2), 'Johnson_Agency_Tracker_Backup.json', 'application/json');
-      showToast('JSON backup downloaded!');
+      const blob = new Blob([JSON.stringify(appState, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `johnson-agency-tracker-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('JSON backup downloaded!', 'success');
     }
 
     function triggerImport() {
       document.getElementById('import-file-input').click();
     }
 
-    document.getElementById('import-file-input').addEventListener('change', function(e) {
+    document.getElementById('import-file-input').addEventListener('change', function (e) {
       const file = e.target.files[0];
       if (!file) return;
       const reader = new FileReader();
-      reader.onload = function(ev) {
+      reader.onload = function (evt) {
         try {
-          const parsed = JSON.parse(ev.target.result);
-          const imported = parsed.progress || parsed;
-          if (!imported || typeof imported !== 'object') throw new Error('Invalid JSON');
-          state.progress = imported;
-          persistChange();
-          updateDashboard();
-          renderPosts();
-          showToast('Backup restored successfully!');
+          const imported = JSON.parse(evt.target.result);
+          if (!imported || !imported.posts) throw new Error('Invalid backup structure');
+          const merged = buildDefaultState();
+          INITIAL_POSTS.forEach(p => {
+            if (imported.posts[p.day]) {
+              merged.posts[p.day] = { ...defaultPostState(), ...imported.posts[p.day] };
+            }
+          });
+          merged.lastUpdated = Date.now();
+          appState = merged;
+          saveLocalState();
+          pushToFirebase();
+          renderAll();
+          showToast('Backup restored successfully!', 'success');
         } catch (err) {
-          showToast('Invalid backup file.', 'error');
+          showToast('Could not restore file: invalid JSON backup.', 'error');
         }
-        e.target.value = '';
       };
       reader.readAsText(file);
+      e.target.value = '';
     });
 
-    function openResetModal() {
-      const m = document.getElementById('reset-modal');
-      m.classList.remove('hidden');
-      m.classList.add('flex');
-    }
-
-    function closeResetModal() {
-      const m = document.getElementById('reset-modal');
-      m.classList.add('hidden');
-      m.classList.remove('flex');
-    }
-
-    function confirmResetAll() {
-      state.progress = {};
-      persistChange();
-      updateDashboard();
-      renderPosts();
-      closeResetModal();
-      showToast('All progress has been reset.', 'info');
-    }
-
-    document.getElementById('search-input').addEventListener('input', function(e) {
-      state.searchQuery = e.target.value;
-      const btn = document.getElementById('clear-search-btn');
-      if (state.searchQuery.trim().length > 0) btn.classList.remove('hidden');
-      else btn.classList.add('hidden');
+    // Search input listener
+    document.getElementById('search-input').addEventListener('input', function (e) {
+      filters.search = e.target.value;
+      const clearBtn = document.getElementById('clear-search-btn');
+      if (filters.search.trim()) clearBtn.classList.remove('hidden');
+      else clearBtn.classList.add('hidden');
       renderPosts();
     });
 
-    // Boot
-    window.addEventListener('DOMContentLoaded', () => {
-      loadLocalState();
-      updateDashboard();
-      renderPosts();
-      if (state.firebaseUrl) {
-        startSyncPolling();
-      } else {
-        updateSyncUI(false);
-      }
-    });
+    // Initial boot
+    renderAll();
+    startFirebasePolling();
   </script>
 </body>
 </html>
