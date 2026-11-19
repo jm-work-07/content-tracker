@@ -32,57 +32,6 @@
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-  <!-- Firebase Live Team Sync Modal -->
-  <div id="sync-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 space-y-5">
-      <div class="flex items-start justify-between gap-3">
-        <div>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-agency-slate text-xs font-bold uppercase tracking-wider">
-            ☁️ Real-Time Team Collaboration
-          </span>
-          <h3 class="text-xl font-extrabold text-agency-navy mt-1.5">Live Team Sync (Firebase RTDB)</h3>
-        </div>
-        <button onclick="closeSyncModal()" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 cursor-pointer">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <p class="text-sm text-slate-600 leading-relaxed">
-        Paste your free <strong>Firebase Realtime Database URL</strong> below so you, Michael, and your VA see live checkbox updates, compliance approvals, and notes across devices in real time.
-      </p>
-
-      <div class="space-y-2">
-        <label for="firebase-url-input" class="block text-xs font-bold uppercase tracking-wider text-slate-500">Firebase Realtime Database URL</label>
-        <input
-          type="url"
-          id="firebase-url-input"
-          placeholder="https://your-project-default-rtdb.firebaseio.com"
-          class="w-full rounded-xl border border-slate-300 px-3.5 py-3 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-navy"
-        />
-        <p class="text-xs text-slate-500">
-          Tip: You can also paste this directly into <code class="bg-slate-100 px-1 rounded">FIREBASE_DB_URL</code> inside the code so every team member auto-connects on load.
-        </p>
-      </div>
-
-      <div id="sync-status-box" class="rounded-xl bg-slate-50 border border-slate-200 p-3.5 text-xs text-slate-600 flex items-center justify-between">
-        <span id="sync-modal-status-text" class="font-semibold">Status: Local Browser Storage Only</span>
-        <span id="sync-last-time" class="text-slate-400"></span>
-      </div>
-
-      <div class="flex flex-col sm:flex-row justify-end gap-2.5 pt-2">
-        <button onclick="disconnectFirebaseSync()" id="disconnect-sync-btn" class="hidden px-4 py-2.5 rounded-xl font-semibold text-red-600 bg-red-50 hover:bg-red-100 text-sm transition cursor-pointer">
-          Disconnect Sync
-        </button>
-        <button onclick="closeSyncModal()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 text-sm transition cursor-pointer">
-          Close
-        </button>
-        <button onclick="connectFirebaseSync()" class="px-5 py-2.5 rounded-xl font-bold text-white bg-agency-navy hover:bg-agency-dark text-sm shadow-sm transition cursor-pointer">
-          Connect Live Sync
-        </button>
-      </div>
-    </div>
-  </div>
-
   <!-- Reset Confirmation Modal -->
   <div id="reset-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
     <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
@@ -93,7 +42,7 @@
         <h3 class="text-xl font-bold text-slate-900">Reset All Progress?</h3>
       </div>
       <p class="text-slate-600 text-sm leading-relaxed mb-6">
-        This clears all checkboxes, compliance approvals, notes, and lead logs. If Live Sync is connected, this will also reset the shared team board. Export a JSON backup first if you want a copy.
+        This clears all checkboxes, compliance approvals, notes, and lead logs across your local browser and connected Firebase database. Export a JSON backup first if you want a copy.
       </p>
       <div class="flex flex-col sm:flex-row justify-end gap-3">
         <button onclick="closeResetModal()" class="px-4 py-2.5 rounded-xl font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 text-sm transition cursor-pointer">
@@ -131,10 +80,6 @@
 
         <!-- Toolbar Actions -->
         <div class="flex flex-wrap items-center gap-2">
-          <button onclick="openSyncModal()" id="header-sync-btn" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs sm:text-sm font-extrabold shadow-sm transition cursor-pointer">
-            <span id="header-sync-dot" class="w-2.5 h-2.5 rounded-full bg-slate-900"></span>
-            <span id="header-sync-label">☁️ Live Team Sync</span>
-          </button>
           <button onclick="exportCSV()" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-white text-agency-navy hover:bg-blue-50 text-xs sm:text-sm font-bold shadow-sm transition cursor-pointer">
             Export CSV
           </button>
@@ -165,8 +110,8 @@
           </div>
           <div class="flex items-center gap-4">
             <span id="storage-indicator" class="text-xs font-semibold text-slate-500 flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
-              Saved Locally
+              <span id="storage-dot" class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              <span id="storage-label">Saved Locally</span>
             </span>
             <span id="progress-percent" class="text-2xl sm:text-3xl font-extrabold text-agency-navy">0%</span>
           </div>
@@ -355,10 +300,10 @@
 
   <script>
     // =========================================================================
-    // 👇 PASTE YOUR FIREBASE REALTIME DATABASE URL BETWEEN THE QUOTES BELOW 👇
+    // 👇 HARDCODE YOUR FIREBASE REALTIME DATABASE URL BETWEEN THE QUOTES 👇
     // Example: const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com";
     // =========================================================================
-    const FIREBASE_DB_URL = "";
+    const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com/";
 
     // =========================================================================
     // COMPLETE 30-DAY MONDAY-TO-FRIDAY DATASET (WEEKS 1 TO 6)
@@ -1092,12 +1037,11 @@ I’ll reply to every single comment personally today.`,
     ];
 
     // =========================================================================
-    // STATE MANAGEMENT, FIREBASE SYNC & PERSISTENCE
+    // STATE MANAGEMENT, HARDCODED FIREBASE SYNC & PERSISTENCE
     // =========================================================================
-    const STORAGE_KEY = 'johnson_agency_30day_mf_tracker_v1';
-    const FIREBASE_STORAGE_KEY = 'johnson_agency_firebase_url_v1';
+    const STORAGE_KEY = 'johnson_agency_30day_mf_tracker_v2';
+    const HARDCODED_DB_URL = FIREBASE_DB_URL.trim().replace(/\/+$/, '');
 
-    let activeFirebaseUrl = (FIREBASE_DB_URL || localStorage.getItem(FIREBASE_STORAGE_KEY) || '').trim().replace(/\/+$/, '');
     let firebasePollTimer = null;
     let isRemoteUpdating = false;
 
@@ -1154,27 +1098,43 @@ I’ll reply to every single comment personally today.`,
       localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
     }
 
+    function setStorageStatus(stateType, text) {
+      const dot = document.getElementById('storage-dot');
+      const label = document.getElementById('storage-label');
+      if (stateType === 'live') {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse inline-block';
+      } else if (stateType === 'warn') {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-amber-500 inline-block';
+      } else {
+        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block';
+      }
+      label.textContent = text;
+    }
+
     async function pushToFirebase() {
-      if (!activeFirebaseUrl || isRemoteUpdating) return;
+      if (!HARDCODED_DB_URL || isRemoteUpdating) return;
       try {
-        const endpoint = `${activeFirebaseUrl}/johnsonAgencyTracker.json`;
+        const endpoint = `${HARDCODED_DB_URL}/johnsonAgencyTracker.json`;
         const res = await fetch(endpoint, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(appState)
         });
         if (res.ok) {
-          updateSyncBadge(true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+          setStorageStatus('live', 'Live Team Synced');
         }
       } catch (err) {
         console.warn('Firebase push failed:', err);
       }
     }
 
-    async function pullFromFirebase(showToastOnConnect = false) {
-      if (!activeFirebaseUrl) return;
+    async function pullFromFirebase() {
+      if (!HARDCODED_DB_URL) {
+        setStorageStatus('local', 'Saved Locally');
+        return;
+      }
       try {
-        const endpoint = `${activeFirebaseUrl}/johnsonAgencyTracker.json`;
+        const endpoint = `${HARDCODED_DB_URL}/johnsonAgencyTracker.json`;
         const res = await fetch(endpoint);
         if (!res.ok) throw new Error('HTTP ' + res.status);
         const data = await res.json();
@@ -1195,95 +1155,24 @@ I’ll reply to every single comment personally today.`,
           } else if (data.lastUpdated < appState.lastUpdated) {
             await pushToFirebase();
           }
-          updateSyncBadge(true, new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
-          if (showToastOnConnect) showToast('Connected to Live Team Sync!', 'success');
+          setStorageStatus('live', 'Live Team Synced');
         } else {
-          // Initialize empty DB node with current state
           await pushToFirebase();
-          if (showToastOnConnect) showToast('Connected & initialized Live Team Sync!', 'success');
         }
       } catch (err) {
         console.warn('Firebase pull failed:', err);
-        updateSyncBadge(false, 'Sync error — check URL');
-        if (showToastOnConnect) showToast('Could not reach Firebase URL. Check rules/URL.', 'error');
+        setStorageStatus('warn', 'Saved Locally (Sync Retry)');
       }
     }
 
     function startFirebasePolling() {
       if (firebasePollTimer) clearInterval(firebasePollTimer);
-      if (!activeFirebaseUrl) {
-        updateSyncBadge(false);
+      if (!HARDCODED_DB_URL) {
+        setStorageStatus('local', 'Saved Locally');
         return;
       }
-      pullFromFirebase(false);
-      firebasePollTimer = setInterval(() => pullFromFirebase(false), 6000);
-    }
-
-    function updateSyncBadge(connected, detailText = '') {
-      const dot = document.getElementById('header-sync-dot');
-      const label = document.getElementById('header-sync-label');
-      const statusText = document.getElementById('sync-modal-status-text');
-      const lastTime = document.getElementById('sync-last-time');
-      const disconnectBtn = document.getElementById('disconnect-sync-btn');
-      const storageInd = document.getElementById('storage-indicator');
-
-      if (activeFirebaseUrl && connected) {
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse';
-        label.textContent = '☁️ Live Sync Active';
-        statusText.textContent = 'Status: Connected to Firebase Realtime DB';
-        lastTime.textContent = detailText ? `Synced ${detailText}` : '';
-        disconnectBtn.classList.remove('hidden');
-        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Auto-Saving + Live Team Sync`;
-      } else if (activeFirebaseUrl) {
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-red-600';
-        label.textContent = '☁️ Sync Issue';
-        statusText.textContent = 'Status: Trying to reach Firebase DB';
-        lastTime.textContent = detailText || '';
-        disconnectBtn.classList.remove('hidden');
-        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> Saved Locally (Sync Retry)`;
-      } else {
-        dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-900';
-        label.textContent = '☁️ Live Team Sync';
-        statusText.textContent = 'Status: Local Browser Storage Only';
-        lastTime.textContent = '';
-        disconnectBtn.classList.add('hidden');
-        storageInd.innerHTML = `<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span> Saved Locally`;
-      }
-    }
-
-    function openSyncModal() {
-      document.getElementById('firebase-url-input').value = activeFirebaseUrl;
-      const modal = document.getElementById('sync-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
-
-    function closeSyncModal() {
-      const modal = document.getElementById('sync-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-
-    function connectFirebaseSync() {
-      const input = document.getElementById('firebase-url-input').value.trim().replace(/\/+$/, '');
-      if (!input || !input.startsWith('https://')) {
-        showToast('Please enter a valid https:// Firebase Realtime Database URL.', 'error');
-        return;
-      }
-      activeFirebaseUrl = input;
-      localStorage.setItem(FIREBASE_STORAGE_KEY, activeFirebaseUrl);
-      closeSyncModal();
-      pullFromFirebase(true);
-      startFirebasePolling();
-    }
-
-    function disconnectFirebaseSync() {
-      activeFirebaseUrl = '';
-      localStorage.removeItem(FIREBASE_STORAGE_KEY);
-      if (firebasePollTimer) clearInterval(firebasePollTimer);
-      updateSyncBadge(false);
-      closeSyncModal();
-      showToast('Disconnected Live Sync (local saves remain active).', 'info');
+      pullFromFirebase();
+      firebasePollTimer = setInterval(pullFromFirebase, 6000);
     }
 
     function mutateAndPersist() {
