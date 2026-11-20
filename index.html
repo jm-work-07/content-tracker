@@ -963,7 +963,8 @@
         posted: false,
         compliance_approved: false,
         notes: '',
-        leads: ''
+        leads: '',
+        links: []
       };
     }
 
@@ -1167,6 +1168,85 @@
       mutateAndPersist();
     }
 
+    // ---- Design & asset links (Canva, Drive, etc.) ----
+    function getLinks(st) {
+      if (!st || !st.links) return [];
+      const arr = Array.isArray(st.links) ? st.links : Object.values(st.links);
+      return arr.filter(l => l && l.url);
+    }
+
+    function normalizeUrl(raw) {
+      let url = String(raw || '').trim();
+      if (!url) return null;
+      if (!/^[a-z][a-z0-9+.-]*:/i.test(url)) url = 'https://' + url;
+      try {
+        const u = new URL(url);
+        if (u.protocol !== 'http:' && u.protocol !== 'https:') return null;
+        return u.href;
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function guessLinkLabel(url) {
+      try {
+        const host = new URL(url).hostname.replace(/^www\./, '');
+        if (host.includes('canva.')) return 'Canva Design';
+        if (host.includes('drive.google.') || host.includes('docs.google.')) return 'Google Drive';
+        if (host.includes('dropbox.')) return 'Dropbox';
+        if (host.includes('capcut.')) return 'CapCut Project';
+        if (host.includes('business.facebook.') || host.includes('facebook.')) return 'Facebook Post';
+        if (host.includes('instagram.')) return 'Instagram Post';
+        return host;
+      } catch (e) {
+        return 'Link';
+      }
+    }
+
+    function linkIcon(url) {
+      const u = String(url).toLowerCase();
+      if (u.includes('canva.')) return '🎨';
+      if (u.includes('drive.google.') || u.includes('docs.google.') || u.includes('dropbox.')) return '📁';
+      if (u.includes('facebook.') || u.includes('instagram.')) return '📣';
+      return '🔗';
+    }
+
+    function addLink(day) {
+      const labelEl = document.getElementById(`link-label-${day}`);
+      const urlEl = document.getElementById(`link-url-${day}`);
+      const url = normalizeUrl(urlEl ? urlEl.value : '');
+      if (!url) {
+        showToast('Please paste a valid link (e.g. https://www.canva.com/design/...)', 'error');
+        if (urlEl) urlEl.focus();
+        return;
+      }
+      const label = (labelEl && labelEl.value.trim()) || guessLinkLabel(url);
+      if (!appState.posts[day]) appState.posts[day] = defaultPostState();
+      const links = getLinks(appState.posts[day]);
+      links.push({ label, url, addedAt: Date.now() });
+      appState.posts[day].links = links;
+      mutateAndPersist();
+      renderPosts();
+      showToast(`Link added to Day ${day}`, 'success');
+    }
+
+    function removeLink(day, index) {
+      if (!appState.posts[day]) return;
+      const links = getLinks(appState.posts[day]);
+      links.splice(index, 1);
+      appState.posts[day].links = links;
+      mutateAndPersist();
+      renderPosts();
+      showToast('Link removed', 'info');
+    }
+
+    function linkInputKey(e, day) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        addLink(day);
+      }
+    }
+
     function updateLeads(day, val) {
       if (!appState.posts[day]) appState.posts[day] = defaultPostState();
       appState.posts[day].leads = val;
@@ -1258,7 +1338,8 @@
             `day ${post.day}`, post.dayOfWeek, post.scheduleLabel,
             post.format, post.topic, post.hook, post.caption,
             post.cta, post.hashtags, post.guide.mediaType, post.guide.visualBreakdown,
-            st.notes || '', st.leads || ''
+            st.notes || '', st.leads || '',
+            getLinks(st).map(l => `${l.label} ${l.url}`).join(' ')
           ].join(' ').toLowerCase();
           if (!hay.includes(q)) return false;
         }
@@ -1422,6 +1503,18 @@
                   <span><strong class="text-agency-navy font-black">CTA:</strong> ${escapeHtml(post.cta)}</span>
                   <span><strong class="text-agency-navy font-black">Tags:</strong> ${escapeHtml(post.hashtags)}</span>
                 </div>
+                ${getLinks(st).length ? `
+                  <div class="flex flex-wrap items-center gap-2 mt-3">
+                    <span class="eyebrow text-agency-goldink mr-1">Links</span>
+                    ${getLinks(st).map(l => `
+                      <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(l.url)}"
+                         class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-agency-cream border border-agency-gold/60 text-agency-navy text-xs font-bold hover:bg-agency-gold hover:border-agency-gold transition">
+                        <span>${linkIcon(l.url)}</span><span class="max-w-[220px] truncate">${escapeHtml(l.label)}</span>
+                        <svg class="w-3.5 h-3.5 opacity-70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                      </a>
+                    `).join('')}
+                  </div>
+                ` : ''}
               </div>
 
               <!-- 4 Workflow Checkboxes: Pending Post, Scheduled / Ready, Posted Live, Compliance Approved -->
@@ -1459,7 +1552,7 @@
                     🎬 Step-by-Step Production Guide
                   </button>
                   <button onclick="setActiveTab(${post.day}, 'handoff')" class="px-3.5 py-2 rounded-lg text-xs sm:text-sm font-bold transition cursor-pointer ${currentTab === 'handoff' ? 'bg-agency-navy text-white shadow-sm ring-1 ring-agency-navy border-b-2 border-agency-gold' : 'bg-white text-agency-navy border border-agency-line hover:bg-agency-mist'}">
-                    📝 VA Handoff & Leads
+                    🔗 Links, Handoff & Leads
                   </button>
                 </div>
 
@@ -1550,6 +1643,34 @@
                 ` : ''}
 
                 ${currentTab === 'handoff' ? `
+                  <div class="bg-white border border-agency-line rounded-lg p-4 mb-4 space-y-3">
+                    <div class="flex flex-wrap items-baseline justify-between gap-2">
+                      <span class="eyebrow text-agency-navy">🔗 Design & Asset Links</span>
+                      <span class="text-xs text-agency-steel">Canva designs, Drive folders, video files, live post URLs</span>
+                    </div>
+                    ${getLinks(st).length ? `
+                      <ul class="divide-y divide-agency-line border border-agency-line rounded-md">
+                        ${getLinks(st).map((l, i) => `
+                          <li class="flex items-center gap-3 px-3 py-2">
+                            <span class="text-base">${linkIcon(l.url)}</span>
+                            <div class="min-w-0 flex-1">
+                              <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer" class="block text-sm font-bold text-agency-navy hover:text-agency-blue hover:underline truncate">${escapeHtml(l.label)}</a>
+                              <span class="block text-xs text-agency-steel truncate">${escapeHtml(l.url)}</span>
+                            </div>
+                            <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener noreferrer" class="shrink-0 px-3 py-1.5 rounded-md bg-agency-navy text-white text-xs font-bold hover:bg-agency-deep transition">Open</a>
+                            <button onclick="removeLink(${post.day}, ${i})" title="Remove link" class="shrink-0 px-2.5 py-1.5 rounded-md border border-agency-line text-agency-alert text-xs font-bold hover:bg-[#FBF0EA] transition cursor-pointer">Remove</button>
+                          </li>
+                        `).join('')}
+                      </ul>
+                    ` : `<p class="text-xs text-agency-steel italic">No links yet. Paste a Canva share link below so the team can open it.</p>`}
+                    <div class="flex flex-col sm:flex-row gap-2">
+                      <input id="link-label-${post.day}" type="text" placeholder="Label (e.g. Canva – Slides 1–5)" onkeydown="linkInputKey(event, ${post.day})"
+                        class="sm:w-56 rounded-lg border border-agency-line bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-agency-gold focus:border-agency-gold" />
+                      <input id="link-url-${post.day}" type="url" placeholder="Paste link, e.g. https://www.canva.com/design/..." onkeydown="linkInputKey(event, ${post.day})"
+                        class="flex-1 rounded-lg border border-agency-line bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-agency-gold focus:border-agency-gold" />
+                      <button onclick="addLink(${post.day})" class="px-4 py-2 rounded-lg bg-agency-gold hover:bg-[#e6bb78] text-agency-navy text-sm font-black transition cursor-pointer">+ Add Link</button>
+                    </div>
+                  </div>
                   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label class="block eyebrow text-agency-steel mb-1.5">VA & Owner Handoff Notes (9 AM–1 PM ET Shift)</label>
@@ -1590,7 +1711,7 @@
       const headers = [
         'Day', 'Day of Week', 'Schedule', 'Format', 'Topic', 'Hook', 'CTA',
         'Pending Post', 'Scheduled / Ready', 'Posted Live',
-        'Compliance Required', 'Compliance Approved', 'Notes', 'Leads'
+        'Compliance Required', 'Compliance Approved', 'Notes', 'Leads', 'Links'
       ];
       const rows = INITIAL_POSTS.map(p => {
         const st = appState.posts[p.day] || defaultPostState();
@@ -1602,7 +1723,8 @@
           p.complianceRequired ? 'Yes' : 'No',
           p.complianceRequired ? (st.compliance_approved ? 'Yes' : 'No') : 'N/A',
           st.notes || '',
-          st.leads || ''
+          st.leads || '',
+          getLinks(st).map(l => `${l.label}: ${l.url}`).join(' | ')
         ].map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(',');
       });
 
