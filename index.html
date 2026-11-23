@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Johnson Agency — 30-Day M–F Content & Production Tracker</title>
+  <title>The Johnson Agency — 30-Day Myth vs. Fact Content Tracker</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -94,7 +94,7 @@
               <span>Bartlett, TN</span>
             </div>
             <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
-              30-Day Content Tracker
+              30-Day Myth vs. Fact Tracker
             </h1>
             <p class="font-display italic text-agency-gold text-base mt-1">Personalized Service. Trusted Advice.</p>
             <p class="text-white/70 text-xs mt-1.5 tracking-wide">Mon–Fri · 6 Weeks · Office: (901) 498-5001 · VA Shift: 9:00 AM – 1:00 PM ET</p>
@@ -181,7 +181,7 @@
               <span class="eyebrow text-agency-alert">⚠️ Compliance</span>
               <span id="stat-compliance-pct" class="text-xs font-bold text-agency-alert">0%</span>
             </div>
-            <p id="stat-compliance-count" class="font-display text-3xl font-bold text-agency-navy mt-1.5">0 / 20</p>
+            <p id="stat-compliance-count" class="font-display text-3xl font-bold text-agency-navy mt-1.5">0 / 29</p>
             <p class="text-xs text-slate-500 mt-0.5">Flagged posts approved</p>
           </button>
         </div>
@@ -246,7 +246,7 @@
           <input
             type="text"
             id="search-input"
-            placeholder="Search by day, topic, hook, keyword (e.g. CHECKUP, Flood, Teen), or VA notes..."
+            placeholder="Search by day, topic, myth, keyword (e.g. FLOOD, RV, Mobile Home), or VA notes..."
             class="w-full pl-11 pr-10 py-2.5 rounded-lg border border-agency-line bg-agency-paper/50 text-sm sm:text-base text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-agency-gold focus:border-agency-gold focus:bg-white"
           />
           <button id="clear-search-btn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-agency-navy p-1 cursor-pointer">
@@ -336,612 +336,929 @@
     const FIREBASE_DB_URL = "https://johnson-agency-sync-default-rtdb.firebaseio.com/";
 
     // =========================================================================
-    // COMPLETE 30-DAY MONDAY-TO-FRIDAY DATASET (WEEKS 1 TO 6)
-    // REVISED: Detailed production guides, spoon-fed scripts, and blog post format
+    // 30-DAY "MYTH vs. FACT" DATASET (WEEKS 1 TO 6, MON–FRI)
+    // Lines covered: Homeowners, Auto, Life, Landlord, Renters, Boat, RV, ATV, Mobile Home
     // =========================================================================
     const INITIAL_POSTS = [
-      // WEEK 1 (Days 1–5: Mon–Fri)
       {
-        day: 1, week: 1, dayOfWeek: "Monday", scheduleLabel: "Week 1 • Monday • 7:30 AM CT",
-        format: "Reel", topic: "Q1 — The \"Full Coverage\" Trap",
-        hook: "\"Full coverage\" is the most dangerous two-word lie in the insurance industry.",
-        cta: "Comment \"CHECKUP\"", complianceRequired: true,
-        hashtags: "#BartlettTN #TennesseeInsurance #FinancialProtection #InsuranceTips #InsuranceAgent",
-        caption: `"Full coverage" is the most dangerous two-word lie in the insurance industry.\n\nPeople walk into my office in Bartlett every week thinking those two words mean they are protected from everything.\n\nHere is the truth: there is no actual policy called "full coverage" on the books.\n\nUsually, it just means you have the state minimum liability plus comprehensive and collision.\n\nIf you get into a serious accident on I-40 and total a $70,000 truck, state minimums will run out fast—and the rest comes out of your paycheck and savings.\n\nI spent over 20 years in financial services before opening this agency, and watching a family lose their hard-earned wealth over a policy gap is brutal.\n\nWant to know what your policy actually covers before you need it?\n\nComment "CHECKUP" below and I will personally review your current declarations page for free—no pressure, just straight answers.`,
-        guide: {
-          mediaType: "Vertical Talking-Head Video (9:16 • 35–45 seconds)",
-          visualBreakdown: "Film Michael seated at his desk or standing in the Bartlett office with natural window lighting. Add bold captions at the top for the first 3 seconds ('The 2-Word Insurance Lie') and show a brief B-roll clip of an insurance declarations page.",
-          deliveryTone: "Direct, calm, conversational Frank Kern 'pattern-interrupt' tone—like advising a close friend over coffee, zero hype.",
-          vaChecklist: "1) Submit script for compliance review. 2) Add burned-in captions in CapCut/Canva. 3) Schedule on FB Reels & IG Reels for Monday 7:30 AM CT during your 9 AM–1 PM ET shift.",
-          // Spoon-fed script for Reel
-          script: `[0:00-0:03] MICHAEL (direct to camera, calm but serious): "Full coverage" is the most dangerous two-word lie in the insurance industry.\n[0:04-0:10] MICHAEL: People walk into my office in Bartlett every week thinking those two words mean they're protected from everything. Here's the truth: there is no actual policy called "full coverage" on the books.\n[0:11-0:20] MICHAEL (lean in slightly): Usually, it just means you have the state minimum liability plus comprehensive and collision. If you get into a serious accident on I-40 and total a $70,000 truck, state minimums will run out fast—and the rest comes out of your paycheck and savings.\n[0:21-0:30] MICHAEL (warm, empathetic): I spent over 20 years in financial services before opening this agency, and watching a family lose their hard-earned wealth over a policy gap is brutal.\n[0:31-0:40] MICHAEL (direct, sincere): Want to know what your policy actually covers before you need it? Comment "CHECKUP" below and I will personally review your current declarations page for free—no pressure, just straight answers.\n[0:41-0:45] TEXT ON SCREEN: Comment "CHECKUP" for a free policy review. [Agency logo + phone number]`
+        "day": 1,
+        "week": 1,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 1 • Monday • 7:30 AM CT",
+        "format": "Reel",
+        "topic": "Auto — Myth: “Full coverage” covers everything",
+        "hook": "MYTH: “Full coverage” means everything is covered. FACT: No policy is actually called “full coverage.”",
+        "cta": "Comment \"CHECK\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #AutoInsurance #InsuranceMyths #BartlettTN #TennesseeDrivers",
+        "caption": "MYTH: \"Full coverage\" means you are covered for everything.\n\nFACT: There is no policy called \"full coverage.\" Most people use it to mean liability, comprehensive, and collision.\n\nRental car reimbursement, roadside assistance, and gap coverage are usually separate add-ons. If they are not on your policy, you do not have them.\n\nCheck your declarations page. If a coverage is not listed, it is not covered.\n\nComment \"CHECK\" and we will review your auto policy with you for free.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30–40 seconds)",
+          "visualBreakdown": "Michael at his desk holding a declarations page. On-screen tags: 'MYTH' (gold) then 'FACT' (blue). Quick cut to a list: Rental • Roadside • Gap = add-ons.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Monday 7:30 AM CT.",
+          "script": "[0:00-0:04] MICHAEL (to camera): Myth: \"full coverage\" means you're covered for everything. [TEXT ON SCREEN: MYTH: Full coverage = everything]\n[0:04-0:12] MICHAEL: Fact: there is no policy called full coverage. It usually means liability, comprehensive, and collision. That's it. [TEXT ON SCREEN: FACT: No policy is called \"full coverage\"]\n[0:12-0:22] MICHAEL: Rental car, roadside, and gap coverage are usually separate. If they're not on your policy, you don't have them. [TEXT ON SCREEN: Rental • Roadside • Gap = add-ons]\n[0:22-0:30] MICHAEL (holding page): Check your declarations page. If it's not listed, it's not covered.\n[0:30-0:36] MICHAEL: Comment \"CHECK\" and we'll review it with you for free.\n[0:36-0:40] TEXT ON SCREEN: Comment \"CHECK\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 2, week: 1, dayOfWeek: "Tuesday", scheduleLabel: "Week 1 • Tuesday • 12:15 PM CT",
-        format: "Carousel", topic: "Q10 — Local Agent vs. 1-800 Number",
-        hook: "Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#BartlettTennessee #MemphisBusiness #LocalInsurance #CustomerFirst #TrustedAdvice",
-        caption: `Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?\n\nBuying insurance online takes five minutes and feels great because you saved $18 a month.\n\nUntil something actually goes wrong.\n\nSuddenly, you are on hold for 45 minutes explaining your life to a call center three states away.\n\nOur agency has served the Bartlett community for over 40 years for one simple reason: real relationships matter when life goes sideways.\n\nYou deserve an advocate who knows your name, knows your family, and picks up the phone.\n\nVisit our website at the link in bio to see how we work—or just call our local office at 901-498-5001.`,
-        guide: {
-          mediaType: "5-Slide Educational Carousel (1080x1350px portrait)",
-          visualBreakdown: "Slide 1: Bold headline hook on Navy background. Slide 2: 'The 5-Minute Online Quote Trap'. Slide 3: 'What Happens When You File a Claim'. Slide 4: '40+ Years Serving Bartlett, TN'. Slide 5: Photo of Michael Johnson + CTA to call (901) 498-5001.",
-          deliveryTone: "Empathetic, reassuring, community-rooted storytelling.",
-          vaChecklist: "1) Build 5 slides in Canva using Agency Navy (#073558), white text, and Agency Gold (#d9a85e) accents. 2) Export as PNGs. 3) Schedule multi-photo post on FB and IG for Tuesday 12:15 PM CT.",
-          // Spoon-fed carousel slide plan
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Navy (#073558)", image: "No image—bold text only.", text: "Ever tried arguing with a 1-800 number while standing next to a totaled car in the rain?", designNote: "White 48pt Playfair Display Bold, centered, with a thin gold (#d9a85e) underline. Add a small rain/storm subtle graphic in the corner (optional)." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a laptop with a '5 min' timer.", text: "The 5-Minute Online Quote Trap: It feels great to save $18/month... until you actually need to use it.", designNote: "Navy text, 36pt. Simple flat illustration of a laptop and a clock." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a person on hold with a phone.", text: "When you file a claim, you're on hold for 45 minutes explaining your life to a call center three states away.", designNote: "Dark slate text, 32pt. Add a subtle 'hold' icon." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of the agency storefront or a smiling Michael Johnson.", text: "Our agency has served Bartlett for over 40 years. Real relationships matter when life goes sideways.", designNote: "White text, 36pt. Place photo on the right side, text on the left." },
-            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson (headshot).", text: "You deserve an advocate who knows your name. Call us: (901) 498-5001", designNote: "Navy text, 32pt. Add a 'Call Now' button graphic. Include agency logo." }
+        "day": 2,
+        "week": 1,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 1 • Tuesday • 12:15 PM CT",
+        "format": "Carousel",
+        "topic": "Auto — Myth: The state minimum is enough",
+        "hook": "MYTH: Tennessee's minimum car insurance is enough. FACT: $25,000 for property damage does not cover a new truck.",
+        "cta": "Comment \"LIMITS\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #AutoInsurance #TennesseeDrivers #BartlettTN #LiabilityCoverage",
+        "caption": "MYTH: Tennessee's minimum car insurance is enough.\n\nFACT: The state minimum is 25/50/25. That is $25,000 per person for injuries, $50,000 per accident for injuries, and $25,000 for property damage.\n\nMany new trucks and SUVs cost more than $25,000. If you total one and your limit runs out, you can be held personally responsible for the rest.\n\nHigher limits often cost less than people expect.\n\nComment \"LIMITS\" and we will show you what your current limits cover.",
+        "guide": {
+          "mediaType": "5-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact with 25/50/25 broken down. Slide 3: Example of a new truck vs. a $25,000 limit. Slide 4: What to check. Slide 5: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 5 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Tuesday 12:15 PM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "Tennessee's minimum car insurance is enough.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Three simple number blocks: 25 / 50 / 25.",
+              "text": "The minimum is 25/50/25: $25K per person (injury), $50K per accident (injury), $25K property damage.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Icon of a pickup truck next to a '$25K limit' bar that runs short.",
+              "text": "Many new trucks and SUVs cost more than $25,000. If your limit runs out, the rest can come from you.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Numbered list, no photo.",
+              "text": "Check your card or declarations page. 1) Find your liability numbers. 2) Compare them to what you own. 3) Ask what higher limits cost.",
+              "designNote": "Navy 30pt Playfair Display for the heading, steps in 24pt Lato. Gold numbers."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"LIMITS\" and we'll show you what your limits actually cover.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 3, week: 1, dayOfWeek: "Wednesday", scheduleLabel: "Week 1 • Wednesday • 5:30 PM CT",
-        format: "Text Post", topic: "Q7 — Why Cheap Insurance Costs More",
-        hook: "Let’s talk about the elephant in the room: cheap insurance.",
-        cta: "Book a call (901-498-5001)", complianceRequired: true,
-        hashtags: "#WealthProtection #SmartMoney #TennesseeFamilies #BartlettTN #InsuranceMyths",
-        caption: `Let’s talk about the elephant in the room: cheap insurance.\n\nIf your only goal is to pay the absolute lowest dollar amount every month, I am probably not the right agent for you.\n\nAnd I say that with total respect.\n\nAfter two decades in financial services, I’ve learned that you don’t buy insurance for the good days—you buy it to protect everything you’ve spent years building.\n\nA "cheap" policy usually gets cheap by quietly stripping away rental car reimbursement, lowering your liability limits, or sticking you with a massive deductible you can't afford when a storm hits.\n\nGood insurance isn't about chasing the lowest number; it's about making sure your family is actually whole after a bad day.\n\nReady to have an honest conversation about where your coverage stands?\n\nClick the link in my bio or call 901-498-5001 to book a quick 15-minute call with me.`,
-        guide: {
-          mediaType: "Clean Quote Card Graphic + Long-Form Text Post (1080x1080px)",
-          visualBreakdown: "Use a clean editorial quote graphic on crisp white/navy background reading: 'You don’t buy insurance for the good days—you buy it to protect everything you’ve built.' Pair with the full caption.",
-          deliveryTone: "Frank Kern 'disqualification' angle—honest, non-needy authority that attracts serious families.",
-          vaChecklist: "1) Route copy for compliance approval. 2) Create clean quote card in Canva. 3) Schedule on FB & IG for Wednesday 5:30 PM CT (commute/evening scroll window).",
-          // One-graphic image spec
-          graphicSpec: {
-            background: "Split design: top half Agency Navy (#073558), bottom half White (#FFFFFF).",
-            image: "No photo. Use a bold, elegant quote mark (large, Agency Gold #d9a85e) in the top-left corner.",
-            text: "You don’t buy insurance for the good days—you buy it to protect everything you’ve built.",
-            textStyle: "White text on navy background, 42pt Playfair Display Bold, centered. Below the quote, in smaller 20pt Lato on white: 'The Johnson Agency • Bartlett, TN'.",
-            designNote: "Minimalist, high-contrast, no clutter. Add a thin gold line separator between the navy and white sections."
+        "day": 3,
+        "week": 1,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 1 • Wednesday • 5:30 PM CT",
+        "format": "Text Post",
+        "topic": "Homeowners — Myth: Home insurance covers flooding",
+        "hook": "MYTH: My homeowners policy covers flood damage. FACT: Standard homeowners policies do not cover flood.",
+        "cta": "Comment \"FLOOD\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #FloodInsurance #HomeownersInsurance #BartlettTN #TennesseeHomes",
+        "caption": "MYTH: My homeowners policy covers flood damage.\n\nFACT: Standard homeowners policies do not cover flood. Flood coverage is a separate policy.\n\nYou do not have to live in a flood zone to flood. Heavy rain and overloaded drainage can do it.\n\nNational Flood Insurance Program policies usually have a 30-day waiting period. You cannot buy it the day before a storm and expect it to work.\n\nComment \"FLOOD\" or call 901-498-5001 to check your flood risk and options.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card. Add a small water-line icon in the fact half.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Wednesday 5:30 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a water-line icon.",
+            "text": "Top: 'MYTH: Homeowners covers flood.'  Bottom: 'FACT: Flood is a separate policy. Most have a 30-day wait.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 4, week: 1, dayOfWeek: "Thursday", scheduleLabel: "Week 1 • Thursday • 8:00 AM CT",
-        format: "Blog Post", topic: "Q1 — Quick Myth-Buster Poll (Blog Post)",
-        hook: "Does \"full coverage\" pay for a rental car if your car is in the shop?",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#AutoInsurance #TennesseeDrivers #BartlettTN",
-        caption: `Blog Post: The Rental Car Myth\n\nQuick question for Tennessee drivers: Does "full coverage" pay for a rental car if your car is in the shop?\n\nMost people tap "Yes" without blinking. Truth is, rental reimbursement is a separate add-on—and without it, you are paying $60 a day out of pocket while waiting on parts.\n\nRead the full breakdown on our blog and then book a quick coverage check so you aren't caught off guard.`,
-        guide: {
-          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
-          visualBreakdown: "Featured image: A photo of a rental car counter or a person looking stressed at a car rental desk. Overlay text: 'Does Full Coverage Pay for a Rental Car?' Blog structure: Introduction, The Myth, The Truth About Rental Reimbursement, Cost Example, How to Check Your Policy, CTA to book a call.",
-          deliveryTone: "Informative, helpful, and slightly cautionary—like a friendly advisor debunking a common myth.",
-          vaChecklist: "1) Confirm compliance approval. 2) Write blog post in WordPress or similar, embed the featured image. 3) Publish and share the link on FB & IG with a teaser caption.",
-          blogPlan: {
-            title: "Does \"Full Coverage\" Pay for a Rental Car? The Answer Might Surprise You.",
-            featuredImage: "Photo of a rental car counter with a person looking confused. Overlay bold white text: 'Full Coverage & Rental Cars: The Truth'.",
-            sections: [
-              "Introduction: Hook with the common misconception.",
-              "The Myth: Most people think 'full coverage' means everything is covered.",
-              "The Truth: Rental reimbursement is a separate add-on. Explain what it is and typical daily limits ($30-$50/day).",
-              "Real-World Example: A customer without rental reimbursement pays $60/day for 10 days = $600 out of pocket.",
-              "How to Check Your Policy: Look at your declarations page for 'Rental Reimbursement' or 'Transportation Expenses'.",
-              "CTA: Book a 15-minute coverage review with The Johnson Agency. Link to calendar."
+        "day": 4,
+        "week": 1,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 1 • Thursday • 8:00 AM CT",
+        "format": "Blog Post",
+        "topic": "Renters — Myth: My landlord's insurance covers my stuff (Blog Post)",
+        "hook": "MYTH: My landlord's insurance covers my belongings. FACT: It covers the building, not your things.",
+        "cta": "Book a call",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #RentersInsurance #BartlettTN #MemphisRentals",
+        "caption": "Blog Post: Myth vs. Fact — Your Landlord's Insurance\n\nMYTH: My landlord's insurance covers my belongings.\n\nFACT: Your landlord's policy covers the building. It does not cover your furniture, clothes, or electronics, and it does not cover you if you are sued.\n\nRenters insurance does. Read the full breakdown on our blog, then book a quick call to get a quote.",
+        "guide": {
+          "mediaType": "Blog Post (600–800 words) + Featured Image (1200x630px)",
+          "visualBreakdown": "Featured image: split graphic. Left (navy): 'MYTH: Landlord covers my stuff.' Right (white): 'FACT: It covers the building only.' Agency logo bottom-right.",
+          "deliveryTone": "Direct and practical. Short sections, plain language, no filler.",
+          "vaChecklist": "1) Submit blog draft for compliance review. 2) Publish on the website with the featured image (1200x630px). 3) Share the link on FB and IG for Thursday 8:00 AM CT with the teaser caption.",
+          "blogPlan": {
+            "title": "Myth vs. Fact: Does Your Landlord's Insurance Cover Your Stuff?",
+            "featuredImage": "Split Myth vs. Fact graphic in navy and white with the title text.",
+            "sections": [
+              "The Myth: State it in one sentence.",
+              "The Fact: The landlord's policy covers the building and the landlord's liability, not the tenant.",
+              "What Renters Insurance Covers: Your belongings, your personal liability, and extra living costs if you cannot stay in your unit after a covered loss.",
+              "Example: A kitchen fire in your unit. What the landlord's policy pays for vs. what you pay for without renters insurance.",
+              "What to Do: List what you own, pick a coverage amount, and ask for a quote.",
+              "CTA: Book a 15-minute call with The Johnson Agency. (901) 498-5001."
             ]
           }
         }
       },
       {
-        day: 5, week: 1, dayOfWeek: "Friday", scheduleLabel: "Week 1 • Friday • 11:45 AM CT",
-        format: "Reel", topic: "Q10 — Who is Michael Johnson? (Authority & Story)",
-        hook: "Why would someone leave a 20-year career in financial services to sell insurance in Bartlett?",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#BartlettTN #FinancialPlanning #ShelbyCounty #SmallBusinessOwner #CommunityFirst",
-        caption: `Why would someone leave a 20-year career in financial services to sell insurance in Bartlett?\n\nFair question.\n\nFor 20 years, I helped people build their financial plans, grow their savings, and plan for the future.\n\nWhat frustrated me was seeing how easily a single uninsured accident, a bad storm, or an unexpected tragedy could wipe out decades of smart financial moves.\n\nInsurance isn't just paperwork—it is the foundation that keeps your financial house standing.\n\nI took over an agency with 40+ years of roots right here in Bartlett because I wanted to sit down with local families and actually be their advocate.\n\nIf you want someone in your corner who looks at the big picture, let’s talk.\n\nVisit our website in the bio to get started.`,
-        guide: {
-          mediaType: "Personal Origin Story Video (9:16 • 45–60 seconds)",
-          visualBreakdown: "Film Michael walking through the Bartlett office or seated comfortably. Overlay subtle B-roll of Bartlett landmarks, family photos, and the agency storefront.",
-          deliveryTone: "Warm, authentic, mission-driven founder story.",
-          vaChecklist: "1) Edit vertical video with clean subtitles. 2) Include agency URL in first comment on Facebook. 3) Schedule for Friday 11:45 AM CT.",
-          script: `[0:00-0:05] MICHAEL (walking through office, warm smile): Why would someone leave a 20-year career in financial services to sell insurance in Bartlett? Fair question.\n[0:06-0:15] MICHAEL (seated, speaking directly): For 20 years, I helped people build their financial plans, grow their savings, and plan for the future. What frustrated me was seeing how easily a single uninsured accident, a bad storm, or an unexpected tragedy could wipe out decades of smart financial moves.\n[0:16-0:25] MICHAEL: Insurance isn't just paperwork—it is the foundation that keeps your financial house standing.\n[0:26-0:40] MICHAEL (leaning in, sincere): I took over an agency with 40+ years of roots right here in Bartlett because I wanted to sit down with local families and actually be their advocate. If you want someone in your corner who looks at the big picture, let’s talk.\n[0:41-0:50] MICHAEL (smiling): Visit our website in the bio to get started.\n[0:51-0:60] TEXT ON SCREEN: The Johnson Agency • Bartlett, TN • (901) 498-5001`
+        "day": 5,
+        "week": 1,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 1 • Friday • 11:45 AM CT",
+        "format": "Reel",
+        "topic": "Life — Myth: My life insurance at work is enough",
+        "hook": "MYTH: The life insurance from my job is enough. FACT: It is often small, and it is tied to that job.",
+        "cta": "Comment \"LIFE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LifeInsurance #FamilyProtection #BartlettTN #TennesseeFamilies",
+        "caption": "MYTH: The life insurance from my job is enough.\n\nFACT: Workplace life insurance is often one or two times your salary. For many families, that does not cover the mortgage and years of living costs.\n\nIt is also tied to the job. If you leave, get laid off, or retire, it may end or get more expensive.\n\nA personal policy is yours no matter where you work.\n\nComment \"LIFE\" and we will help you figure out how much coverage your family needs.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30–40 seconds)",
+          "visualBreakdown": "Michael to camera. On-screen tags MYTH / FACT. Simple text graphic: 'Work policy = tied to the job' vs. 'Personal policy = yours'.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Friday 11:45 AM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: the life insurance from your job is enough. [TEXT ON SCREEN: MYTH: Work life insurance is enough]\n[0:04-0:13] MICHAEL: Fact: it's often one or two times your salary. For a lot of families, that doesn't cover the mortgage and years of bills. [TEXT ON SCREEN: FACT: Often only 1–2x salary]\n[0:13-0:22] MICHAEL: And it's tied to the job. Leave, get laid off, or retire, and it may end. [TEXT ON SCREEN: Work policy = tied to the job]\n[0:22-0:29] MICHAEL: A personal policy is yours no matter where you work. [TEXT ON SCREEN: Personal policy = yours]\n[0:29-0:35] MICHAEL: Comment \"LIFE\" and we'll help you figure out the right amount.\n[0:35-0:40] TEXT ON SCREEN: Comment \"LIFE\" • The Johnson Agency • (901) 498-5001"
         }
       },
-
-      // WEEK 2 (Days 6–10: Mon–Fri)
       {
-        day: 6, week: 2, dayOfWeek: "Monday", scheduleLabel: "Week 2 • Monday • 12:00 PM CT",
-        format: "Carousel", topic: "Q7 — The Deductible Reality Check",
-        hook: "Saving $20 a month on your home insurance feels great—until you see your deductible.",
-        cta: "Comment \"DEDUCTIBLE\"", complianceRequired: true,
-        hashtags: "#HomeownersInsurance #TennesseeHomes #PersonalFinance #BartlettTN #MoneyTips",
-        caption: `Saving $20 a month on your home insurance feels great—until you see your deductible.\n\nA lot of online quote engines automatically bump your deductible to $2,500 or $5,000 just to make the monthly price look pretty.\n\nAsk yourself honestly: if a tree fell on your roof tomorrow morning, do you have $5,000 sitting in checking ready to hand over before repairs even start?\n\nIf the answer is no, that "cheap" policy is actually a financial trap.\n\nWe help families balance monthly costs with real-world emergency readiness.\n\nComment "DEDUCTIBLE" if you aren't sure what yours is right now, and I’ll walk you through how to check it.`,
-        guide: {
-          mediaType: "4-Slide Comparison Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook headline. Slide 2: 'The $5,000 Deductible Illusion'. Slide 3: 'Emergency Fund vs. Monthly Savings'. Slide 4: Comment 'DEDUCTIBLE' CTA graphic.",
-          deliveryTone: "Practical, eye-opening financial reality check.",
-          vaChecklist: "1) Get compliance approval. 2) Design 4-slide graphic in Canva. 3) Schedule for Monday 12:00 PM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Gold (#d9a85e)", image: "No image—bold text only.", text: "Saving $20/month on home insurance feels great—until you see your deductible.", designNote: "Navy (#073558) text, 40pt Playfair Display Bold. Add a subtle warning triangle icon." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a house with a large '$5,000' price tag.", text: "The $5,000 Deductible Illusion: Online quote engines bump your deductible to make the monthly price look pretty.", designNote: "Navy text, 32pt. Use a simple house icon with a price tag." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a piggy bank vs. a calendar.", text: "Ask yourself: If a tree fell on your roof tomorrow, do you have $5,000 in checking ready to hand over?", designNote: "Dark slate text, 30pt. Split the slide: left side piggy bank, right side calendar." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of Michael Johnson with a phone.", text: "Comment \"DEDUCTIBLE\" and I’ll walk you through how to check yours. No pressure.", designNote: "White text, 36pt. Add a speech bubble icon with 'DEDUCTIBLE' inside." }
+        "day": 6,
+        "week": 2,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 2 • Monday • 12:00 PM CT",
+        "format": "Carousel",
+        "topic": "Homeowners — Myth: Insurance always pays for a full new roof",
+        "hook": "MYTH: If my roof is damaged, insurance pays for a whole new roof. FACT: It depends on how your roof is settled.",
+        "cta": "Comment \"ROOF\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #HomeownersInsurance #RoofDamage #BartlettTN #TennesseeStorms",
+        "caption": "MYTH: If a storm damages my roof, insurance pays for a whole new roof.\n\nFACT: It depends on your roof settlement. Replacement cost pays to replace it with new materials, minus your deductible. Actual cash value subtracts depreciation for the roof's age.\n\nOn an older roof, actual cash value can leave you paying thousands.\n\nYour declarations page shows which one you have.\n\nComment \"ROOF\" and we will check your roof settlement for you.",
+        "guide": {
+          "mediaType": "4-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact — replacement cost vs. actual cash value. Slide 3: What it means on an older roof. Slide 4: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 4 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Monday 12:00 PM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "If my roof is damaged, insurance pays for a whole new roof.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Two roof icons labeled 'Replacement Cost' and 'Actual Cash Value'.",
+              "text": "It depends on your settlement. Replacement cost = new roof minus deductible. Actual cash value = minus depreciation too.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Roof icon with a downward arrow and a dollar sign.",
+              "text": "On an older roof, actual cash value can leave you paying thousands out of pocket.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"ROOF\" and we'll check which one you have.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 7, week: 2, dayOfWeek: "Tuesday", scheduleLabel: "Week 2 • Tuesday • 4:00 PM CT",
-        format: "Text Post", topic: "Community & Family Values",
-        hook: "Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#BartlettTN #TennesseeLife #FamilyFirst #TrustedAdvice #ShelbyCounty",
-        caption: `Mid-week reminder in Tennessee: slow down and look at what you are actually working so hard to protect.\n\nIt’s not about policies, premiums, or paperwork.\n\nIt’s about the people sitting around your dinner table tonight.\n\nWhether you are a young couple buying your first starter home or empty nesters enjoying a quieter house, peace of mind lets you stay present.\n\nKeep building steady, Bartlett.`,
-        guide: {
-          mediaType: "Authentic Lifestyle Photo + Text Post",
-          visualBreakdown: "Use a warm, natural photo of Bartlett, local parks, or Michael smiling in the office—avoid cheesy stock photos.",
-          deliveryTone: "Grounded, warm, human connection.",
-          vaChecklist: "1) Select authentic photo from agency library. 2) Schedule for Tuesday 4:00 PM CT.",
-          graphicSpec: {
-            background: "Full-bleed photo (no solid background).",
-            image: "A warm, natural photo of a Bartlett park at sunset, or a family walking in a local neighborhood. Avoid stock photos. If no local photo, use a photo of Michael smiling in the office.",
-            text: "Overlay a semi-transparent navy box at the bottom with white text: 'Slow down and look at what you are working to protect. — Michael Johnson'",
-            textStyle: "White text, 28pt Lato. Small agency logo in the bottom-right corner.",
-            designNote: "Keep it authentic and unpolished. No heavy filters. The goal is warmth and community."
+        "day": 7,
+        "week": 2,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 2 • Tuesday • 4:00 PM CT",
+        "format": "Text Post",
+        "topic": "Landlord — Myth: My homeowners policy covers my rental house",
+        "hook": "MYTH: My homeowners policy covers the house I rent out. FACT: Homeowners is for a home you live in.",
+        "cta": "Book a call (901-498-5001)",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LandlordInsurance #RentalProperty #BartlettTN #TennesseeLandlords",
+        "caption": "MYTH: My homeowners policy still covers the house I moved out of and now rent.\n\nFACT: Homeowners insurance is written for a home you live in. Once you rent it out, you need a landlord policy.\n\nA landlord policy can cover the building, your liability as a landlord, and lost rent after a covered loss.\n\nIf you have the wrong policy, a claim can be denied.\n\nCall 901-498-5001 to check your rental coverage.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with a house + 'For Rent' sign icon.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Tuesday 4:00 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a house with a 'For Rent' sign icon.",
+            "text": "Top: 'MYTH: Homeowners covers my rental house.'  Bottom: 'FACT: Rentals need a landlord policy.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 8, week: 2, dayOfWeek: "Wednesday", scheduleLabel: "Week 2 • Wednesday • 12:00 PM CT",
-        format: "Reel", topic: "Q2 — Why Rates Are Rising",
-        hook: "\"I haven't had a single ticket or claim in five years—why did my insurance go up?\"",
-        cta: "Comment \"RATES\"", complianceRequired: true,
-        hashtags: "#InsuranceRates #TennesseeDrivers #BartlettTN #CarInsurance #MidSouth",
-        caption: `"I haven't had a single ticket or claim in five years—why did my insurance go up?"\n\nIf you’ve asked yourself this recently, you aren't alone, and you aren't crazy.\n\nHere is what is actually happening behind the scenes across Tennessee:\n\nFirst, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras.\n\nSecond, severe storms and construction materials in the Mid-South cost way more than they did three years ago.\n\nYou can't control inflation, but you can control whether you are getting every discount you qualify for and whether your coverage is structured smartly.\n\nComment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.`,
-        guide: {
-          mediaType: "Short Explainer Reel (9:16 • 40–50 seconds)",
-          visualBreakdown: "Michael speaks directly to camera with two clean on-screen callouts: '1) Modern Car Tech & Repair Costs' and '2) Mid-South Storm & Lumber Costs'.",
-          deliveryTone: "Transparent, validating, zero excuses—explaining macro trends clearly.",
-          vaChecklist: "1) Submit script for compliance check. 2) Add two crisp callout banners in video editor. 3) Schedule for Wednesday 12:00 PM CT.",
-          script: `[0:00-0:05] MICHAEL (direct to camera, empathetic): "I haven't had a single ticket or claim in five years—why did my insurance go up?" If you’ve asked yourself this recently, you aren't alone, and you aren't crazy.\n[0:06-0:15] MICHAEL: Here is what is actually happening behind the scenes across Tennessee. First, the cost to fix modern cars has skyrocketed because a simple bumper tap now involves replacing $3,000 worth of sensors and cameras. [TEXT ON SCREEN: Modern Car Tech & Repair Costs]\n[0:16-0:25] MICHAEL: Second, severe storms and construction materials in the Mid-South cost way more than they did three years ago. [TEXT ON SCREEN: Mid-South Storm & Lumber Costs]\n[0:26-0:35] MICHAEL: You can't control inflation, but you can control whether you are getting every discount you qualify for and whether your coverage is structured smartly.\n[0:36-0:45] MICHAEL: Comment "RATES" below and let’s take a look at your current setup to make sure you aren't overpaying for the wrong things.\n[0:46-0:50] TEXT ON SCREEN: Comment "RATES" for a free policy review. [Agency logo]`
+        "day": 8,
+        "week": 2,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 2 • Wednesday • 12:00 PM CT",
+        "format": "Reel",
+        "topic": "Boat — Myth: My homeowners policy covers my boat",
+        "hook": "MYTH: My homeowners policy covers my boat. FACT: Coverage is usually limited or excluded.",
+        "cta": "Comment \"BOAT\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #BoatInsurance #TennesseeLakes #BartlettTN #Boating",
+        "caption": "MYTH: My homeowners policy covers my boat.\n\nFACT: Homeowners policies usually give only small dollar limits for boats, and many exclude larger boats, bigger motors, and accidents on the water.\n\nA boat policy can cover the boat, motor, and trailer, plus liability if you hurt someone or damage another boat.\n\nCheck before your next trip to the lake.\n\nComment \"BOAT\" and we will review your boat coverage.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30–40 seconds)",
+          "visualBreakdown": "Michael by a boat on a trailer or at a dock if available; otherwise in the office. MYTH / FACT tags. Text list: Boat • Motor • Trailer • Liability.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Wednesday 12:00 PM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: your homeowners policy covers your boat. [TEXT ON SCREEN: MYTH: Homeowners covers my boat]\n[0:04-0:13] MICHAEL: Fact: most homeowners policies give a small dollar limit for boats, and many exclude bigger boats, bigger motors, and accidents on the water. [TEXT ON SCREEN: FACT: Limited or excluded]\n[0:13-0:22] MICHAEL: A boat policy can cover the boat, the motor, the trailer, and liability if you hurt someone. [TEXT ON SCREEN: Boat • Motor • Trailer • Liability]\n[0:22-0:28] MICHAEL: Check before your next trip to the lake.\n[0:28-0:34] MICHAEL: Comment \"BOAT\" and we'll review it.\n[0:34-0:38] TEXT ON SCREEN: Comment \"BOAT\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 9, week: 2, dayOfWeek: "Thursday", scheduleLabel: "Week 2 • Thursday • 5:15 PM CT",
-        format: "Carousel", topic: "Q4 — Tennessee Storm & Hail Readiness",
-        hook: "Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#TennesseeWeather #StormDamage #HomeownersTips #BartlettTN #Roofing",
-        caption: `Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?\n\nSpring and fall storms here don't play around.\n\nWhen hail or high winds tear up your roof, there is a massive difference between Replacement Cost Value and Actual Cash Value.\n\nIf you have Actual Cash Value on a 12-year-old roof, the insurance company deducts 12 years of wear and tear—leaving you to pay thousands out of pocket for a new roof.\n\nReplacement Cost pays to actually replace it with new materials (minus your deductible).\n\nDon't wait until shingles are in your yard to find out which one you have.\n\nClick the link in bio to book a 10-minute roof and policy check with our team.`,
-        guide: {
-          mediaType: "5-Slide Educational Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: West Tennessee storm hook. Slide 2: 'Replacement Cost (RCV) Explained'. Slide 3: 'Actual Cash Value (ACV) Depreciation Trap'. Slide 4: 'Example on a 12-Year-Old Roof'. Slide 5: Book a 10-Minute Policy Check CTA.",
-          deliveryTone: "Helpful, proactive protector helping homeowners avoid nasty surprises.",
-          vaChecklist: "1) Obtain compliance approval. 2) Create 5-slide carousel in Canva. 3) Schedule for Thursday 5:15 PM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Dark stormy sky photo (overlay 50% navy).", image: "Photo of dark storm clouds over a Tennessee neighborhood.", text: "Living in West Tennessee means knowing the difference between a watch and a warning—does your home policy know the difference too?", designNote: "White text, 36pt. Add a subtle lightning bolt icon." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a roof with a checkmark and 'RCV' label.", text: "Replacement Cost (RCV): Pays to replace your roof with new materials, minus your deductible.", designNote: "Navy text, 32pt. Green checkmark next to 'RCV'." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a roof with a downward arrow and 'ACV' label.", text: "Actual Cash Value (ACV): Deducts 12 years of wear and tear from a 12-year-old roof. You pay thousands out of pocket.", designNote: "Dark slate text, 30pt. Red downward arrow next to 'ACV'." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of a house with a visibly aged roof.", text: "Example: A 12-year-old roof with ACV might leave you paying $5,000+ out of pocket. With RCV, you're covered.", designNote: "White text, 28pt. Split the slide: left side 'ACV = $5K+', right side 'RCV = Covered'." },
-            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson with a clipboard.", text: "Don't wait until shingles are in your yard. Book a 10-minute roof & policy check.", designNote: "Navy text, 32pt. Add a 'Book Now' button graphic. Include office number (901) 498-5001." }
+        "day": 9,
+        "week": 2,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 2 • Thursday • 5:15 PM CT",
+        "format": "Carousel",
+        "topic": "Mobile Home — Myth: A regular homeowners policy works for a mobile home",
+        "hook": "MYTH: A regular homeowners policy works for my mobile home. FACT: Mobile homes need a mobile home policy.",
+        "cta": "Comment \"MOBILE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #MobileHomeInsurance #ManufacturedHomes #BartlettTN #TennesseeHomes",
+        "caption": "MYTH: A regular homeowners policy works for my mobile home.\n\nFACT: Mobile and manufactured homes are insured with a mobile home policy. It is written for how these homes are built and set up.\n\nA mobile home policy can cover the home, attached structures, your belongings, and your liability.\n\nIf your coverage was set up wrong, a claim can be a problem.\n\nComment \"MOBILE\" and we will check your mobile home coverage.",
+        "guide": {
+          "mediaType": "5-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact. Slide 3: What a mobile home policy covers. Slide 4: What to check. Slide 5: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 5 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Thursday 5:15 PM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "A regular homeowners policy works for my mobile home.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Simple flat icon of a manufactured home.",
+              "text": "Mobile and manufactured homes need a mobile home policy.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Four small navy icons in a 2x2 grid.",
+              "text": "A mobile home policy can cover: the home • attached structures • your belongings • your liability.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Numbered list, no photo.",
+              "text": "Check your policy: 1) Is it a mobile home policy? 2) Is the home's value current? 3) Are steps, decks, and sheds included?",
+              "designNote": "Navy 30pt Playfair Display for the heading, steps in 24pt Lato. Gold numbers."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"MOBILE\" and we'll check your coverage.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 10, week: 2, dayOfWeek: "Friday", scheduleLabel: "Week 2 • Friday • 7:45 AM CT",
-        format: "Text Post", topic: "Q4 — Flood Insurance Myth",
-        hook: "Hard truth for Tennessee homeowners: your standard homeowners policy does NOT cover flood damage.",
-        cta: "Visit website", complianceRequired: true,
-        hashtags: "#FloodInsurance #TennesseeHomeowners #BartlettTN #HomeProtection #RealEstateTN",
-        caption: `Hard truth for Tennessee homeowners: your standard homeowners policy does NOT cover flood damage.\n\nNot an inch of it.\n\nYou don't have to live right next to the Wolf River to get hit by flash flooding when heavy rain overwhelms local drainage.\n\nJust one inch of water inside your home can cause over $25,000 in damage to flooring, drywall, and electrical systems.\n\nFlood coverage has to be written separately, and there is usually a 30-day waiting period before it kicks in.\n\nIf you want to check your home’s flood zone risk in two minutes, visit our website or give our Bartlett office a call at 901-498-5001.`,
-        guide: {
-          mediaType: "Alert Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Use a high-contrast informational card: 'Standard Homeowners ≠ Flood Coverage' with subtext mentioning the typical 30-day waiting period.",
-          deliveryTone: "Urgent yet calm heads-up before heavy rain events.",
-          vaChecklist: "1) Route for compliance sign-off. 2) Create graphic in Canva. 3) Schedule for Friday 7:45 AM CT.",
-          graphicSpec: {
-            background: "Solid Agency Navy (#073558) with a flood water graphic at the bottom.",
-            image: "Simple graphic of water rising against a house foundation, or a water wave icon.",
-            text: "Standard Homeowners ≠ Flood Coverage. Flood coverage is separate. 30-day waiting period. Call us: (901) 498-5001.",
-            textStyle: "White text, 36pt Playfair Display Bold for the main message. Smaller 20pt Lato text for the 30-day waiting period and phone number.",
-            designNote: "High contrast, urgent but not panicky. Use a red exclamation mark icon in the top-right corner."
+        "day": 10,
+        "week": 2,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 2 • Friday • 7:45 AM CT",
+        "format": "Text Post",
+        "topic": "Auto — Myth: Red cars cost more to insure",
+        "hook": "MYTH: Red cars cost more to insure. FACT: Car color is not used to price your insurance.",
+        "cta": "Comment \"QUOTE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #AutoInsurance #CarInsuranceTips #BartlettTN #TennesseeDrivers",
+        "caption": "MYTH: Red cars cost more to insure.\n\nFACT: Your car's color is not used to price your insurance.\n\nWhat does matter: the car's make, model, and year, what it costs to repair, your driving record, where you live, and the coverage you choose.\n\nComment \"QUOTE\" and we will show you what is actually driving your price.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with a simple red car icon in the myth half (the only non-brand color allowed in the series).",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Friday 7:45 AM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a simple red car icon in the myth half.",
+            "text": "Top: 'MYTH: Red cars cost more to insure.'  Bottom: 'FACT: Color is not a rating factor.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
-
-      // WEEK 3 (Days 11–15: Mon–Fri)
       {
-        day: 11, week: 3, dayOfWeek: "Monday", scheduleLabel: "Week 3 • Monday • 12:30 PM CT",
-        format: "Blog Post", topic: "Q2 — Quick Way to Audit Your Policy (Blog Post)",
-        hook: "Three things I look at first when someone asks me why their insurance is so high:",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#InsuranceAudit #SaveMoney #BartlettTN",
-        caption: `Blog Post: 3 Quick Ways to Audit Your Policy\n\nThree things I look at first when someone asks me why their insurance is so high: 1) Are you bundling home/renters and auto? 2) Are you paying for coverage on an older car that isn't worth it anymore? 3) Are your liability limits too low while your deductibles are too small?\n\nRead the full breakdown on our blog and then book a quick call to see if you're overpaying.`,
-        guide: {
-          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
-          visualBreakdown: "Featured image: A clean checklist graphic with '3 Quick Ways to Audit Your Policy' and three checkboxes. Blog structure: Introduction, Three audit steps, Why it matters, CTA to book a call.",
-          deliveryTone: "Actionable, checklist-style mini audit.",
-          vaChecklist: "1) Confirm compliance approval. 2) Write blog post, embed featured image. 3) Publish and share on FB & IG with a teaser.",
-          blogPlan: {
-            title: "3 Quick Ways to Audit Your Insurance Policy (And Why You Might Be Overpaying)",
-            featuredImage: "Clean white background with a clipboard and three checkboxes. Title text: '3 Quick Policy Audits'.",
-            sections: [
-              "Introduction: Hook with the common question 'Why is my insurance so high?'",
-              "Audit #1: Are you bundling home/renters and auto? Explain the multi-policy discount.",
-              "Audit #2: Are you paying for coverage on an older car that isn't worth it? Explain when to drop comprehensive/collision.",
-              "Audit #3: Are your liability limits too low while deductibles are too small? Explain the balance.",
-              "Why It Matters: The cost of being overinsured or underinsured.",
-              "CTA: Book a 15-minute policy review. Link to calendar."
+        "day": 11,
+        "week": 3,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 3 • Monday • 12:30 PM CT",
+        "format": "Blog Post",
+        "topic": "Homeowners — Myth: Insure your home for its market value (Blog Post)",
+        "hook": "MYTH: I should insure my home for what it would sell for. FACT: Insure it for what it costs to rebuild.",
+        "cta": "Book a call",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #HomeownersInsurance #BartlettTN #TennesseeHomes",
+        "caption": "Blog Post: Myth vs. Fact — Market Value vs. Rebuild Cost\n\nMYTH: I should insure my home for what it would sell for.\n\nFACT: Your dwelling coverage should match what it costs to rebuild your home, not its sale price. Sale price includes the land and the neighborhood. Rebuild cost is labor and materials.\n\nRead the full breakdown on our blog, then book a call to check your number.",
+        "guide": {
+          "mediaType": "Blog Post (600–800 words) + Featured Image (1200x630px)",
+          "visualBreakdown": "Featured image: split graphic. Left: 'MYTH: Market value.' Right: 'FACT: Rebuild cost.' House icon with a hammer.",
+          "deliveryTone": "Direct and practical. Short sections, plain language, no filler.",
+          "vaChecklist": "1) Submit blog draft for compliance review. 2) Publish on the website with the featured image (1200x630px). 3) Share the link on FB and IG for Monday 12:30 PM CT with the teaser caption.",
+          "blogPlan": {
+            "title": "Myth vs. Fact: Should You Insure Your Home for Market Value?",
+            "featuredImage": "Split Myth vs. Fact graphic with a house and hammer icon.",
+            "sections": [
+              "The Myth: Insure the home for what it would sell for.",
+              "The Fact: Dwelling coverage should be based on the cost to rebuild.",
+              "Why They Differ: Market value includes land and location. Rebuild cost is labor, materials, and code requirements.",
+              "The Risk: Too low means you pay the gap after a total loss. Too high means you may pay for coverage you cannot use.",
+              "What to Do: Review your dwelling limit after renovations and at each renewal.",
+              "CTA: Book a 15-minute review with The Johnson Agency. (901) 498-5001."
             ]
           }
         }
       },
       {
-        day: 12, week: 3, dayOfWeek: "Tuesday", scheduleLabel: "Week 3 • Tuesday • 4:45 PM CT",
-        format: "Reel", topic: "Q4 — Home Inventory Tip (\"Results in Advance\")",
-        hook: "Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.",
-        cta: "Comment \"DONE\"", complianceRequired: false,
-        hashtags: "#HomeInventory #LifeHack #TennesseeLiving #BartlettTN #Preparedness",
-        caption: `Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.\n\nWalk through every room in your house, open every closet and drawer, and record a slow video on your phone.\n\nTalk out loud about big purchases—electronics, tools, jewelry, furniture.\n\nThen email that video to yourself so it’s saved in the cloud.\n\nIf a fire or tornado ever hits, trying to remember every single item you owned while stressed out is nearly impossible.\n\nThat 3-minute video can save you weeks of headaches and thousands of dollars on a claim.\n\nShare this with a friend or spouse so they do it tonight too.`,
-        guide: {
-          mediaType: "How-To Demo Reel (9:16 • 35–45 seconds)",
-          visualBreakdown: "Show Michael holding his phone walking through a room narrating items aloud, followed by a quick screen/phone shot emailing the file to himself.",
-          deliveryTone: "Classic Frank Kern 'Results in Advance'—pure practical help with zero pitch.",
-          vaChecklist: "1) Edit quick walkthrough video with captions. 2) Schedule for Tuesday 4:45 PM CT. 3) Reply to everyone who comments 'DONE'.",
-          script: `[0:00-0:05] MICHAEL (holding phone, walking through a room): Do this 3-minute phone trick tonight before the next Tennessee storm rolls through.\n[0:06-0:15] MICHAEL (demonstrating on phone): Walk through every room in your house, open every closet and drawer, and record a slow video on your phone. Talk out loud about big purchases—electronics, tools, jewelry, furniture.\n[0:16-0:25] MICHAEL (showing phone screen): Then email that video to yourself so it’s saved in the cloud. That's it.\n[0:26-0:35] MICHAEL (direct to camera): If a fire or tornado ever hits, trying to remember every single item you owned while stressed out is nearly impossible. That 3-minute video can save you weeks of headaches and thousands of dollars on a claim.\n[0:36-0:45] MICHAEL: Share this with a friend or spouse so they do it tonight too. Comment "DONE" if you're going to do this today.\n[0:46-0:50] TEXT ON SCREEN: 3-Minute Home Inventory Trick. Share this with a friend.`
+        "day": 12,
+        "week": 3,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 3 • Tuesday • 4:45 PM CT",
+        "format": "Reel",
+        "topic": "RV — Myth: My auto policy covers my RV or camper",
+        "hook": "MYTH: My car insurance covers my RV or camper. FACT: Usually not, or not fully.",
+        "cta": "Comment \"RV\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #RVInsurance #CamperLife #BartlettTN #TennesseeOutdoors",
+        "caption": "MYTH: My car insurance covers my RV or camper.\n\nFACT: A motorhome needs its own RV policy.\n\nIf you tow a travel trailer, your auto liability may extend to it while it is hitched. Damage to the trailer itself is usually not covered unless you have trailer or RV coverage.\n\nCheck before your next trip.\n\nComment \"RV\" and we will review your RV or camper coverage.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30–40 seconds)",
+          "visualBreakdown": "Michael to camera, or beside an RV if available. MYTH / FACT tags. Text graphic: 'Motorhome = RV policy' and 'Trailer damage = not covered by auto alone'.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Tuesday 4:45 PM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: your car insurance covers your RV or camper. [TEXT ON SCREEN: MYTH: Auto covers my RV]\n[0:04-0:10] MICHAEL: Fact: a motorhome needs its own RV policy. [TEXT ON SCREEN: FACT: Motorhome = RV policy]\n[0:10-0:20] MICHAEL: Towing a travel trailer? Your auto liability may follow it while it's hitched. But damage to the trailer itself usually isn't covered without trailer or RV coverage. [TEXT ON SCREEN: Trailer damage ≠ covered by auto alone]\n[0:20-0:26] MICHAEL: Check before your next trip.\n[0:26-0:32] MICHAEL: Comment \"RV\" and we'll review it.\n[0:32-0:36] TEXT ON SCREEN: Comment \"RV\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 13, week: 3, dayOfWeek: "Wednesday", scheduleLabel: "Week 3 • Wednesday • 10:00 AM CT",
-        format: "Carousel", topic: "Q2 — Credit & Insurance in Tennessee",
-        hook: "Did you know your credit score affects your car insurance rate in Tennessee?",
-        cta: "Comment \"REVIEW\"", complianceRequired: true,
-        hashtags: "#CreditScore #CarInsuranceTips #Tennessee #FinancialLiteracy #BartlettTN",
-        caption: `Did you know your credit score affects your car insurance rate in Tennessee?\n\nMost people have no idea that insurers use a credit-based insurance score to help determine pricing.\n\nWhy? Because statistically, people who manage their credit steadily tend to file fewer claims.\n\nThe good news is that if your credit score has improved over the last year or two, you might be sitting on lower rates without even knowing it.\n\nCompanies rarely lower your rate automatically just because your credit went up—you have to ask for a review.\n\nComment "REVIEW" below and we’ll check if your current profile qualifies you for better options.`,
-        guide: {
-          mediaType: "4-Slide Educational Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Curiosity hook on credit & TN auto rates. Slide 2: How credit-based insurance scoring works in plain English. Slide 3: Why improved credit doesn't always trigger an automatic drop. Slide 4: Comment 'REVIEW' CTA.",
-          deliveryTone: "Informative, empowering financial literacy tone.",
-          vaChecklist: "1) Submit for compliance approval. 2) Create 4-slide carousel in Canva. 3) Schedule for Wednesday 10:00 AM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Navy (#073558)", image: "Icon of a credit score gauge.", text: "Did you know your credit score affects your car insurance rate in Tennessee?", designNote: "White text, 40pt. Add a credit score gauge graphic (e.g., a speedometer)." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a scale with a credit card and a car.", text: "Insurers use a credit-based insurance score. Statistically, people who manage credit steadily file fewer claims.", designNote: "Navy text, 32pt. Simple flat illustration." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a downward arrow (rates) and an upward arrow (credit score).", text: "The Good News: If your credit has improved, you might qualify for lower rates. But companies rarely lower it automatically.", designNote: "Dark slate text, 30pt. Use contrasting green (up) and red (down) arrows." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of Michael Johnson with a phone.", text: "Comment \"REVIEW\" and we’ll check if your current profile qualifies for better options.", designNote: "White text, 36pt. Add a speech bubble icon with 'REVIEW' inside." }
+        "day": 13,
+        "week": 3,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 3 • Wednesday • 10:00 AM CT",
+        "format": "Carousel",
+        "topic": "Life — Myth: I'm young and healthy, so I don't need life insurance",
+        "hook": "MYTH: I'm young and healthy, so I don't need life insurance. FACT: Young and healthy is when it usually costs the least.",
+        "cta": "Comment \"FAMILY\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LifeInsurance #YoungFamilies #BartlettTN #FinancialPlanning",
+        "caption": "MYTH: I'm young and healthy, so I don't need life insurance.\n\nFACT: Young and healthy is usually when life insurance costs the least.\n\nIf someone depends on your income, or you have a mortgage or debt someone else would have to pay, you have a need now, not later.\n\nWaiting usually means paying more.\n\nComment \"FAMILY\" and we will help you find the right amount.",
+        "guide": {
+          "mediaType": "4-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact. Slide 3: Who needs it now. Slide 4: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 4 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Wednesday 10:00 AM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "I'm young and healthy, so I don't need life insurance.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Simple upward price-over-age line icon.",
+              "text": "Young and healthy is usually when it costs the least.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Three checkmark bullets in navy.",
+              "text": "You need it now if: someone depends on your income • you have a mortgage • you have debt someone else would pay.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"FAMILY\" and we'll help you find the right amount.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 14, week: 3, dayOfWeek: "Thursday", scheduleLabel: "Week 3 • Thursday • 5:00 PM CT",
-        format: "Text Post", topic: "Client Advocacy Philosophy",
-        hook: "We don't chase numbers at The Johnson Agency—we look for people who actually care about being protected.",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#TheJohnsonAgency #BartlettTN #TrustedAdvice #PersonalizedService #BartlettInsurance",
-        caption: `We don't chase numbers at The Johnson Agency—we look for people who actually care about being protected.\n\nAnyone can spit out a fast quote on a screen.\n\nWhat we want is to sit down, have a real conversation, and make sure your family isn't exposed to risks you didn't even know existed.\n\nWhen you know what you have and why you have it, you sleep better.\n\nVisit our website anytime to learn more about our Bartlett team.`,
-        guide: {
-          mediaType: "Brand Manifesto Graphic + Text Post",
-          visualBreakdown: "Pair with a clean brand card featuring The Johnson Agency name and tagline: 'Personalized Service. Trusted Advice.'",
-          deliveryTone: "Confident, values-driven positioning.",
-          vaChecklist: "1) Prepare brand graphic. 2) Schedule for Thursday 5:00 PM CT.",
-          graphicSpec: {
-            background: "Split design: left half white, right half Agency Navy (#073558).",
-            image: "No photo. Use a subtle geometric pattern (thin lines) in the background of the navy side.",
-            text: "Main text on white side: 'We don't chase numbers. We protect people.' Main text on navy side: 'Personalized Service. Trusted Advice.'",
-            textStyle: "Navy text on white (42pt Playfair Display Bold), gold (#d9a85e) text on navy (24pt Playfair Display Italic). Agency logo centered at the bottom.",
-            designNote: "Minimalist, brand-focused. No clutter. The tagline is the hero."
+        "day": 14,
+        "week": 3,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 3 • Thursday • 5:00 PM CT",
+        "format": "Text Post",
+        "topic": "Renters — Myth: Renters insurance is expensive",
+        "hook": "MYTH: Renters insurance is too expensive. FACT: It is usually one of the lowest-cost policies you can buy.",
+        "cta": "Comment \"RENTERS\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #RentersInsurance #BartlettTN #MemphisRentals #FirstApartment",
+        "caption": "MYTH: Renters insurance is too expensive.\n\nFACT: Renters insurance is usually one of the lowest-cost policies you can buy.\n\nIt covers your belongings, your liability if someone is hurt or you damage someone else's property, and extra living costs if you cannot stay in your place after a covered loss.\n\nComment \"RENTERS\" and we will get you a quote.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with an apartment-building icon.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Thursday 5:00 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use an apartment-building icon.",
+            "text": "Top: 'MYTH: Renters insurance is too expensive.'  Bottom: 'FACT: It's usually one of the lowest-cost policies.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 15, week: 3, dayOfWeek: "Friday", scheduleLabel: "Week 3 • Friday • 7:30 AM CT",
-        format: "Reel", topic: "Q3 — Life Insurance Reality Check",
-        hook: "If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.",
-        cta: "Comment \"FAMILY\"", complianceRequired: true,
-        hashtags: "#LifeInsurance #YoungFamilies #FinancialSecurity #BartlettTN #ParentingTips",
-        caption: `If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.\n\nThey rely 100% on the life insurance policy through their job.\n\nHere is the problem with workplace life insurance: the moment you change jobs, get laid off, or retire, that policy usually disappears.\n\nPlus, most work policies only cover 1x or 2x your salary—which barely covers a couple of years of bills, let alone raising kids or paying off a house.\n\nGetting a personal term life policy while you are young and healthy locks in low rates that you own, no matter where you work.\n\nComment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.`,
-        guide: {
-          mediaType: "Talking-Head Video Reel (9:16 • 45 seconds)",
-          visualBreakdown: "Michael speaking calmly to camera with clear text overlays: 'Workplace Policy = Tied to Your Job' vs 'Personal Policy = Yours to Keep'.",
-          deliveryTone: "Caring, big-brother/financial-advisor guidance for young families.",
-          vaChecklist: "1) Route life insurance copy for compliance review. 2) Add captions & schedule for Friday 7:30 AM CT.",
-          script: `[0:00-0:05] MICHAEL (direct to camera, serious but caring): If you are between 25 and 45 with a family or a mortgage, here is the biggest mistake I see people make with life insurance.\n[0:06-0:15] MICHAEL: They rely 100% on the life insurance policy through their job. [TEXT ON SCREEN: Workplace Policy = Tied to Your Job]\n[0:16-0:25] MICHAEL: Here is the problem with workplace life insurance: the moment you change jobs, get laid off, or retire, that policy usually disappears. Plus, most work policies only cover 1x or 2x your salary—which barely covers a couple of years of bills, let alone raising kids or paying off a house.\n[0:26-0:35] MICHAEL: Getting a personal term life policy while you are young and healthy locks in low rates that you own, no matter where you work. [TEXT ON SCREEN: Personal Policy = Yours to Keep]\n[0:36-0:45] MICHAEL: Comment "FAMILY" below and I’ll help you figure out the exact number your family would actually need—zero sales pitch.\n[0:46-0:50] TEXT ON SCREEN: Comment "FAMILY" for a free needs analysis. [Agency logo]`
+        "day": 15,
+        "week": 3,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 3 • Friday • 7:30 AM CT",
+        "format": "Reel",
+        "topic": "ATV — Myth: My homeowners policy covers my ATV",
+        "hook": "MYTH: My homeowners policy covers my ATV. FACT: Motorized vehicles are usually limited or excluded.",
+        "cta": "Comment \"ATV\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #ATVInsurance #SideBySide #BartlettTN #TennesseeTrails",
+        "caption": "MYTH: My homeowners policy covers my ATV.\n\nFACT: Homeowners policies usually limit or exclude motorized vehicles like ATVs and side-by-sides, especially once you ride off your property.\n\nAn ATV policy can cover damage to the ATV, theft, and liability if someone gets hurt.\n\nComment \"ATV\" and we will check your coverage before your next ride.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30 seconds)",
+          "visualBreakdown": "Michael to camera, or beside an ATV if available. MYTH / FACT tags. Text list: Damage • Theft • Liability.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Friday 7:30 AM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: your homeowners policy covers your ATV. [TEXT ON SCREEN: MYTH: Homeowners covers my ATV]\n[0:04-0:12] MICHAEL: Fact: homeowners policies usually limit or exclude ATVs and side-by-sides, especially once you ride off your property. [TEXT ON SCREEN: FACT: Limited or excluded]\n[0:12-0:20] MICHAEL: An ATV policy can cover damage, theft, and liability if someone gets hurt. [TEXT ON SCREEN: Damage • Theft • Liability]\n[0:20-0:26] MICHAEL: Comment \"ATV\" and we'll check yours before your next ride.\n[0:26-0:30] TEXT ON SCREEN: Comment \"ATV\" • The Johnson Agency • (901) 498-5001"
         }
       },
-
-      // WEEK 4 (Days 16–20: Mon–Fri)
       {
-        day: 16, week: 4, dayOfWeek: "Monday", scheduleLabel: "Week 4 • Monday • 12:15 PM CT",
-        format: "Carousel", topic: "Q5 — Adding a Teen Driver Without Losing Your Mind",
-        hook: "Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#TeenDriver #ParentingTeens #BartlettTN #TennesseeParents #AutoInsurance",
-        caption: `Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.\n\nYes, adding a teen driver in Tennessee is going to raise your premium.\n\nThere’s no magic wand to make it free, but there are smart ways to take the sting out of it:\n\n1. Good Student Discounts: A "B" average or better can knock a noticeable chunk off their rate.\n2. Driver Training Programs: Certified teen safe-driving courses pay for themselves quickly.\n3. Smart Vehicle Choice: Putting them as the primary driver on the safest, most modest car in your driveway makes a big difference.\n\nGot a teen getting their permit soon?\n\nBook a quick 15-minute call through the link in bio before you add them so we can structure it the smartest way possible.`,
-        guide: {
-          mediaType: "5-Slide Parent Playbook Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Teen driver hook. Slide 2: Tip 1 — Good Student Discount. Slide 3: Tip 2 — Driver Training. Slide 4: Tip 3 — Vehicle Assignment Strategy. Slide 5: Book a 15-Minute Call Before Adding Your Teen.",
-          deliveryTone: "Relatable parent-to-parent strategy.",
-          vaChecklist: "1) Get compliance sign-off on discount mentions. 2) Design 5 slides in Canva. 3) Schedule for Monday 12:15 PM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Navy (#073558)", image: "Icon of car keys with a price tag.", text: "Handing your 16-year-old the car keys is scary enough—opening the insurance bill shouldn't give you a heart attack too.", designNote: "White text, 36pt. Add a car key icon." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a report card with a 'B' grade.", text: "Tip 1: Good Student Discounts. A 'B' average or better can knock a noticeable chunk off their rate.", designNote: "Navy text, 32pt. Green checkmark icon." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a driver's ed car.", text: "Tip 2: Driver Training Programs. Certified teen safe-driving courses pay for themselves quickly.", designNote: "Dark slate text, 32pt. Blue checkmark icon." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Icon of a modest sedan vs. a sports car.", text: "Tip 3: Smart Vehicle Choice. Put them as primary driver on the safest, most modest car in your driveway.", designNote: "White text, 30pt. Use a simple car comparison graphic." },
-            { slide: 5, background: "White (#FFFFFF)", image: "Photo of Michael Johnson with a phone.", text: "Got a teen getting their permit soon? Book a 15-minute call before you add them.", designNote: "Navy text, 32pt. Add a 'Book Now' button graphic. Include phone number." }
+        "day": 16,
+        "week": 4,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 4 • Monday • 12:15 PM CT",
+        "format": "Carousel",
+        "topic": "Auto — Myth: My personal policy covers me when I drive for Uber or DoorDash",
+        "hook": "MYTH: My personal car insurance covers me while I drive for Uber, Lyft, or DoorDash. FACT: Personal policies often exclude or limit it.",
+        "cta": "Comment \"DRIVER\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #RideshareInsurance #DeliveryDrivers #BartlettTN #AutoInsurance",
+        "caption": "MYTH: My personal car insurance covers me while I drive for Uber, Lyft, or DoorDash.\n\nFACT: Personal auto policies often exclude or limit coverage while you are working for a rideshare or delivery app.\n\nThe app company's coverage may not apply in every situation, such as while you are logged in and waiting for a request.\n\nA rideshare endorsement can help close that gap.\n\nComment \"DRIVER\" and we will review your coverage.",
+        "guide": {
+          "mediaType": "5-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact. Slide 3: Where the gap is. Slide 4: The fix. Slide 5: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 5 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Monday 12:15 PM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "My personal car insurance covers me while I drive for Uber, Lyft, or DoorDash.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Phone icon with a car on the screen.",
+              "text": "Personal auto policies often exclude or limit coverage while you're working for an app.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Simple timeline: App off → App on, waiting → Trip accepted. Highlight the middle.",
+              "text": "The gap: the app's coverage may not apply in every situation, like while you're logged in and waiting.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Numbered list, no photo.",
+              "text": "The fix: ask about a rideshare or delivery endorsement on your auto policy.",
+              "designNote": "Navy 30pt Playfair Display for the heading, steps in 24pt Lato. Gold numbers."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"DRIVER\" and we'll review your coverage.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 17, week: 4, dayOfWeek: "Tuesday", scheduleLabel: "Week 4 • Tuesday • 5:30 PM CT",
-        format: "Text Post", topic: "Q8 — Umbrella Insurance for Young Professionals & Families",
-        hook: "You don't have to be a millionaire to need a $1 million Umbrella policy.",
-        cta: "Visit website", complianceRequired: true,
-        hashtags: "#UmbrellaInsurance #AssetProtection #YoungProfessionals #BartlettTN #WealthBuilding",
-        caption: `You don't have to be a millionaire to need a $1 million Umbrella policy.\n\nIn fact, if you own a home, have a solid career, or are building up your 401(k) and savings, you already have a target on your back.\n\nImagine causing a multi-car pileup on Highway 64 or someone getting seriously injured on your property.\n\nMedical bills and legal fees can blow past your standard auto or home liability limits in a heartbeat.\n\nAn Umbrella policy steps in above those limits to protect your savings, your home equity, and even your future wages—usually for less than the cost of one takeout dinner a month.\n\nVisit our website to see how easy it is to add an extra layer of armor to your financial plan.`,
-        guide: {
-          mediaType: "Clean Concept Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Simple diagram or card showing 'Standard Auto/Home Liability' + '$1M+ Umbrella Layer' protecting future earnings and savings.",
-          deliveryTone: "Smart wealth-protection framing for professionals and growing households.",
-          vaChecklist: "1) Submit for compliance review. 2) Create clean visual card. 3) Schedule for Tuesday 5:30 PM CT.",
-          graphicSpec: {
-            background: "Solid white (#FFFFFF).",
-            image: "A simple 3-layer diagram: bottom layer 'Auto/Home Liability', middle layer '$1M Umbrella', top layer 'Your Savings & Future'. Use flat icons (car, house, umbrella, piggy bank).",
-            text: "Headline: 'You don't have to be a millionaire to need a $1M Umbrella policy.' Subtext: 'Protect your savings, home equity, and future wages for less than a takeout dinner.'",
-            textStyle: "Navy text, 36pt Playfair Display Bold for headline. Agency Blue (#155984) text, 24pt Lato for subtext. Agency logo at the bottom.",
-            designNote: "Clean, infographic style. Use Agency Navy (#073558) and Agency Blue (#155984) in the diagram, with Agency Gold (#d9a85e) accents."
+        "day": 17,
+        "week": 4,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 4 • Tuesday • 5:30 PM CT",
+        "format": "Text Post",
+        "topic": "Homeowners — Myth: Home insurance covers anything that breaks",
+        "hook": "MYTH: Home insurance pays for anything that breaks. FACT: It covers sudden, accidental damage, not wear and tear.",
+        "cta": "Book a call (901-498-5001)",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #HomeownersInsurance #HomeMaintenance #BartlettTN #TennesseeHomes",
+        "caption": "MYTH: Home insurance pays for anything that breaks in my house.\n\nFACT: Homeowners insurance covers sudden and accidental damage from covered causes, like fire or a pipe that bursts.\n\nIt usually does not cover wear and tear, lack of maintenance, slow leaks over time, or pests like termites.\n\nKeep up with maintenance. It protects your home and your claims.\n\nCall 901-498-5001 to go over what your policy covers.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card. Fact half lists: Covered = sudden & accidental. Not covered = wear and tear, slow leaks, termites.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Tuesday 5:30 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a wrench icon.",
+            "text": "Top: 'MYTH: Home insurance covers anything that breaks.'  Bottom: 'FACT: It covers sudden, accidental damage. Not wear and tear.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 18, week: 4, dayOfWeek: "Wednesday", scheduleLabel: "Week 4 • Wednesday • 8:00 AM CT",
-        format: "Blog Post", topic: "Q3 — Term vs. Whole Life Quick Breakdown (Blog Post)",
-        hook: "Term vs. Whole Life insurance—which one is actually better?",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#LifeInsurance101 #FinancialPlanning #BartlettTN",
-        caption: `Blog Post: Term vs. Whole Life — Which Is Right for You?\n\nTerm vs. Whole Life insurance—which one is actually better? Here is the honest answer: it depends on what job you want the money to do. Term is great for covering big temporary responsibilities like a 30-year mortgage and raising kids, while Permanent/Whole life builds lifelong coverage.\n\nRead the full breakdown on our blog and then schedule a quick chat to figure out which fits your budget.`,
-        guide: {
-          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
-          visualBreakdown: "Featured image: A split graphic with 'Term' on one side and 'Whole Life' on the other, each with simple icons (e.g., a house for term, an infinity symbol for whole life). Blog structure: Introduction, What is Term Life?, What is Whole Life?, Key Differences, Which One Is Right for You?, CTA.",
-          deliveryTone: "Jargon-free, clear, zero-pressure.",
-          vaChecklist: "1) Confirm compliance approval. 2) Write blog post, embed featured image. 3) Publish and share on FB & IG.",
-          blogPlan: {
-            title: "Term vs. Whole Life Insurance: A Simple Breakdown for Tennessee Families",
-            featuredImage: "Split image: left side 'Term' with a house icon; right side 'Whole Life' with an infinity icon. Text overlay: 'Which is right for you?'",
-            sections: [
-              "Introduction: Hook with the common confusion between term and whole life.",
-              "What is Term Life Insurance? Definition, typical coverage periods (10, 20, 30 years), and use cases (mortgage, raising kids).",
-              "What is Whole Life Insurance? Definition, lifelong coverage, cash value component.",
-              "Key Differences: Cost, duration, cash value, complexity.",
-              "Which One Is Right for You? Scenarios: young family with a mortgage, single person, empty nester, business owner.",
-              "CTA: Book a 15-minute life insurance review. Link to calendar."
+        "day": 18,
+        "week": 4,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 4 • Wednesday • 8:00 AM CT",
+        "format": "Blog Post",
+        "topic": "Life — Myth: Term life is a waste of money (Blog Post)",
+        "hook": "MYTH: Term life insurance is a waste of money if I outlive it. FACT: You are paying for protection during the years you need it.",
+        "cta": "Book a call",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LifeInsurance #TermLife #BartlettTN",
+        "caption": "Blog Post: Myth vs. Fact — Term Life Insurance\n\nMYTH: Term life insurance is a waste of money if I outlive it.\n\nFACT: Term life protects your family for a set number of years, like while you pay off a mortgage or raise kids. It usually costs less than permanent life insurance. You pay for protection, the same way you do with car or home insurance.\n\nRead the full breakdown on our blog, then book a call to compare options.",
+        "guide": {
+          "mediaType": "Blog Post (600–800 words) + Featured Image (1200x630px)",
+          "visualBreakdown": "Featured image: split graphic. Left: 'MYTH: Term life is wasted money.' Right: 'FACT: It's protection when you need it.' Shield icon.",
+          "deliveryTone": "Direct and practical. Short sections, plain language, no filler.",
+          "vaChecklist": "1) Submit blog draft for compliance review. 2) Publish on the website with the featured image (1200x630px). 3) Share the link on FB and IG for Wednesday 8:00 AM CT with the teaser caption.",
+          "blogPlan": {
+            "title": "Myth vs. Fact: Is Term Life Insurance a Waste of Money?",
+            "featuredImage": "Split Myth vs. Fact graphic with a shield icon.",
+            "sections": [
+              "The Myth: If you outlive the term, the money was wasted.",
+              "The Fact: Term life is protection for a set period. Like car or home insurance, you pay for the protection, not a refund.",
+              "Term vs. Permanent: Term covers a set number of years and usually costs less. Permanent life lasts for life, costs more, and may build cash value.",
+              "Who Usually Fits Term: Families with a mortgage, young kids, or a set period of high need.",
+              "What to Do: Match the term length to your biggest obligations.",
+              "CTA: Book a 15-minute life insurance review. (901) 498-5001."
             ]
           }
         }
       },
       {
-        day: 19, week: 4, dayOfWeek: "Thursday", scheduleLabel: "Week 4 • Thursday • 11:45 AM CT",
-        format: "Reel", topic: "Q8 — Do You Have Enough Liability Coverage?",
-        hook: "Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.",
-        cta: "Comment \"LIMITS\"", complianceRequired: true,
-        hashtags: "#TennesseeLaw #AutoInsurance #BartlettTN #ProtectYourAssets #MoneySmart",
-        caption: `Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.\n\nThose are Tennessee’s minimum state liability limits—and they are dangerously outdated for the real world.\n\nThat "15" means your insurance will only pay up to $15,000 for property damage you cause.\n\nHave you seen the price of a new SUV or pickup truck in Memphis lately?\n\nIf you total a $55,000 truck, your insurance pays $15,000, and you are personally on the hook for the remaining $40,000.\n\nBumping your liability limits up to 100/300/100 often costs just a few extra dollars a month and saves you from financial ruin.\n\nComment "LIMITS" below if you want me to check where yours stand.`,
-        guide: {
-          mediaType: "High-Attention Hook Reel (9:16 • 40 seconds)",
-          visualBreakdown: "Hold up a sample auto ID card (with fake/blurred details) pointing to the liability limits line, then cut to Michael explaining the $15k property limit gap on modern trucks.",
-          deliveryTone: "Sharp, eye-opening, protective.",
-          vaChecklist: "1) Route for compliance approval. 2) Edit video with captions & schedule for Thursday 11:45 AM CT.",
-          script: `[0:00-0:05] MICHAEL (holding up a sample auto ID card): Look at the numbers on your auto insurance card: if they say 25/50/15, we need to talk today.\n[0:06-0:15] MICHAEL: Those are Tennessee’s minimum state liability limits—and they are dangerously outdated for the real world. That "15" means your insurance will only pay up to $15,000 for property damage you cause.\n[0:16-0:25] MICHAEL (lean in): Have you seen the price of a new SUV or pickup truck in Memphis lately? If you total a $55,000 truck, your insurance pays $15,000, and you are personally on the hook for the remaining $40,000.\n[0:26-0:35] MICHAEL: Bumping your liability limits up to 100/300/100 often costs just a few extra dollars a month and saves you from financial ruin.\n[0:36-0:40] MICHAEL: Comment "LIMITS" below if you want me to check where yours stand.\n[0:41-0:45] TEXT ON SCREEN: 25/50/15 = Risky. Comment "LIMITS" for a free review.`
+        "day": 19,
+        "week": 4,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 4 • Thursday • 11:45 AM CT",
+        "format": "Reel",
+        "topic": "Auto — Myth: Car insurance covers things stolen from my car",
+        "hook": "MYTH: My car insurance covers the stuff stolen out of my car. FACT: That is usually your home or renters policy.",
+        "cta": "Comment \"STOLEN\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #AutoInsurance #CarBreakIn #BartlettTN #RentersInsurance",
+        "caption": "MYTH: My car insurance covers the laptop or bag stolen out of my car.\n\nFACT: Auto insurance covers the car. Belongings stolen from your car are usually covered by your homeowners or renters policy, after your deductible.\n\nNo homeowners or renters policy usually means no coverage for those items.\n\nComment \"STOLEN\" and we will check that you are covered.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30 seconds)",
+          "visualBreakdown": "Michael standing by a car. MYTH / FACT tags. Text graphic: 'Car = auto policy' and 'Stuff inside = home or renters policy'.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Thursday 11:45 AM CT.",
+          "script": "[0:00-0:04] MICHAEL (by a car): Myth: your car insurance covers the stuff stolen out of your car. [TEXT ON SCREEN: MYTH: Auto covers my stolen stuff]\n[0:04-0:12] MICHAEL: Fact: auto covers the car. What's inside is usually covered by your homeowners or renters policy, after the deductible. [TEXT ON SCREEN: FACT: Stuff inside = home or renters policy]\n[0:12-0:19] MICHAEL: No home or renters policy usually means no coverage for those items.\n[0:19-0:25] MICHAEL: Comment \"STOLEN\" and we'll check you're covered.\n[0:25-0:30] TEXT ON SCREEN: Comment \"STOLEN\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 20, week: 4, dayOfWeek: "Friday", scheduleLabel: "Week 4 • Friday • 9:30 AM CT",
-        format: "Carousel", topic: "Q5 — Empty Nesters Policy Update",
-        hook: "Kids finally moved out of the house? Don't forget to tell your insurance agent.",
-        cta: "Book a call", complianceRequired: true,
-        hashtags: "#EmptyNesters #BartlettTN #LifeChanges #InsuranceReview #TennesseeFamilies",
-        caption: `Kids finally moved out of the house? Don't forget to tell your insurance agent.\n\nWhen your kids graduate, get their own jobs, and move into their own places, your household risk changes completely.\n\nYou shouldn't still be paying to insure a college driver who now lives in Nashville or Knoxville with their own car.\n\nPlus, empty nesters often qualify for new low-mileage discounts and home updates that can free up money in your budget.\n\nLet’s update your policies to match your new chapter.\n\nClick the link in bio to book a quick 15-minute review with our Bartlett office.`,
-        guide: {
-          mediaType: "4-Slide Life-Stage Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Empty nest transition hook. Slide 2: Removing out-of-area drivers. Slide 3: Checking mileage & home updates. Slide 4: Book a 15-Minute Review CTA.",
-          deliveryTone: "Upbeat, celebratory, practical next-chapter advice.",
-          vaChecklist: "1) Get compliance approval. 2) Create 4 slides in Canva. 3) Schedule for Friday 9:30 AM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Gold (#d9a85e)", image: "Icon of a nest with eggs, or a house with a 'sold' sign.", text: "Kids finally moved out of the house? Don't forget to tell your insurance agent.", designNote: "Navy (#073558) text, 40pt Playfair Display Bold. Add a subtle nest icon." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a car with a 'moving' box.", text: "When your kids move out, you shouldn't still be paying to insure a college driver who now lives in Nashville or Knoxville.", designNote: "Navy text, 32pt. Use a moving box and car icon." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a mileage gauge and a house with a checkmark.", text: "Empty nesters often qualify for new low-mileage discounts and home updates that can free up money in your budget.", designNote: "Dark slate text, 30pt. Use a gas gauge icon." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of Michael Johnson smiling.", text: "Let’s update your policies to match your new chapter. Book a quick 15-minute review.", designNote: "White text, 36pt. Add a 'Book Now' button graphic." }
-          ]
-        }
-      },
-
-      // WEEK 5 (Days 21–25: Mon–Fri)
-      {
-        day: 21, week: 5, dayOfWeek: "Monday", scheduleLabel: "Week 5 • Monday • 4:30 PM CT",
-        format: "Text Post", topic: "Behind the Scenes / Local Love",
-        hook: "One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#BartlettTN #SupportLocal #CommunityFirst #TheJohnsonAgency #Grateful",
-        caption: `One of my favorite parts of running an agency in Bartlett is seeing familiar faces around town.\n\nYou treat people right, give them honest advice, and show up when it counts—that’s how you build a business that lasts over 40 years.\n\nThank you to everyone who trusts The Johnson Agency with their family’s protection.`,
-        guide: {
-          mediaType: "Local Community Photo + Text Post",
-          visualBreakdown: "Feature a friendly photo of Michael or the agency team in Bartlett.",
-          deliveryTone: "Sincere, grateful local business owner.",
-          vaChecklist: "1) Pick photo & schedule for Monday 4:30 PM CT.",
-          graphicSpec: {
-            background: "Full-bleed photo.",
-            image: "A candid photo of Michael or the agency team at a local Bartlett event, or in front of the office. Warm, natural lighting.",
-            text: "Overlay a semi-transparent navy box at the bottom with white text: 'Thank you, Bartlett. It's an honor to serve this community. — Michael Johnson'",
-            textStyle: "White text, 28pt Lato. Agency logo in the bottom-right corner.",
-            designNote: "Authentic, unposed, community-focused. No heavy graphics."
-          }
-        }
-      },
-      {
-        day: 22, week: 5, dayOfWeek: "Tuesday", scheduleLabel: "Week 5 • Tuesday • 12:00 PM CT",
-        format: "Reel", topic: "Q6 — Renters Insurance Myth",
-        hook: "\"My landlord has insurance, so I don't need renters insurance.\" Stop believing this myth before it costs you $30,000.",
-        cta: "Comment \"RENTERS\"", complianceRequired: true,
-        hashtags: "#RentersInsurance #YoungProfessionals #MemphisRentals #BartlettTN #Adulting101",
-        caption: `"My landlord has insurance, so I don't need renters insurance." Stop believing this myth before it costs you $30,000.\n\nYour landlord’s insurance covers the physical building—the walls, the roof, and the plumbing.\n\nIt covers zero dollars of your furniture, clothes, laptops, TVs, or kitchen gear if there is a fire, burst pipe, or break-in.\n\nEven worse: if you accidentally leave a candle burning or overflow a sink and damage the apartment below you, you can be held personally liable.\n\nThe crazy part? Renters insurance usually costs around $15 to $20 a month—less than two coffees.\n\nComment "RENTERS" below and I’ll help you get protected in less than 10 minutes.`,
-        guide: {
-          mediaType: "Fast-Paced Myth-Buster Reel (9:16 • 35–45 seconds)",
-          visualBreakdown: "Hook in first 2 seconds with 'Landlord Policy ≠ Your Stuff' graphic. Show quick visual callouts for personal belongings and personal liability.",
-          deliveryTone: "Energetic, helpful 'adulting' wake-up call for young professionals and renters.",
-          vaChecklist: "1) Route pricing & coverage details for compliance review. 2) Add captions & schedule for Tuesday 12:00 PM CT.",
-          script: `[0:00-0:05] MICHAEL (energetic, direct to camera): "My landlord has insurance, so I don't need renters insurance." Stop believing this myth before it costs you $30,000.\n[0:06-0:15] MICHAEL: Your landlord’s insurance covers the physical building—the walls, the roof, and the plumbing. It covers zero dollars of your furniture, clothes, laptops, TVs, or kitchen gear if there is a fire, burst pipe, or break-in. [TEXT ON SCREEN: Landlord Policy ≠ Your Stuff]\n[0:16-0:25] MICHAEL: Even worse: if you accidentally leave a candle burning or overflow a sink and damage the apartment below you, you can be held personally liable.\n[0:26-0:35] MICHAEL: The crazy part? Renters insurance usually costs around $15 to $20 a month—less than two coffees.\n[0:36-0:45] MICHAEL: Comment "RENTERS" below and I’ll help you get protected in less than 10 minutes.\n[0:46-0:50] TEXT ON SCREEN: Renters Insurance = $15/mo. Comment "RENTERS". [Agency logo]`
-        }
-      },
-      {
-        day: 23, week: 5, dayOfWeek: "Wednesday", scheduleLabel: "Week 5 • Wednesday • 5:15 PM CT",
-        format: "Carousel", topic: "Q9 — Boats, RVs & ATVs in Tennessee",
-        hook: "Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.",
-        cta: "Visit website", complianceRequired: true,
-        hashtags: "#TennesseeOutdoors #BoatingTN #RVLife #ATVLife #BartlettTN",
-        caption: `Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.\n\nA lot of folks assume their auto policy covers whatever they are towing, or that their homeowners policy covers toys parked in the garage.\n\nUsually, your auto policy only covers liability while the trailer is attached—not physical damage to the boat, RV, or ATV itself.\n\nAnd homeowners policies have strict dollar limits on recreational vehicles.\n\nWhether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps a weekend accident from turning into a financial headache.\n\nVisit our website in the bio to make sure your weekend gear is covered properly.`,
-        guide: {
-          mediaType: "4-Slide Outdoor Gear Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Lake/trail hook. Slide 2: Auto trailer liability vs. physical damage to toys. Slide 3: Homeowners sub-limits on recreational vehicles. Slide 4: Check your gear coverage CTA.",
-          deliveryTone: "Fun, outdoorsy Tennessee tone with practical protection tips.",
-          vaChecklist: "1) Obtain compliance sign-off. 2) Create 4 slides in Canva. 3) Schedule for Wednesday 5:15 PM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Photo of a lake at sunset (Pickwick Lake) with 50% navy overlay.", image: "Photo of a boat on a lake at sunset.", text: "Getting ready to take the boat out on Pickwick or hit the trails with your ATV? Read this before you hitch up.", designNote: "White text, 36pt. Add a small boat icon." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a truck towing a boat, with a split 'Liability' vs. 'Physical Damage'.", text: "Your auto policy usually only covers liability while the trailer is attached—not physical damage to the boat, RV, or ATV itself.", designNote: "Navy text, 32pt. Use a split graphic: left side green check (liability), right side red X (physical damage)." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a homeowners policy document with a red 'sub-limit' stamp.", text: "Homeowners policies have strict dollar limits on recreational vehicles. Don't assume your toys are covered.", designNote: "Dark slate text, 30pt. Add a warning icon." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of a boat, RV, and ATV side-by-side.", text: "Whether it’s a fishing boat, camper, or side-by-side, dedicated coverage keeps a weekend accident from turning into a financial headache.", designNote: "White text, 28pt. Add a 'Visit our website' button graphic." }
+        "day": 20,
+        "week": 4,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 4 • Friday • 9:30 AM CT",
+        "format": "Carousel",
+        "topic": "Landlord — Myth: If my rental is damaged, I just lose the rent",
+        "hook": "MYTH: If my rental is damaged, I just lose the rent until it's fixed. FACT: Landlord policies can cover lost rent.",
+        "cta": "Comment \"RENTAL\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LandlordInsurance #RealEstateInvesting #BartlettTN #RentalProperty",
+        "caption": "MYTH: If my rental property is damaged, I just lose the rent until it is fixed.\n\nFACT: Landlord policies can include loss of rental income. After a covered loss, it can replace the rent you lose while repairs are made.\n\nOne more step: require your tenants to carry renters insurance. Your policy does not cover their belongings.\n\nComment \"RENTAL\" and we will review your landlord coverage.",
+        "guide": {
+          "mediaType": "4-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact — loss of rental income. Slide 3: Require tenant renters insurance. Slide 4: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 4 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Friday 9:30 AM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "If my rental is damaged, I just lose the rent until it's fixed.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "House icon with a calendar and dollar sign.",
+              "text": "Landlord policies can include loss of rental income after a covered loss.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Lease document icon with a checkmark.",
+              "text": "Next step: require tenants to carry renters insurance. Your policy doesn't cover their belongings.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"RENTAL\" and we'll review your landlord coverage.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 24, week: 5, dayOfWeek: "Thursday", scheduleLabel: "Week 5 • Thursday • 7:45 AM CT",
-        format: "Text Post", topic: "Q6 — Landlord Insurance vs. Homeowners Insurance",
-        hook: "Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.",
-        cta: "Book a call (901-498-5001)", complianceRequired: true,
-        hashtags: "#RealEstateInvesting #TennesseeLandlord #RentalProperty #BartlettTN #PropertyManagement",
-        caption: `Attention Tennessee landlords: if you turned your old house into a rental property, your standard homeowners policy will NOT save you.\n\nIf a tenant starts a kitchen fire and the insurance company discovers you no longer live there, your claim can be denied flat out.\n\nYou need a dedicated Landlord policy that covers the structure, landlord liability, and even loss of rental income while the property is being repaired.\n\nOwning rental property is a great way to build wealth—just make sure the foundation is insured the right way.\n\nCall our Bartlett office at 901-498-5001 or click the link in bio to review your rental coverage.`,
-        guide: {
-          mediaType: "Investor Alert Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Bold headline graphic: 'Moved Out & Rented It Out? Check Your Policy Type.' Include office number (901) 498-5001.",
-          deliveryTone: "Serious, authoritative real estate protection note.",
-          vaChecklist: "1) Route for compliance approval. 2) Create graphic & schedule for Thursday 7:45 AM CT.",
-          graphicSpec: {
-            background: "Solid Agency Navy (#073558).",
-            image: "Icon of a house with a 'For Rent' sign and a warning triangle.",
-            text: "Headline: 'Moved Out & Rented It Out?' Subtext: 'Your standard homeowners policy will NOT cover a rental property. You need a landlord policy.' Bottom: 'Call (901) 498-5001 to review your coverage.'",
-            textStyle: "White text, 42pt Playfair Display Bold for headline. 24pt Lato for subtext. Agency Gold (#d9a85e) for the phone number.",
-            designNote: "Authoritative, urgent, with a clear call to action."
+        "day": 21,
+        "week": 5,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 5 • Monday • 4:30 PM CT",
+        "format": "Text Post",
+        "topic": "Mobile Home — Myth: My policy covers my mobile home while it's being moved",
+        "hook": "MYTH: My mobile home is covered while it's being moved. FACT: Many policies don't cover transport unless you add it.",
+        "cta": "Book a call (901-498-5001)",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #MobileHomeInsurance #ManufacturedHomes #BartlettTN",
+        "caption": "MYTH: My mobile home policy covers my home while it is being moved.\n\nFACT: Many mobile home policies do not cover damage while the home is being transported unless you add transportation or trip coverage.\n\nIf you are moving your home, call before the move, not after.\n\nCall 901-498-5001 to check your coverage.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with an icon of a manufactured home on a transport truck.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Monday 4:30 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a manufactured home on a transport truck icon.",
+            "text": "Top: 'MYTH: My mobile home is covered during a move.'  Bottom: 'FACT: Many policies need added trip coverage.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 25, week: 5, dayOfWeek: "Friday", scheduleLabel: "Week 5 • Friday • 12:30 PM CT",
-        format: "Blog Post", topic: "Q9 — Weekend Toys (Blog Post)",
-        hook: "Be honest: if you could buy one weekend toy right now, which one are you picking?",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#WeekendVibes #Tennessee #BartlettTN",
-        caption: `Blog Post: Insuring Your Weekend Toys — Boats, RVs, and ATVs\n\nBe honest: if you could buy one weekend toy right now, which one are you picking? A bass boat, a Class A RV, or a side-by-side ATV? Whatever you drive, tow, or float—we insure it right here in Bartlett. Read our latest blog post on how to properly cover your weekend toys.`,
-        guide: {
-          mediaType: "Blog Post (800-1000 words) + Featured Image (1200x630px)",
-          visualBreakdown: "Featured image: A collage of a boat, RV, and ATV with the text 'Insuring Your Weekend Toys'. Blog structure: Introduction (poll question), Coverage for boats, Coverage for RVs, Coverage for ATVs, Common misconceptions, CTA to get a quote.",
-          deliveryTone: "Lighthearted, fun, informative.",
-          vaChecklist: "1) Write blog post, embed featured image. 2) Publish and share on FB & IG with a poll sticker on stories.",
-          blogPlan: {
-            title: "Insuring Your Weekend Toys: Boats, RVs, and ATVs in Tennessee",
-            featuredImage: "Collage of a boat, RV, and ATV with the text 'Insuring Your Weekend Toys' in bold navy text.",
-            sections: [
-              "Introduction: Poll question — which weekend toy would you buy?",
-              "Boat Insurance: What it covers, typical costs, and why your auto policy doesn't cover it.",
-              "RV Insurance: Class A, B, C — coverage differences, full-timer vs. recreational.",
-              "ATV/Side-by-Side Insurance: Coverage for trails, liability, and theft.",
-              "Common Misconceptions: 'My homeowners covers it' — why it often doesn't.",
-              "CTA: Get a quote for your weekend toy. Link to website."
+        "day": 22,
+        "week": 5,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 5 • Tuesday • 12:00 PM CT",
+        "format": "Reel",
+        "topic": "Boat — Myth: Small boats and jet skis don't need insurance",
+        "hook": "MYTH: Small boats and jet skis don't need insurance. FACT: The biggest risk is liability, not the boat.",
+        "cta": "Comment \"WATER\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #BoatInsurance #JetSki #BartlettTN #TennesseeLakes",
+        "caption": "MYTH: Small boats and jet skis don't need insurance.\n\nFACT: The biggest risk is liability. If you hurt someone or damage another boat or dock, you can be held responsible.\n\nHomeowners coverage for watercraft is often limited, and many policies exclude jet skis.\n\nSome marinas and lenders also require proof of insurance.\n\nComment \"WATER\" and we will check your coverage.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30 seconds)",
+          "visualBreakdown": "Michael to camera. MYTH / FACT tags. Text: 'Biggest risk = liability'.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Tuesday 12:00 PM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: small boats and jet skis don't need insurance. [TEXT ON SCREEN: MYTH: Small boats don't need coverage]\n[0:04-0:12] MICHAEL: Fact: the biggest risk isn't the boat. It's liability. Hurt someone or hit another boat or dock, and you can be held responsible. [TEXT ON SCREEN: FACT: Biggest risk = liability]\n[0:12-0:19] MICHAEL: Homeowners coverage for watercraft is often limited, and many policies exclude jet skis.\n[0:19-0:25] MICHAEL: Comment \"WATER\" and we'll check your coverage.\n[0:25-0:30] TEXT ON SCREEN: Comment \"WATER\" • The Johnson Agency • (901) 498-5001"
+        }
+      },
+      {
+        "day": 23,
+        "week": 5,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 5 • Wednesday • 5:15 PM CT",
+        "format": "Carousel",
+        "topic": "Homeowners — Myth: Home insurance covers sewer and drain backup",
+        "hook": "MYTH: My home insurance covers sewer or drain backup. FACT: Usually not, unless you add it.",
+        "cta": "Comment \"BACKUP\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #HomeownersInsurance #WaterDamage #BartlettTN #TennesseeHomes",
+        "caption": "MYTH: My homeowners policy covers sewer or drain backup.\n\nFACT: Most standard homeowners policies do not cover water that backs up through a sewer or drain unless you add water backup coverage.\n\nCleanup and repairs from a backup can be expensive.\n\nAdding the coverage is usually a small change to your policy.\n\nComment \"BACKUP\" and we will check if you have it.",
+        "guide": {
+          "mediaType": "4-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact. Slide 3: What to ask for. Slide 4: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 4 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Wednesday 5:15 PM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "My home insurance covers sewer or drain backup.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Floor drain icon with water rising.",
+              "text": "Most standard policies don't, unless you add water backup coverage.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Numbered list, no photo.",
+              "text": "Ask for: water backup coverage (also called sewer/drain backup). Check the limit.",
+              "designNote": "Navy 30pt Playfair Display for the heading, steps in 24pt Lato. Gold numbers."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"BACKUP\" and we'll check if you have it.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
+          ]
+        }
+      },
+      {
+        "day": 24,
+        "week": 5,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 5 • Thursday • 7:45 AM CT",
+        "format": "Text Post",
+        "topic": "RV — Myth: A regular RV policy is enough if I live in my RV full-time",
+        "hook": "MYTH: A regular RV policy is enough if I live in my RV full-time. FACT: Full-time living may need full-timer coverage.",
+        "cta": "Book a call (901-498-5001)",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #RVInsurance #FullTimeRV #BartlettTN #RVLife",
+        "caption": "MYTH: A regular RV policy is enough if I live in my RV full-time.\n\nFACT: Many RV policies are built for part-time, recreational use. If the RV is your home, you may need full-timer coverage for personal liability and your belongings, similar to what a homeowners policy provides.\n\nTell your agent how you actually use your RV.\n\nCall 901-498-5001 to review your RV coverage.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with a motorhome icon and a small house symbol.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Thursday 7:45 AM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a motorhome icon with a small house symbol.",
+            "text": "Top: 'MYTH: A regular RV policy covers full-time living.'  Bottom: 'FACT: Full-time RVers may need full-timer coverage.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
+          }
+        }
+      },
+      {
+        "day": 25,
+        "week": 5,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 5 • Friday • 12:30 PM CT",
+        "format": "Blog Post",
+        "topic": "Mobile Home — 4 Mobile Home Insurance Myths (Blog Post)",
+        "hook": "Four mobile home insurance myths, and the facts.",
+        "cta": "Book a call",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #MobileHomeInsurance #ManufacturedHomes #BartlettTN",
+        "caption": "Blog Post: 4 Mobile Home Insurance Myths\n\nMYTH 1: A regular homeowners policy works. FACT: You need a mobile home policy.\nMYTH 2: It's covered during a move. FACT: Often not without trip coverage.\nMYTH 3: Flood is included. FACT: Flood is a separate policy.\nMYTH 4: Set it and forget it. FACT: Review your coverage when you add decks, sheds, or upgrades.\n\nRead the full post on our blog, then book a call to review your coverage.",
+        "guide": {
+          "mediaType": "Blog Post (700–900 words) + Featured Image (1200x630px)",
+          "visualBreakdown": "Featured image: manufactured home icon on navy with '4 Mobile Home Insurance Myths' in white Playfair Display and a gold 'MYTH vs. FACT' tag.",
+          "deliveryTone": "Direct and practical. Short sections, plain language, no filler.",
+          "vaChecklist": "1) Submit blog draft for compliance review. 2) Publish on the website with the featured image (1200x630px). 3) Share the link on FB and IG for Friday 12:30 PM CT with the teaser caption.",
+          "blogPlan": {
+            "title": "4 Mobile Home Insurance Myths Tennessee Owners Should Stop Believing",
+            "featuredImage": "Navy background, manufactured home icon, title in white, gold 'MYTH vs. FACT' tag.",
+            "sections": [
+              "Myth 1: A regular homeowners policy works. Fact: Mobile and manufactured homes need a mobile home policy.",
+              "Myth 2: The home is covered while being moved. Fact: Many policies need added trip or transportation coverage.",
+              "Myth 3: Flood is included. Fact: Flood is a separate policy, and NFIP policies usually have a 30-day waiting period.",
+              "Myth 4: Set it and forget it. Fact: Add-ons like decks, sheds, and upgrades can change what you need.",
+              "What to Do: Review your policy once a year and before any move or upgrade.",
+              "CTA: Book a 15-minute review with The Johnson Agency. (901) 498-5001."
             ]
           }
         }
       },
-
-      // WEEK 6 (Days 26–30: Mon–Fri)
       {
-        day: 26, week: 6, dayOfWeek: "Monday", scheduleLabel: "Week 6 • Monday • 4:30 PM CT",
-        format: "Reel", topic: "Q1 & Q7 — The 3-Minute Policy Health Check",
-        hook: "Grab your insurance declarations page and check these three lines right now.",
-        cta: "Comment \"TRANSLATE\"", complianceRequired: true,
-        hashtags: "#InsuranceTips #FinancialEducation #BartlettTN #HomeAndAuto #InsuranceAgent",
-        caption: `Grab your insurance declarations page and check these three lines right now.\n\nLine 1: Your bodily injury liability—if it’s under 100/300, you are leaving your savings exposed.\n\nLine 2: Your roof settlement—make sure it says "Replacement Cost" and not "Actual Cash Value."\n\nLine 3: Your deductibles—make sure you actually have that cash sitting in an emergency fund.\n\nIf you don't know where to find these numbers, don't stress.\n\nTake a picture of your current policy, text it or bring it by our Bartlett office, and I’ll translate the insurance jargon into plain English for free.\n\nComment "TRANSLATE" below to get started.`,
-        guide: {
-          mediaType: "3-Point Action Reel (9:16 • 45 seconds)",
-          visualBreakdown: "Count down 1, 2, 3 on screen with clear text labels for Liability, Roof Settlement, and Deductible. End with the plain-English translation offer.",
-          deliveryTone: "Empowering, no-jargon educator.",
-          vaChecklist: "1) Get compliance approval. 2) Add numbered overlays & captions. 3) Schedule for Monday 4:30 PM CT.",
-          script: `[0:00-0:05] MICHAEL (holding a declarations page): Grab your insurance declarations page and check these three lines right now.\n[0:06-0:15] MICHAEL (pointing to line 1): Line 1: Your bodily injury liability—if it’s under 100/300, you are leaving your savings exposed. [TEXT ON SCREEN: 1. Liability Limits]\n[0:16-0:25] MICHAEL: Line 2: Your roof settlement—make sure it says "Replacement Cost" and not "Actual Cash Value." [TEXT ON SCREEN: 2. Roof Settlement]\n[0:26-0:35] MICHAEL: Line 3: Your deductibles—make sure you actually have that cash sitting in an emergency fund. [TEXT ON SCREEN: 3. Deductibles]\n[0:36-0:45] MICHAEL: If you don't know where to find these numbers, don't stress. Take a picture of your current policy, text it or bring it by our Bartlett office, and I’ll translate the insurance jargon into plain English for free. Comment "TRANSLATE" below to get started.\n[0:46-0:50] TEXT ON SCREEN: Comment "TRANSLATE" for a free policy review.`
+        "day": 26,
+        "week": 6,
+        "dayOfWeek": "Monday",
+        "scheduleLabel": "Week 6 • Monday • 4:30 PM CT",
+        "format": "Reel",
+        "topic": "ATV — Myth: I only ride on my own land, so I don't need ATV insurance",
+        "hook": "MYTH: I only ride on my own land, so I don't need ATV insurance. FACT: Injuries and damage still happen at home.",
+        "cta": "Comment \"RIDE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #ATVInsurance #SideBySide #BartlettTN #FarmLife",
+        "caption": "MYTH: I only ride on my own land, so I don't need ATV insurance.\n\nFACT: Homeowners coverage for ATVs is often limited, even on your own property. It may not cover damage to the ATV, theft, or injuries when a guest or family member rides it.\n\nAn ATV policy can cover those.\n\nComment \"RIDE\" and we will review your coverage.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30 seconds)",
+          "visualBreakdown": "Michael to camera, outdoor if possible. MYTH / FACT tags. Text list: ATV damage • Theft • Guest injuries.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Monday 4:30 PM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: you only ride on your own land, so you don't need ATV insurance. [TEXT ON SCREEN: MYTH: My land = no ATV policy needed]\n[0:04-0:13] MICHAEL: Fact: homeowners coverage for ATVs is often limited, even at home. It may not cover damage, theft, or a guest getting hurt. [TEXT ON SCREEN: FACT: Often limited, even at home]\n[0:13-0:19] MICHAEL: An ATV policy can cover all three. [TEXT ON SCREEN: Damage • Theft • Guest injuries]\n[0:19-0:25] MICHAEL: Comment \"RIDE\" and we'll review it.\n[0:25-0:30] TEXT ON SCREEN: Comment \"RIDE\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 27, week: 6, dayOfWeek: "Tuesday", scheduleLabel: "Week 6 • Tuesday • 10:00 AM CT",
-        format: "Carousel", topic: "Q10 — Why Having an Advocate Matters During a Claim",
-        hook: "Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.",
-        cta: "Visit website", complianceRequired: false,
-        hashtags: "#TheJohnsonAgency #BartlettTN #ClientAdvocate #PersonalizedService #TrustedAdvice",
-        caption: `Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.\n\nWhen you are dealing with a fender bender, a busted water heater, or storm damage, you already have enough stress on your plate.\n\nOur job at The Johnson Agency isn't just to sell you a piece of paper and disappear.\n\nOur job is to educate you before anything happens, and stand in your corner to help guide you through the process when it does.\n\nPersonalized service and trusted advice—just like it should be.\n\nVisit our website in the bio to connect with Michael and the team.`,
-        guide: {
-          mediaType: "4-Slide Client Advocacy Carousel (1080x1350px)",
-          visualBreakdown: "Slide 1: Hook on stressful claim moments. Slide 2: 'Before Anything Happens: Education'. Slide 3: 'When It Happens: Local Guidance'. Slide 4: Connect with The Johnson Agency CTA.",
-          deliveryTone: "Reassuring, dependable partnership tone.",
-          vaChecklist: "1) Build 4 slides in Canva. 2) Schedule for Tuesday 10:00 AM CT.",
-          carouselPlan: [
-            { slide: 1, background: "Solid Agency Navy (#073558)", image: "Icon of a person looking stressed with a phone.", text: "Nobody wakes up excited to call their insurance company—that’s why having an advocate matters.", designNote: "White text, 40pt. Add a stress-free icon or a phone with a frown." },
-            { slide: 2, background: "White (#FFFFFF)", image: "Icon of a person teaching with a lightbulb.", text: "Before anything happens: We educate you on what you have and why you have it.", designNote: "Navy text, 32pt. Use a lightbulb icon." },
-            { slide: 3, background: "Light gray (#F1F5F9)", image: "Icon of a person standing in front of a house with a shield.", text: "When it happens: We stand in your corner and guide you through the claim process.", designNote: "Dark slate text, 32pt. Use a shield icon." },
-            { slide: 4, background: "Agency Navy (#073558)", image: "Photo of Michael Johnson and team.", text: "Personalized service and trusted advice—just like it should be. Visit our website to connect.", designNote: "White text, 32pt. Add a 'Visit Website' button graphic." }
+        "day": 27,
+        "week": 6,
+        "dayOfWeek": "Tuesday",
+        "scheduleLabel": "Week 6 • Tuesday • 10:00 AM CT",
+        "format": "Carousel",
+        "topic": "All Lines — Myth: All policies are the same, so the cheapest one wins",
+        "hook": "MYTH: All insurance policies are the same, so just buy the cheapest. FACT: Limits, deductibles, and exclusions are different.",
+        "cta": "Comment \"COMPARE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #InsuranceMyths #TheJohnsonAgency #BartlettTN #InsuranceTips",
+        "caption": "MYTH: All insurance policies are the same, so just buy the cheapest one.\n\nFACT: Two quotes can look alike and cover very different things. Check the limits, the deductibles, what is excluded, and how claims are paid.\n\nA lower price often means less coverage.\n\nCompare policies side by side, coverage for coverage.\n\nComment \"COMPARE\" and we will walk through your quotes with you.",
+        "guide": {
+          "mediaType": "5-Slide Myth vs. Fact Carousel (1080x1350px)",
+          "visualBreakdown": "Slide 1: Myth. Slide 2: Fact. Slide 3: The four things to compare. Slide 4: Lower price = less coverage. Slide 5: CTA.",
+          "deliveryTone": "Direct. One idea per slide. Short sentences.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Build 5 slides in Canva using the Myth vs. Fact template (1080x1350px). 3) Schedule on FB and IG for Tuesday 10:00 AM CT.",
+          "carouselPlan": [
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "No photo. Bold text only.",
+              "text": "All insurance policies are the same, so just buy the cheapest.",
+              "designNote": "Gold (#d9a85e) 'MYTH' tag top-left in Lato Black caps. Myth in white 44pt Playfair Display Bold with a thin gold strike line through it."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Two document icons side by side with a magnifying glass.",
+              "text": "Two quotes can look alike and cover very different things.",
+              "designNote": "Agency Blue (#155984) 'FACT' tag top-left in Lato Black caps. Fact in navy 36pt Playfair Display Bold."
+            },
+            {
+              "background": "White (#FFFFFF)",
+              "image": "Numbered list, no photo.",
+              "text": "Compare: 1) Limits 2) Deductibles 3) Exclusions 4) How claims are paid.",
+              "designNote": "Navy 30pt Playfair Display for the heading, steps in 24pt Lato. Gold numbers."
+            },
+            {
+              "background": "Light gold tint (#FBF5EA)",
+              "image": "Price tag icon next to a smaller shield icon.",
+              "text": "A lower price often means less coverage.",
+              "designNote": "Navy text, 30pt Lato. Simple flat navy icon. No extra decoration."
+            },
+            {
+              "background": "Solid Agency Navy (#073558)",
+              "image": "Photo of Michael Johnson (headshot) or agency logo.",
+              "text": "Comment \"COMPARE\" and we'll walk through your quotes with you.",
+              "designNote": "White 36pt Playfair Display Bold. Gold (#d9a85e) button graphic with the keyword. Agency logo and (901) 498-5001 at the bottom."
+            }
           ]
         }
       },
       {
-        day: 28, week: 6, dayOfWeek: "Wednesday", scheduleLabel: "Week 6 • Wednesday • 4:00 PM CT",
-        format: "Text Post", topic: "Q3 & Q8 — The Complete Family Protection Blueprint",
-        hook: "Here is how I look at protecting a Tennessee family from start to finish:",
-        cta: "Book a call", complianceRequired: false,
-        hashtags: "#FamilyProtection #FinancialPeace #BartlettTN #LifeAndHome #Tennessee",
-        caption: `Here is how I look at protecting a Tennessee family from start to finish:\n\nFirst, we protect your daily life—your cars, your home, and your liability so one bad afternoon doesn't drain your bank account.\n\nSecond, we protect your lifestyle—your boats, RVs, rental properties, and umbrella coverage as your career and assets grow.\n\nThird, we protect your people—life insurance so your spouse and kids never have to worry about the mortgage if the unthinkable happens.\n\nIt doesn't have to be complicated or overwhelming.\n\nIf you want a calm, pressure-free conversation about where your family stands, book a call through our website today.`,
-        guide: {
-          mediaType: "3-Tier Blueprint Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Show a clean 3-step ladder/tier graphic: 1) Daily Life & Liability, 2) Lifestyle & Assets, 3) Family & Mortgage (Life).",
-          deliveryTone: "Structured, reassuring big-picture advisor.",
-          vaChecklist: "1) Create 3-tier graphic in Canva. 2) Schedule for Wednesday 4:00 PM CT.",
-          graphicSpec: {
-            background: "White (#FFFFFF).",
-            image: "A 3-step ladder or staircase graphic, each step labeled: '1. Daily Life & Liability', '2. Lifestyle & Assets', '3. Family & Mortgage'. Use flat icons for each (car/house, boat/RV, family).",
-            text: "Headline: 'The Complete Family Protection Blueprint' Subtext: 'Protect your daily life, your lifestyle, and your people—in that order.'",
-            textStyle: "Navy text, 36pt Playfair Display Bold for headline. Agency Blue (#155984) text, 24pt Lato for subtext. Agency logo at the bottom.",
-            designNote: "Clean, infographic style. Use Agency Navy (#073558) and Agency Blue (#155984), with Agency Gold (#d9a85e) accents."
+        "day": 28,
+        "week": 6,
+        "dayOfWeek": "Wednesday",
+        "scheduleLabel": "Week 6 • Wednesday • 4:00 PM CT",
+        "format": "Text Post",
+        "topic": "Life — Myth: Stay-at-home parents don't need life insurance",
+        "hook": "MYTH: Stay-at-home parents don't need life insurance. FACT: The work they do costs money to replace.",
+        "cta": "Comment \"FAMILY\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #LifeInsurance #StayAtHomeParent #BartlettTN #TennesseeFamilies",
+        "caption": "MYTH: Stay-at-home parents don't need life insurance.\n\nFACT: A stay-at-home parent does work that costs money to replace: childcare, driving, cooking, and running the household.\n\nIf that parent passed away, the family would have to pay for that help.\n\nLife insurance can cover it.\n\nComment \"FAMILY\" and we will help you find the right amount.",
+        "guide": {
+          "mediaType": "Myth vs. Fact Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Split Myth vs. Fact card with a family icon.",
+          "deliveryTone": "Direct. Myth, fact, next step.",
+          "vaChecklist": "1) Submit copy for compliance review. 2) Create the Myth vs. Fact card in Canva (1080x1080px). 3) Schedule on FB and IG for Wednesday 4:00 PM CT.",
+          "graphicSpec": {
+            "background": "Split card: top half Agency Navy (#073558), bottom half White (#FFFFFF), thin gold line between them.",
+            "image": "No photo. Small navy icon in the white half that matches the topic. Use a simple family icon.",
+            "text": "Top: 'MYTH: Stay-at-home parents don't need life insurance.'  Bottom: 'FACT: Their work costs money to replace.'",
+            "textStyle": "MYTH tag in gold Lato Black caps, myth text in white 36pt Playfair Display Bold. FACT tag in Agency Blue (#155984) Lato Black caps, fact text in navy 32pt Playfair Display Bold. Agency logo bottom-right.",
+            "designNote": "Series look: same layout every Myth vs. Fact card. High contrast, no clutter, readable on a phone in 2 seconds."
           }
         }
       },
       {
-        day: 29, week: 6, dayOfWeek: "Thursday", scheduleLabel: "Week 6 • Thursday • 7:30 AM CT",
-        format: "Reel", topic: "Q10 — Direct Invitation (Frank Kern \"Super Signature\" Style)",
-        hook: "If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.",
-        cta: "Book a call (901-498-5001)", complianceRequired: true,
-        hashtags: "#BartlettTN #TennesseeInsurance #FreeReview #FinancialCheckup #TheJohnsonAgency",
-        caption: `If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.\n\nLife moves fast—you buy cars, renovate kitchens, switch jobs, and build savings.\n\nIf your insurance hasn't kept up with your life, you are probably either overpaying for old stuff or dangerously underinsured on new stuff.\n\nI’m opening up five spots on my calendar this week for a 15-minute Policy Clarity Call.\n\nWe’ll look at what you have, spot any hidden gaps, and tell you honestly if you’re already in a great spot—even if that means staying right where you are.\n\nClick the link in my bio or call our office at 901-498-5001 to grab a spot.`,
-        guide: {
-          mediaType: "Direct-to-Camera Invitation Reel (9:16 • 45–50 seconds)",
-          visualBreakdown: "Film Michael in a relaxed, honest conversation format—no hard-sell energy, just a clear invitation for a 15-minute Policy Clarity Call.",
-          deliveryTone: "Signature Frank Kern low-pressure, high-integrity invitation.",
-          vaChecklist: "1) Submit for compliance review. 2) Add captions & schedule for Thursday 7:30 AM CT.",
-          script: `[0:00-0:08] MICHAEL (relaxed, direct to camera): If you live in Bartlett or anywhere in Tennessee and haven't had a real person review your insurance in over two years, this is for you.\n[0:09-0:18] MICHAEL: Life moves fast—you buy cars, renovate kitchens, switch jobs, and build savings. If your insurance hasn't kept up with your life, you are probably either overpaying for old stuff or dangerously underinsured on new stuff.\n[0:19-0:35] MICHAEL: I’m opening up five spots on my calendar this week for a 15-minute Policy Clarity Call. We’ll look at what you have, spot any hidden gaps, and tell you honestly if you’re already in a great spot—even if that means staying right where you are.\n[0:36-0:45] MICHAEL: Click the link in my bio or call our office at 901-498-5001 to grab a spot.\n[0:46-0:50] TEXT ON SCREEN: 5 Spots This Week. 15-Minute Policy Clarity Call. Call (901) 498-5001.`
+        "day": 29,
+        "week": 6,
+        "dayOfWeek": "Thursday",
+        "scheduleLabel": "Week 6 • Thursday • 7:30 AM CT",
+        "format": "Reel",
+        "topic": "Homeowners — Myth: Home insurance covers earthquakes",
+        "hook": "MYTH: My home insurance covers earthquakes. FACT: Standard homeowners policies usually exclude earthquake damage.",
+        "cta": "Comment \"QUAKE\"",
+        "complianceRequired": true,
+        "hashtags": "#MythVsFact #EarthquakeInsurance #NewMadrid #BartlettTN #WestTennessee",
+        "caption": "MYTH: My homeowners policy covers earthquakes.\n\nFACT: Standard homeowners policies usually exclude earthquake damage. You have to add it.\n\nWest Tennessee is near the New Madrid Seismic Zone.\n\nAsk what earthquake coverage would cost and what the deductible would be.\n\nComment \"QUAKE\" and we will look at your options.",
+        "guide": {
+          "mediaType": "Talking-Head Reel (9:16 • 30 seconds)",
+          "visualBreakdown": "Michael to camera. MYTH / FACT tags. Simple map graphic of West Tennessee with 'New Madrid Seismic Zone' label.",
+          "deliveryTone": "Direct and plain. State the myth, state the fact, say what to do. No storytelling, no hype.",
+          "vaChecklist": "1) Submit script for compliance review. 2) Film vertical video, add burned-in captions and the MYTH / FACT on-screen tags in CapCut or Canva. 3) Schedule on FB Reels and IG Reels for Thursday 7:30 AM CT.",
+          "script": "[0:00-0:04] MICHAEL: Myth: your home insurance covers earthquakes. [TEXT ON SCREEN: MYTH: Homeowners covers earthquakes]\n[0:04-0:11] MICHAEL: Fact: standard homeowners policies usually exclude earthquake damage. You have to add it. [TEXT ON SCREEN: FACT: Usually excluded]\n[0:11-0:17] MICHAEL: West Tennessee is near the New Madrid Seismic Zone. [TEXT ON SCREEN: New Madrid Seismic Zone]\n[0:17-0:23] MICHAEL: Ask what it costs and what the deductible is. Comment \"QUAKE\" and we'll look at your options.\n[0:23-0:28] TEXT ON SCREEN: Comment \"QUAKE\" • The Johnson Agency • (901) 498-5001"
         }
       },
       {
-        day: 30, week: 6, dayOfWeek: "Friday", scheduleLabel: "Week 6 • Friday • 12:15 PM CT",
-        format: "Text Post", topic: "Month-End Wrap & Engagement Question",
-        hook: "Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?",
-        cta: "Comment your question", complianceRequired: false,
-        hashtags: "#AskAnAgent #BartlettTN #InsuranceQuestions #TennesseeFamilies #TrustedAdvice",
-        caption: `Quick question before we wrap up this 30-day series: what is the #1 thing about insurance that still confuses you?\n\nDrop it in the comments below—no question is too small or too basic.\n\nOur mission at The Johnson Agency is to make insurance make sense so you feel confident about what you’re paying for.\n\nI’ll reply to every single comment personally today.`,
-        guide: {
-          mediaType: "Open Q&A Prompt Graphic + Text Post (1080x1080px)",
-          visualBreakdown: "Clean question card: 'What’s #1 Thing About Insurance That Still Confuses You? Drop It Below 👇'.",
-          deliveryTone: "Open, welcoming, community conversation starter.",
-          vaChecklist: "1) Create Q&A graphic in Canva. 2) Schedule for Friday 12:15 PM CT and alert Michael to check comments.",
-          graphicSpec: {
-            background: "Solid White (#FFFFFF) with a thin Agency Gold (#d9a85e) border.",
-            image: "No photo. Use a large question mark icon in the center.",
-            text: "Headline: 'What’s the #1 thing about insurance that still confuses you?' Subtext: 'Drop it below 👇 I’ll reply personally.'",
-            textStyle: "Navy text, 42pt Playfair Display Bold for headline. Agency Blue (#155984) text, 24pt Lato for subtext. Agency logo at the bottom.",
-            designNote: "Friendly, approachable, conversation-starting."
+        "day": 30,
+        "week": 6,
+        "dayOfWeek": "Friday",
+        "scheduleLabel": "Week 6 • Friday • 12:15 PM CT",
+        "format": "Text Post",
+        "topic": "Wrap-Up — Which insurance myth should we bust next?",
+        "hook": "30 days of insurance myths. Which one should we cover next?",
+        "cta": "Comment your myth",
+        "complianceRequired": false,
+        "hashtags": "#MythVsFact #InsuranceMyths #AskAnAgent #BartlettTN #TheJohnsonAgency",
+        "caption": "We just finished 30 days of insurance myths.\n\nHome, auto, life, renters, landlord, boat, RV, ATV, and mobile home.\n\nWhat is one thing you have heard about insurance that you are not sure is true?\n\nComment it below. We will answer it.",
+        "guide": {
+          "mediaType": "Q&A Prompt Card + Text Post (1080x1080px)",
+          "visualBreakdown": "Navy card with 'MYTH or FACT?' in large white Playfair Display, gold question mark, and 'Comment your myth' below.",
+          "deliveryTone": "Direct and open. Ask the question, invite comments.",
+          "vaChecklist": "1) Create the Q&A card in Canva (1080x1080px). 2) Schedule for Friday 12:15 PM CT. 3) Collect every myth from the comments in the Leads box for next month's plan.",
+          "graphicSpec": {
+            "background": "Solid Agency Navy (#073558).",
+            "image": "No photo. Large gold (#d9a85e) question mark.",
+            "text": "Headline: 'MYTH or FACT?' Subtext: 'Comment the insurance myth you want us to answer.'",
+            "textStyle": "White 48pt Playfair Display Bold headline. White 24pt Lato subtext. Agency logo bottom center.",
+            "designNote": "Same series look as the other Myth vs. Fact cards."
           }
         }
       }
@@ -1497,7 +1814,7 @@
                 <h3 class="text-lg sm:text-xl font-bold text-agency-navy leading-snug">${escapeHtml(post.topic)}</h3>
                 <p class="font-display italic text-[15px] sm:text-base text-slate-700 mt-1.5">
                   <span class="eyebrow not-italic text-agency-goldink mr-1.5" style="font-style:normal">Hook</span>
-                  “${escapeHtml(post.hook)}”
+                  ${escapeHtml(post.hook)}
                 </p>
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-1 mt-2.5 text-xs text-agency-steel">
                   <span><strong class="text-agency-navy font-black">CTA:</strong> ${escapeHtml(post.cta)}</span>
@@ -1685,7 +2002,7 @@
                       <label class="block eyebrow text-agency-steel mb-1.5">Engagement, Keywords & Leads Logged</label>
                       <textarea
                         rows="3"
-                        placeholder="Log CHECKUP/RATES comments, DMs, or booked calls..."
+                        placeholder="Log keyword comments (CHECK, FLOOD, RV...), DMs, or booked calls..."
                         oninput="updateLeads(${post.day}, this.value)"
                         class="w-full rounded-lg border border-agency-line bg-white p-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-agency-gold focus:border-agency-gold"
                       >${escapeHtml(st.leads)}</textarea>
