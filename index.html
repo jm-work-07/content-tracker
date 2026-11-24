@@ -1957,7 +1957,7 @@
       const text = [
         'VIDEO TITLE', g.videoTitle, '',
         'SCRIPT', '',
-        ...g.scriptSections.flatMap(sec => [sec.heading.toUpperCase(), ...sec.lines.map(l => 'MICHAEL: ' + l), '']),
+        ...g.scriptSections.flatMap(sec => [sec.heading.toUpperCase(), ...sec.lines, '']),
         'IMPORTANT TEXT TO SHOW ON SCREEN',
         ...g.onScreenText.map(l => '- ' + l)
       ].join('\n');
@@ -2313,7 +2313,7 @@
                     ${post.format === 'Reel' && post.guide.scriptSections ? `
                       <div class="bg-white border border-agency-line rounded-lg p-5 space-y-5">
                         <div class="flex flex-wrap items-center justify-between gap-2">
-                          <span class="eyebrow text-agency-navy">🎬 Video Script for Michael</span>
+                          <span class="eyebrow text-agency-navy">🎬 Video Script</span>
                           <button onclick="copyScript(${post.day})" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-agency-gold hover:bg-[#e6bb78] text-agency-navy text-xs font-black tracking-wide transition cursor-pointer">Copy Full Script</button>
                         </div>
                         <div>
@@ -2327,7 +2327,7 @@
                               <div>
                                 <p class="eyebrow text-agency-blue">${escapeHtml(sec.heading)}</p>
                                 <div class="mt-1 space-y-1">
-                                  ${sec.lines.map(line => `<p class="text-base text-slate-800 leading-relaxed"><span class="font-bold text-agency-navy">MICHAEL:</span> ${escapeHtml(line)}</p>`).join('')}
+                                  ${sec.lines.map(line => `<p class="text-base text-slate-800 leading-relaxed">${escapeHtml(line)}</p>`).join('')}
                                 </div>
                               </div>
                             `).join('')}
